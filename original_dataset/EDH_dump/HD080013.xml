@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Weihinschrift auf Tessera</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080013</idno>
+                <idno type="TM">426004</idno><idno type="localID">HD080013</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Avenches, Mus. Romain</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/276">Tessera</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/109">Bronze</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height/>
+                                        <width/>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm">0.5-0.7</height>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName>Aventicum (Civitas Helvetiorum)</placeName></origPlace>
+                            <origDate notBefore-custom="0001" notAfter-custom="0300" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">1 AD – 300 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1908">1908</date>
+                        <placeName ref="http://www.geonames.org/2661661">Avenches</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Canton de Vaud</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/ch/">Schweiz</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/80">Weihinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-08-12" who="Cowey">
+             provisorisch bearbeitet
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F024002.JPG">
+            <desc>F024002</desc>
+        </graphic>
+
+
+    </facsimile>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        AE 1996, 1121. 
+                    </bibl>
+                    <bibl>
+                         CIL 13, 11475. 
+                    </bibl>
+                    <bibl>
+                         R. Frei-Stolba - A. Bielmann, Musée Romain d'Avenches. Les inscriptions. Textes, traduction et commentaire (Lausanne 1996) 82-84, Nr. 23. 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                Mart[i] Caisiv[o] / Pomp(onius?) Optatus / fl(amen) Aug(usti) <e=F>x#<e>x#FX stip[e] // $?] / [- - -]R [- - -?]
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                Mart<supplied reason="lost">i</supplied> Caisiv<supplied reason="lost">o</supplied> <lb n="2"/><expan><abbr>Pomp</abbr><ex cert="low">onius</ex></expan> Optatus <lb n="3"/><expan><abbr>fl</abbr><ex>amen</ex></expan> <expan><abbr>Aug</abbr><ex>usti</ex></expan> <choice><corr>e</corr><sic>F</sic></choice>x#<supplied reason="omitted">e</supplied>x#FX stip<supplied reason="lost">e</supplied> </ab></div><div n="2" type="textpart"><ab><lb n="1"/> <gap reason="lost" extent="unknown" unit="character"><certainty match=".." locus="name"/></gap> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/>R <gap reason="lost" extent="unknown" unit="character"><certainty match=".." locus="name"/></gap>
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> Text 2 befindet sich auf der Rückseite und scheint von der Erstverwendung der Tafel herzurühren, deutlich höhere Buchstaben (~3 cm[</p>
+            </div>
+        </body>
+    </text>
+</TEI>

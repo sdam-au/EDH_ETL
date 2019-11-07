@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Ehreninschrift auf Tafel</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080082</idno>
+                <idno type="TM"/><idno type="localID">HD080082</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Genève, Mus. d'Art et d'Histoire</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/257">Tafel</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/138">unbestimmt</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height>111</height>
+                                        <width>59</width>
+                                        <depth>21</depth>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm">4.5</height>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName ref="http://www.trismegistos.org/place/019874">Noviodunum</placeName></origPlace>
+                            <origDate notBefore-custom="0218" notAfter-custom="0222" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">218 AD – 222 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date notAfter="1600">1600</date>
+                        <placeName ref="http://www.geonames.org/2659422">Nyon</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Canton de Vaud</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/ch/">Schweiz</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/69">Ehreninschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-06-05" who="Osnabrügge">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 05004. (B) 
+                    </bibl>
+                    <bibl>
+                         G. Walser, Römische Inschriften in der Schweiz 1 (Bern 1979) 86-87, Nr. 39; Foto. (B) 
+                    </bibl>
+                    <bibl>
+                         J.-L. Maier, Genavae Augustae. Les inscriptions romaines de Genève (Genève 1983) 77, Nr. 53. (B) 
+                    </bibl>
+                    <bibl>
+                         J. Bartels - N. Hächler - M. Aberson - R. Frei-Stolba - A. Kolb, MH 73, 2016, 100, Nr. 31. 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                [[Imp(eratori) Caes(ari) M(arco)]] / Aur[e]lio / [[Antoni[n]o]] / Pio Felic(i) A[u]g(usto) / pontif(ici) max(imo) / trib(unicia) potest(ate) / co(n)s(uli) / civitas / Equestrium
+            --><div type="edition" xml:lang="la"><head>Text</head><ab><lb n="1"/>
+                <del rend="erasure"><expan><abbr>Imp</abbr><ex>eratori</ex></expan> <expan><abbr>Caes</abbr><ex>ari</ex></expan> <expan><abbr>M</abbr><ex>arco</ex></expan></del> <lb n="2"/>Aur<supplied reason="lost">e</supplied>lio <lb n="3"/><del rend="erasure">Antoni<supplied reason="lost">n</supplied>o</del> <lb n="4"/>Pio <expan><abbr>Felic</abbr><ex>i</ex></expan> <expan><abbr>A<supplied reason="lost">u</supplied>g</abbr><ex>usto</ex></expan> <lb n="5"/><expan><abbr>pontif</abbr><ex>ici</ex></expan> <expan><abbr>max</abbr><ex>imo</ex></expan> <lb n="6"/><expan><abbr>trib</abbr><ex>unicia</ex></expan> <expan><abbr>potest</abbr><ex>ate</ex></expan> <lb n="7"/>co<expan><ex>n</ex><abbr>s</abbr><ex>uli</ex></expan> <lb n="8"/>civitas <lb n="9"/>Equestrium
+            </ab></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> (B): CIL 13, 05004; Walser; Maier: keine Angabe der eradierten Textteile; kleinere Abweichungen in der Lesung.</p>
+            </div>
+        </body>
+    </text>
+</TEI>

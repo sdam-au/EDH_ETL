@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Grabinschrift</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080478</idno>
+                <idno type="TM">414978</idno><idno type="localID">HD080478</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Blankenheim/Ahr, Burg</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/2">unbestimmt</objectType>
+                                    <material>Gesteine</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height/>
+                                        <width/>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm"/>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016530">Germania inferior</placeName><placeName ref="http://www.trismegistos.org/place/024591">Tolbiacum, bei</placeName></origPlace>
+                            <origDate notBefore-custom="0352" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">352 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1591">1591</date>
+                        <placeName ref="http://www.geonames.org/2898360">Zülpich</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Nordrhein-Westfalen</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/de/">Deutschland</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/92">Grabinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-08-13" who="Feraudi">
+             überprüft an Zeichnung
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 07918; Zeichnung. 
+                    </bibl>
+                    <bibl>
+                         ILS 7069. 
+                    </bibl>
+                    <bibl>
+                         A. Kakoschke, Ortsfremde in den römischen Provinzen Germania inferior und Germania superior (Möhnesee 2002), Nr. 1.59. 
+                    </bibl>
+                    <bibl>
+                         PLRE 1 Masclinius Maternus 3. 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                D(is) // M(anibus) // Masclinio Materno / dec(urioni) c(oloniae) A(grippinensis) aedilicio du(u)mvirali / curatoricio sacerdotali / et ex comitibus Masclinius / Leo patri bene merito fecit / Decentio Caes(are) et Paulo co(n)s(ulibus)
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                <expan><abbr>D</abbr><ex>is</ex></expan> </ab></div><div n="2" type="textpart"><ab><lb n="1"/> <expan><abbr>M</abbr><ex>anibus</ex></expan> </ab></div><div n="3" type="textpart"><ab><lb n="1"/> Masclinio Materno <lb n="2"/><expan><abbr>dec</abbr><ex>urioni</ex></expan> <expan><abbr>c</abbr><ex>oloniae</ex></expan> <expan><abbr>A</abbr><ex>grippinensis</ex></expan> aedilicio du<expan><ex>u</ex><abbr>mvirali</abbr></expan> <lb n="3"/>curatoricio sacerdotali <lb n="4"/>et ex comitibus Masclinius <lb n="5"/>Leo patri bene merito fecit <lb n="6"/>Decentio <expan><abbr>Caes</abbr><ex>are</ex></expan> et Paulo co<expan><ex>n</ex><abbr>s</abbr><ex>ulibus</ex></expan>
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p/>
+            </div>
+        </body>
+    </text>
+</TEI>

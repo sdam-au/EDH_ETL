@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Grabinschrift auf Tafel</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080426</idno>
+                <idno type="TM">424238</idno><idno type="localID">HD080426</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Gebenstorf, Reformierte Kirche, Hauptpforte</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/257">Tafel?</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/60">Kalkstein</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height>-69</height>
+                                        <width>-44</width>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm">3-5.5</height>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName ref="http://www.trismegistos.org/place/010926">Vindonissa, aus</placeName></origPlace>
+                            <origDate notBefore-custom="0070" notAfter-custom="0101" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">70 AD – 101 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date notAfter="1550">1550</date>
+                        <placeName ref="http://www.geonames.org/6697287">Gebenstorf</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Kanton Aargau</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/ch/">Schweiz</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/92">Grabinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-07-24" who="Osnabrügge">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 05211. 
+                    </bibl>
+                    <bibl>
+                         G. Walser, Römische Inschriften in der Schweiz 2 (Bern 1980) 104-105, Nr. 160; Foto. 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                M(arcus) Magius M(arci) Pob(lilia) Mac/caus Verona mil(es) leg(ionis) XI C(laudiae) p(iae) f(idelis) / |(centuria) Marci Modesti ann(orum) XXXIII / ex testamento h(eredes) f(aciendum) c(uraverunt) / L(ucius) Ennius Secundus / Q(uintus) Romanius Verecundus / h(ic) s(itus) e(st)
+            --><div type="edition" xml:lang="la"><head>Text</head><ab><lb n="1"/>
+                <expan><abbr>M</abbr><ex>arcus</ex></expan> Magius <expan><abbr>M</abbr><ex>arci</ex></expan> <expan><abbr>Pob</abbr><ex>lilia</ex></expan> Mac<lb break="no" n="2"/>caus Verona <expan><abbr>mil</abbr><ex>es</ex></expan> <expan><abbr>leg</abbr><ex>ionis</ex></expan> XI <expan><abbr>C</abbr><ex>laudiae</ex></expan> <expan><abbr>p</abbr><ex>iae</ex></expan> <expan><abbr>f</abbr><ex>idelis</ex></expan> <lb n="3"/><expan><abbr><am><g type="centuria"/></am></abbr><ex>centuria</ex></expan> Marci Modesti <expan><abbr>n<am>n</am></abbr><ex>orum</ex></expan> XXXIII <lb n="4"/>ex testamento <expan><abbr>h</abbr><ex>eredes</ex></expan> <expan><abbr>f</abbr><ex>aciendum</ex></expan> <expan><abbr>c</abbr><ex>uraverunt</ex></expan> <lb n="5"/><expan><abbr>L</abbr><ex>ucius</ex></expan> Ennius Secundus <lb n="6"/><expan><abbr>Q</abbr><ex>uintus</ex></expan> Romanius Verecundus <lb n="7"/><expan><abbr>h</abbr><ex>ic</ex></expan> <expan><abbr>s</abbr><ex>itus</ex></expan> <expan><abbr>e</abbr><ex>st</ex></expan>
+            </ab></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p/>
+            </div>
+        </body>
+    </text>
+</TEI>

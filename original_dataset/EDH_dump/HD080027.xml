@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Grabinschrift auf Platte</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080027</idno>
+                <idno type="TM"/><idno type="localID">HD080027</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Augst, Römermus.</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/309">Platte</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/75">Sandstein</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height>-54</height>
+                                        <width>-45</width>
+                                        <depth>7</depth>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm">5.5-2.2</height>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName>Castrum Rauracense</placeName></origPlace>
+                            <origDate notBefore-custom="0451-09-17" notAfter-custom="0451-09-17" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">17.9.451 AD – 600 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1840">1840</date>
+                        <placeName ref="http://www.geonames.org/2660204">Kaiseraugst</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Kanton Aargau</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/ch/">Schweiz</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/92">Grabinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-05-17" who="Osnabrügge">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F004836.JPG">
+            <desc>F004836</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F027245.JPG">
+            <desc>F027245</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F023433.JPG">
+            <desc>F023433</desc>
+        </graphic>
+
+        <graphic url="http://www.lupa.at/8427">
+        </graphic>
+
+    </facsimile>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 05308. (B) 
+                    </bibl>
+                    <bibl>
+                         CIL 13, 04, 05308 add. p. 69. 
+                    </bibl>
+                    <bibl>
+                         CIMAH 3, 05; Taf. 3, 8. (B) 
+                    </bibl>
+                    <bibl>
+                         ILCV 3930. (B) 
+                    </bibl>
+                    <bibl>
+                         E. Egli, Die christlichen Inschriften der Schweiz vom 4.-9. Jahrhundert (Zürich 1895) 33-34, Nr. 35; Zeichnung. (B) 
+                    </bibl>
+                    <bibl>
+                         F.X. Kraus, Die christlichen Inschriften der Rheinlande (Freiburg i. B. 1890) 4, Nr. 7. (B) 
+                    </bibl>
+                    <bibl>
+                         G. Walser, Römische Inschriften in der Schweiz 2 (Bern 1980) 236-237, Nr. 226; Foto. (B) 
+                    </bibl>
+                    <bibl>
+                         W. Boppert, in: P.-A. Schwarz - L. Berger (Hrsg.), Tituli Rauracenses 1. 
+                    </bibl>
+                    <bibl>
+                         Testimonien und Aufsätze zu den Namen und ausgewählten Inschriften von Augst und Kaiseraugst (Augst 2000) 115-117; Abb. 92. (B) 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                D(is) M(anibus) / in hoc tumolo / re[q]uiiscit(!) bon(a)e / [me]m[o]riae Baudo/[a]ldus qui vixit / in pace annus(!) LV / et [o]b[i]it quinto de/[cimo ka]l(endas) Octobris
+            --><div type="edition" xml:lang="la"><head>Text</head><ab><lb n="1"/>
+                <expan><abbr>D</abbr><ex>is</ex></expan> <expan><abbr>M</abbr><ex>anibus</ex></expan> <lb n="2"/>in hoc tumolo <lb n="3"/>re<supplied reason="lost">q</supplied>uiiscit <note>sic</note> bon<expan><ex>a</ex><abbr>e</abbr></expan> <lb n="4"/><supplied reason="lost">me</supplied>m<supplied reason="lost">o</supplied>riae Baudo<lb break="no" n="5"/><supplied reason="lost">a</supplied>ldus qui vixit <lb n="6"/>in pace annus <note>sic</note> LV <lb n="7"/>et <supplied reason="lost">o</supplied>b<supplied reason="lost">i</supplied>it quinto de<lb break="no" n="8"/><supplied reason="lost">cimo ka</supplied><expan><abbr>l</abbr><ex>endas</ex></expan> Octobris
+            </ab></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> Fünf aneinanderpassende Fragmente einer Platte. Linker Teil deutlich abgeschliffen, wohl abgetreten, der Teil der Inschrift dadurch nur schwer lesbar. Gefunden in Sekundärverwendung als Teil eines Steinplattengrabes aus dem 7. Jh. n. Chr. (Grab 88). Z. 1 hinter M lateinisches Kreuz. Buchstaben modern mit roter Farbe nachgezogen. Z. 3: NE-Ligatur; Z. 4: AV-Ligatur. Im CIL 13, 05308 Wiedergabe dreier unterschiedlicher älterer Lesungen. (B): CIMAH: Z. 4/5: [.....]iae Baudo/[...]u[.]; Z. 6: [....] annus; Z. 7: [.]t [...]it; Z. 8: [......] Octobris; ILCV: Z. 3: requiiscit; Z. 4: [mem]oriae; Z. 6: [p]l(us) m(inus) annus; Z. 7: [d]ep[os]it; Z. 8: [ci]m[o]; Kraus; Egli: Z. 6: [pl(us) m(inus) annus; Z. 7 [e]t [ob]iit; Z. 4/5: Kraus: Baudo/[---]lus; Egli: Baudo/(ald?)us; Walser: Z. 3-8: requiiscit bon(a)e / memoriae Baudo/aldus qui vixit / in pace annus LV / et [decess]it quinto de/[cimo kal(endas)] octobris; Boppert: Z. 4: [mem]o[r]iae; Z. 5: [a]ldu[s]; Z. 6: [in p]ace; Z. 7: [obi]it; Z. 8: kal(endas)].</p>
+            </div>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Grabinschrift auf Stele</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080633</idno>
+                <idno type="TM">424393</idno><idno type="localID">HD080633</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Besançon, Mus. des Beaux Arts et d'Archéologie</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/250">Stele</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/60">Kalkstein</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height>58</height>
+                                        <width>32.5</width>
+                                        <depth>16.5</depth>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/2000">Ja</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm">3.5</height>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName ref="http://www.trismegistos.org/place/025367">Vesontio</placeName></origPlace>
+                            <origDate notBefore-custom="0101" notAfter-custom="0150" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">101 AD – 150 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1881">1881</date>
+                        <placeName ref="http://www.geonames.org/3033123">Besançon</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Bourgogne-Franche-Comté</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/fr/">Frankreich</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/92">Grabinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-09-18" who="Osnabrügge">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 05393. 
+                    </bibl>
+                    <bibl>
+                         É. Espérandieu, Recueil général des bas-reliefs, statues et bustes de la Gaule romaine 7 (Paris 1918) 28, Nr. 5271, 1; Foto. 
+                    </bibl>
+                    <bibl>
+                         H. Walter, La sculpture funéraire gallo-romaine en Franche-Comté (Paris 1974) 25, Nr. 6. 
+                    </bibl>
+                    <bibl>
+                         L. Joan, Le Doubs et le territoire de Belfort, Carte archéologique de la Gaule 25 et 90 (Paris 2003) 240. 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                D(is) M(anibus) // memoria / Invetius / Domitian/us an(nos) LXXV
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                <expan><abbr>D</abbr><ex>is</ex></expan> <expan><abbr>M</abbr><ex>anibus</ex></expan> </ab></div><div n="2" type="textpart"><ab><lb n="1"/> memoria <lb n="2"/>Invetius <lb n="3"/>Domitian<lb break="no" n="4"/>us <expan><abbr>an</abbr><ex>nos</ex></expan> LXXV
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> Giebelstele mit Dreiecksgiebel. Im Giebelfeld lunula. Z. 1 befindet sich auf der oberen Rahmenleiste des Inschriftfeldes. Material nach CAG: "pierre dit de Vergenne".</p>
+            </div>
+        </body>
+    </text>
+</TEI>

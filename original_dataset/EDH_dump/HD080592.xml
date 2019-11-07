@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Verzeichnis auf Tafel</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080592</idno>
+                <idno type="TM"/><idno type="localID">HD080592</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Mainz, Landesmus.</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/257">Tafel</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/48">Marmor</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height/>
+                                        <width/>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+                                    <rs type="guidelines">GUIDELINES</rs>
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm"/>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName>Aquae Mattiacorum (CastellumMattiacorum)</placeName></origPlace>
+                            <origDate notBefore-custom="0071" notAfter-custom="0250" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">71 AD – 250 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1856">1856</date>
+                        <placeName ref="http://www.geonames.org/2892488">Wiesbaden</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Hessen</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/de/">Deutschland</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/108">Verzeichnis</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-09-05" who="Gräf">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016035.JPG">
+            <desc>F016035</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016033.JPG">
+            <desc>F016033</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016034.JPG">
+            <desc>F016034</desc>
+        </graphic>
+
+
+    </facsimile>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 07302. (B) 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                [- - - su]m(p)tu su[o - - -] // $](?) // - - - - - -] / [- - -]s / [- - -]R(?)inus / [- - -]atus / [- - -]us / [- - -]aternus // [- - -]us Cogita[tus] / [- - -]ius Masc[- - -] / [- - -]gen(- - -) Divi[- - -] / [Per]vincius PaC(?)[- - -] / Martius Sev[- - -] / [- - -]nnonius [- - -] / [Am?]abiliu[s - - -] / [- -]tulI(?)[- - -] / [- - -]M[- - -] / [- - -]ton[i]us GaL(?)[- - -] / [A]mabilius Aq[- - -] / Augustio Magis[sa?] / Mascellio Touton(us) / Sextius Victor / Restutius Cupitus / Vitalinius Perpetu(us) / Messorius Senecian(us) / Carantius Statianus // [- - - - - -? // - - - - - -] / L(?)[- - -] / Iu[- - -] / ES(?)[- - -] / [- - - - - -] / [- - - - - -] // [- - - e]t Ursini act(oris) Secundi [- - -]
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                <gap reason="lost" extent="unknown" unit="character"/><expan><abbr><supplied reason="lost">su</supplied>m</abbr><ex>p</ex>tu</expan> su<supplied reason="lost">o</supplied><gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="2" type="textpart"><ab><lb n="1"/> <gap reason="lost" extent="unknown" unit="character"><certainty match=".." locus="name"/></gap> </ab></div><div n="3" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>s <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>R</abbr><ex cert="low"/>inus</expan> <lb n="3"/><gap reason="lost" extent="unknown" unit="character"/>atus <lb n="4"/><gap reason="lost" extent="unknown" unit="character"/>us <lb n="5"/><gap reason="lost" extent="unknown" unit="character"/>aternus </ab></div><div n="4" type="textpart"><ab><lb n="1"/> <gap reason="lost" extent="unknown" unit="character"/>us Cogita<supplied reason="lost">tus</supplied> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/>ius Masc<gap reason="lost" extent="unknown" unit="character"/> <lb n="3"/><gap reason="lost" extent="unknown" unit="character"/><abbr>gen</abbr> Divi<gap reason="lost" extent="unknown" unit="character"/> <lb n="4"/><supplied reason="lost">Per</supplied>vincius <expan><abbr>PaC</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="5"/>Martius Sev<gap reason="lost" extent="unknown" unit="character"/> <lb n="6"/><gap reason="lost" extent="unknown" unit="character"/>nnonius <gap reason="lost" extent="unknown" unit="character"/> <lb n="7"/><supplied reason="lost" cert="low">Am</supplied>abiliu<supplied reason="lost">s</supplied><gap reason="lost" extent="unknown" unit="character"/> <lb n="8"/><supplied reason="lost"><gap reason="lost" quantity="1" unit="character"/><gap reason="lost" quantity="1" unit="character"/></supplied><expan><abbr>tulI</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="9"/><gap reason="lost" extent="unknown" unit="character"/>M<gap reason="lost" extent="unknown" unit="character"/> <lb n="10"/><gap reason="lost" extent="unknown" unit="character"/>ton<supplied reason="lost">i</supplied>us <expan><abbr>GaL</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="11"/><supplied reason="lost">A</supplied>mabilius Aq<gap reason="lost" extent="unknown" unit="character"/> <lb n="12"/>Augustio Magis<supplied reason="lost" cert="low">sa</supplied> <lb n="13"/>Mascellio <expan><abbr>Touton</abbr><ex>us</ex></expan> <lb n="14"/>Sextius Victor <lb n="15"/>Restutius Cupitus <lb n="16"/>Vitalinius <expan><abbr>Perpetu</abbr><ex>us</ex></expan> <lb n="17"/>Messorius <expan><abbr>Senecian</abbr><ex>us</ex></expan> <lb n="18"/>Carantius Statianus </ab></div><div n="5" type="textpart"><ab><lb n="0"/><gap reason="lost" extent="unknown" unit="line"/><certainty match="preceding-sibling::node()" locus="value"/> </ab></div><div n="6" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><expan><abbr>L</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/>Iu<gap reason="lost" extent="unknown" unit="character"/> <lb n="3"/><expan><abbr>ES</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" quantity="1" unit="line"/> <lb n="0"/><gap reason="lost" quantity="1" unit="line"/> </ab></div><div n="7" type="textpart"><ab><lb n="1"/> <gap reason="lost" extent="unknown" unit="character"/><supplied reason="lost">e</supplied>t Ursini <expan><abbr>act</abbr><ex>oris</ex></expan> Secundi <gap reason="lost" extent="unknown" unit="character"/>
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> Drei Fragmente, davon zwei aneinanderpassend. Die erste und letzte Zeile verlaufen durchgehend über und unter den Kolumnen der Namensliste hinweg; Teile von drei Kolumnen erhalten. (B): CIL 13, 07302: geringfügige Leseabweichungen.</p>
+            </div>
+        </body>
+    </text>
+</TEI>

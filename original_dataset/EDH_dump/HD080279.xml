@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Weihinschrift auf Altar</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080279</idno>
+                <idno type="TM"/><idno type="localID">HD080279</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Bad Homburg/Höhe, Römerkastell Saalburg</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/29">Altar</objectType>
+                                    <material>Basaltlava</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height/>
+                                        <width/>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/2000">Ja</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+                                    <rs type="guidelines">GUIDELINES</rs>
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm"/>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName ref="http://www.trismegistos.org/place/002036"/></origPlace>
+                            <origDate notBefore-custom="0205" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">205 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1908">1908</date>
+                        <placeName ref="http://www.geonames.org/">Bad Homburg/Höhe</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Hessen</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/de/">Deutschland</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/80">Weihinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-07-04" who="Gräf">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021271.JPG">
+            <desc>F021271</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021272.JPG">
+            <desc>F021272</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021273.JPG">
+            <desc>F021273</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021274.JPG">
+            <desc>F021274</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021275.JPG">
+            <desc>F021275</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021276.JPG">
+            <desc>F021276</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021277.JPG">
+            <desc>F021277</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021278.JPG">
+            <desc>F021278</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021279.JPG">
+            <desc>F021279</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F021280.JPG">
+            <desc>F021280</desc>
+        </graphic>
+
+
+    </facsimile>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 11950; Zeichnungen. (B) 
+                    </bibl>
+                    <bibl>
+                         CCID 508. (B) 
+                    </bibl>
+                    <bibl>
+                         (o. Vorname) Jacobi, BRGK 5, 1909, 42. (B) 
+                    </bibl>
+                    <bibl>
+                         P. Merlat, Répertoire des inscriptions et monuments figurées du culte de Jupiter Dolichenus (Rennes 1951) 357-358, Nr. 359; fig. 74 (Zeichnung). (B) 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                [I(ovi)? O(ptimo)?] M(aximo?) // [Dolich?]en[o? di]s de/[ab]usqu[e omnibus] / [- - -]DIC(?)I(?)[- - -] / [- - - - - - // - - - - - -] / [- - -]S SE / [- - -] leg(- - -) / [- - - - - - // - - - - - -] / PR[- - -] / NIV(?)[- - -] / [- - - - - - // - - - - - -] / [- - -] domum A(?)[- - -] / [- - -]T(?)[-]IT TV(?)TI(?)V(?)[- - -] / [- - - - - - // - - - - - -] / SC(?)[- - -] / SV[- - -] / [- - - - - - // - - - - - -] / S(?)[- - -] / [- - - - - - // - - - - - -] / [- - -]AI(?)[- - -] / [- - -]I(?)VI(?)[- - -] / [- - - - - - // - - - - - -] / [- - -]G[- - -] / [- - - - - - // - - - - - -] / [- - -]O(?) / [- - -]M / [- - -]C(?) / [- - - - - - // - - - - - -] / [- - -]S[- - -] / [- - - - - -] / [- - - - - - // - - - - - -] / [- - -]R[- - -] / [- - -]COLL[- - -]VI[- -] / [Im]P(?)(eratore) Antonino II [et] // [Geta [Caes(are)]] co(n)[s(ulibus)]
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                <supplied reason="lost" cert="low">I(ovi)? O(ptimo)</supplied> <expan><abbr>M</abbr><ex cert="low">aximo</ex></expan> </ab></div><div n="2" type="textpart"><ab><lb n="1"/> <supplied reason="lost" cert="low">Dolich</supplied>en<supplied reason="lost">o<certainty locus="name" match="preceding-sibling::text()" cert="low"/> di</supplied>s de<lb break="no" n="2"/><supplied reason="lost">ab</supplied>usqu<supplied reason="lost">e omnibus</supplied> <lb n="3"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>DIC</abbr><ex cert="low"/>I</expan><certainty match="preceding-sibling::node()" locus="value"/><gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="3" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>S SE <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/> <abbr>leg</abbr> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="4" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/>PR<gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/><expan><abbr>NIV</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="5" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/> domum <expan><abbr>A</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>T</abbr><ex cert="low"/></expan><supplied reason="lost"><gap reason="lost" quantity="1" unit="character"/></supplied>IT <expan><abbr>TV</abbr><ex cert="low"/>TI</expan><certainty match="preceding-sibling::node()" locus="value"/><expan><abbr>V</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="6" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><expan><abbr>SC</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/>SV<gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="7" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><expan><abbr>S</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="8" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>AI</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>I</abbr><ex cert="low"/>VI</expan><certainty match="preceding-sibling::node()" locus="value"/><gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="9" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>G<gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="10" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>O</abbr><ex cert="low"/></expan> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/>M <lb n="3"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>C</abbr><ex cert="low"/></expan> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="11" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>S<gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" quantity="1" unit="line"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="12" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>R<gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/>COLL<gap reason="lost" extent="unknown" unit="character"/>VI<supplied reason="lost"><gap reason="lost" quantity="1" unit="character"/><gap reason="lost" quantity="1" unit="character"/></supplied> <lb n="3"/><supplied reason="lost">Im</supplied><expan><abbr>P</abbr><ex cert="low"/></expan>(eratore) Antonino II <supplied reason="lost">et</supplied> </ab></div><div n="13" type="textpart"><ab><lb n="1"/> <supplied reason="lost">Geta [<expan><abbr>Caes</abbr><ex>are</ex></expan></supplied>] <expan><abbr>co</abbr><ex>n</ex></expan><supplied reason="lost"><expan><abbr>s</abbr><ex>ulibus</ex></expan></supplied>
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> 13, teils aus mehreren Teilen bestehende Fragmente. Z. 1 steht auf der corona. (B): Jacobi; CIL 13, 11950; Merlat; CCID: Lesung abweichend / unvollständig.</p>
+            </div>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Weihinschrift</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080472</idno>
+                <idno type="TM">424626</idno><idno type="localID">HD080472</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">verschollen</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/2">unbestimmt</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/138">unbestimmt</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height/>
+                                        <width/>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm"/>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName ref="http://www.trismegistos.org/place/002036"/></origPlace>
+                            <origDate notBefore-custom="0211" notAfter-custom="0222" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">211 AD – 222 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date notAfter="1600">1600</date>
+                        <placeName ref="http://www.geonames.org/2972599">Til-Châtel</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Bourgogne-Franche-Comté</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/fr/">Frankreich</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/80">Weihinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-08-08" who="Gräf">
+             keine Bildvorlage
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 05623. 
+                    </bibl>
+                    <bibl>
+                         B. Rémy - P. Faure, Les médecins dans l'Occident romain (Péninsule Ibérique, Bretagne, Gaules, Germanies) (Bordeaux 2010) 188, Nr. C.1. 
+                    </bibl>
+                    <bibl>
+                         G. Drioux, Les Lingons. Textes et inscriptions antiques (Paris 1934) 75, Nr. 269. 
+                    </bibl>
+                    <bibl>
+                         Y. Le Bohec, Inscriptions de la cité des Lingons. Inscriptions sur pierre 152, Nr. 241. 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                [In] h(onorem) d(omus) d(ivinae) / [d]eabus Mair(abus) / [- - -]ius Regulus m[i]/les legionis VI[II] / [An]to[n]i[ni]an(a)e A[ug(ustae)] / [c]absarius(!) ex vo[to] / pro se et suis / v(otum) s(olvit) l(ibens) m(erito)
+            --><div type="edition" xml:lang="la"><head>Text</head><ab><lb n="1"/>
+                <supplied reason="lost">In</supplied> <expan><abbr>h</abbr><ex>onorem</ex></expan> <expan><abbr>d</abbr><ex>omus</ex></expan> <expan><abbr>d</abbr><ex>ivinae</ex></expan> <lb n="2"/><supplied reason="lost">d</supplied>eabus <expan><abbr>Mair</abbr><ex>abus</ex></expan> <lb n="3"/><gap reason="lost" extent="unknown" unit="character"/>ius Regulus m<supplied reason="lost">i</supplied><lb break="no" n="4"/>les legionis VI<supplied reason="lost">II</supplied> <lb n="5"/><supplied reason="lost">An</supplied>to<supplied reason="lost">n</supplied><expan><abbr>i<supplied reason="lost">ni</supplied>an</abbr><ex>a</ex>e</expan> A<supplied reason="lost"><expan><abbr>ug</abbr><ex>ustae</ex></expan></supplied> <lb n="6"/><supplied reason="lost">c</supplied>absarius <note>sic</note> ex vo<supplied reason="lost">to</supplied> <lb n="7"/>pro se et suis <lb n="8"/><expan><abbr>v</abbr><ex>otum</ex></expan> <expan><abbr>s</abbr><ex>olvit</ex></expan> <expan><abbr>l</abbr><ex>ibens</ex></expan> <expan><abbr>m</abbr><ex>erito</ex></expan>
+            </ab></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p/>
+            </div>
+        </body>
+    </text>
+</TEI>

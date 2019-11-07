@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Bau-/Stifterinschrift auf Architekturteil</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD080336</idno>
+                <idno type="TM"/><idno type="localID">HD080336</idno>
+                <availability>
+                    <licence target="http://creativecommons.org/licenses/by-sa/3.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Zürich, Landesmus.</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/35">Architekturteil</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/138">unbestimmt</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height>580</height>
+                                        <width>415</width>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/2000">Ja</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/152">Mosaik</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm"/>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName ref="http://www.trismegistos.org/place/002036"/></origPlace>
+                            <origDate notBefore-custom="0101" notAfter-custom="0300" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">101 AD – 300 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date notAfter="1914">1914</date>
+                        <placeName ref="http://www.geonames.org/7286719">Oberweningen</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Kanton Zürich</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/ch/">Schweiz</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/261">Bau-/Stifterinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-07-25" who="Osnabrügge">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        CIL 13, 05222. 
+                    </bibl>
+                    <bibl>
+                         H. Blümner, ASA 6, 1888-1891, 230-231; Taf. 14 u. 15 (Zeichnungen). (B) 
+                    </bibl>
+                    <bibl>
+                         S. Delbarre-Bärtschi, Les Mosaïques romaines en Suisse. Avec un complément de l'inventaire de Victorine von Gonzenbach, publié en 1961 (Basel 2014) 120. 260, Nr. 90 A I; Taf. 42, 1 u. 2 (Foto u. Zeichnung). (B) 
+                    </bibl>
+                    <bibl>
+                         J. Bartels - N. Hächler - M. Aberson - R. Frei-Stolba - A. Kolb, MH 73, 2016, 100, Nr. 32. (B) 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                Attilius / fecit // Cexa vicit
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                Attilius <lb n="2"/>fecit </ab></div><div n="2" type="textpart"><ab><lb n="1"/> Cexa vicit
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> Teile eines Mosaiks. Das Mosaik bsteht aus regelmäßig angenordneten, achteckigen Sternen in einer 6x8 Matrix. Die Sterne stoßen an den Spitzen aufeinanderwodurch zwischen den Sternen kleine Quadrate (5x7) entstehen. In den Quadraten Vögel, florale und geometrische Ornamente. In der Mitte achteckiges Bildfeld mit zwei Jagdhunden. Darin befindet sich Text 2. Text 1 befindet sich in dem Quadrat unterhalb des zentralen Bildfeldes. Am oberen Rand Bordüre mit wiederkehrendem Efeurankenmotiv. Die Maßangabe gibt die rekonstruierten Gesamtmaße wieder. Schreibtechnik: Mosaik. (B): Text 2: Blümner: Cexa victi; Delbarre-Bärtschi; Bartels u. a.: Cixa vicit.</p>
+            </div>
+        </body>
+    </text>
+</TEI>
