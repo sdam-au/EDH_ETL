@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Defixio auf Tafel</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD008089</idno>
+                <idno type="TM">168851</idno><idno type="localID">HD008089</idno>
+                <availability>
+                    <p>© Heidelberg Academy of Sciences and Humanities</p>
+                    <licence target="http://creativecommons.org/licenses/by-sa/4.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">London, Brit. Mus.</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/257">Tafel</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/108">Blei</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height>6</height>
+                                        <width>8.3</width>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm"/>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/003201">Britannia</placeName><placeName ref="http://www.trismegistos.org/place/002036"/></origPlace>
+                            <origDate notBefore-custom="0101" notAfter-custom="0400" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">101 AD – 400 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1978">1978</date>
+                        <placeName ref="http://www.geonames.org/2635202">Uley</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Gloucestershire</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/gb/">Großbritannien</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/76">Defixio</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-04-16" who="Cowey">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+
+        <graphic url="http://www.britishmuseum.org/research/collection_online/collection_object_details.aspx?objectId=1493390&amp;partId=1">
+        </graphic>
+
+    </facsimile>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        AE 1979, 0384. (B) 
+                    </bibl>
+                    <bibl>
+                         R. Goodburn - M.W.C. Hassall - R.S.O. Tomlin, Britannia 10, 1979, 343, Nr. 3; fig. 22 (Zeichnung). - AE 1979. (B) 
+                    </bibl>
+                    <bibl>
+                         R.S.O. Tomlin, in: A. Woodward - P. Leach (Hrsg.), The Uley Shrines. 
+                    </bibl>
+                    <bibl>
+                         Excavation of a ritual complex on West Hill, Uley, Gloucestershire: 1977-1979. 
+                    </bibl>
+                    <bibl>
+                         (London 1993) 120-122, Nr. 2; Fig. 102 u. 103 (Zeichnung). 
+                    </bibl>
+                    <bibl>
+                         A. Kropp, Defixiones. Ein aktuelles Corpus lateinischer Fluchtafeln (Speyer 2008) Nr. 3.22/3. 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                Commonitorium deo / Mercurio [[Marti Silvano]] a Satur/nina muliere de lintia/mine quod amisit ut il/le qui ho[c] circumvenit non / ante laxetur nissi(!) quand[o] / res s(upra)dictas ad fanum s(upra)d[ic]/tum attul[e]rit si vir si mu/lier si servus s[i] liber // deo s(upra)dicto tertiam / partem donat ita ut / exsigat(!) istas res quae s(upra)s(crip)ta sunt / ACA quae(!) per(didi)t deo Silvano / tertia pars donatur ita ut / hoc exsigat(!) si vir si femina si s[erv]/us si liber [- - -]at
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                Commonitorium deo <lb n="2"/>Mercurio <del rend="erasure">Marti Silvano</del> a Satur<lb break="no" n="3"/>nina muliere de lintia<lb break="no" n="4"/>mine quod amisit ut il<lb break="no" n="5"/>le qui ho<supplied reason="lost">c</supplied> circumvenit non <lb n="6"/>ante laxetur nissi <note>sic</note> quand<supplied reason="lost">o</supplied> <lb n="7"/>res s<expan><ex>upra</ex><abbr>dictas</abbr></expan> ad fanum s<expan><ex>upra</ex><abbr>d</abbr></expan><supplied reason="lost">ic</supplied><lb break="no" n="8"/>tum attul<supplied reason="lost">e</supplied>rit si vir si mu<lb break="no" n="9"/>lier si servus s<supplied reason="lost">i</supplied> liber </ab></div><div n="2" type="textpart"><ab><lb n="1"/> deo s<expan><ex>upra</ex><abbr>dicto</abbr></expan> tertiam <lb n="2"/>partem donat ita ut <lb n="3"/>exsigat <note>sic</note> istas res quae s<expan><ex>upra</ex><abbr>s</abbr><ex>crip</ex><abbr>ta</abbr></expan> sunt <lb n="4"/>ACA quae <note>sic</note> per<expan><ex>didi</ex><abbr>t</abbr></expan> deo Silvano <lb n="5"/>tertia pars donatur ita ut <lb n="6"/>hoc exsigat <note>sic</note> si vir si femina si s<supplied reason="lost">erv</supplied><lb break="no" n="7"/>us si liber <gap reason="lost" extent="unknown" unit="character"/>at
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> Gebet für Gerechtigkeit. (B): Abweichende Textgestaltung.</p>
+            </div>
+        </body>
+    </text>
+</TEI>

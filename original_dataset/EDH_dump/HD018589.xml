@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Weihinschrift auf Statuenbasis</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD018589</idno>
+                <idno type="TM">210102</idno><idno type="localID">HD018589</idno>
+                <availability>
+                    <p>© Heidelberg Academy of Sciences and Humanities</p>
+                    <licence target="http://creativecommons.org/licenses/by-sa/4.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">verschollen; unbekannt</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/57">Statuenbasis</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/60">Kalkstein</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height/>
+                                        <width/>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm"/>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName ref="http://www.trismegistos.org/place/002036"/></origPlace>
+                            <origDate notBefore-custom="-0010" notAfter-custom="0100" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">10 BC – 100 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date when="1734">1734</date>
+                        <placeName ref="http://www.geonames.org/2968964">Villards-d’Héria, aus</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Bourgogne-Franche-Comté</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/fr/">Frankreich</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/80">Weihinschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-10-09" who="Osnabrügge">
+             überprüft an Foto
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        AE 1965, 0341. (B) 
+                    </bibl>
+                    <bibl>
+                         AE 1967, 0332. 
+                    </bibl>
+                    <bibl>
+                         CIL 13, 05353. (B) 
+                    </bibl>
+                    <bibl>
+                         L. Lerat, La "ville d'Antre", mythes et réalités. Annales litteraires de l'Université de Besançon 74 (Paris 1965) 86-87. (B) - AE 1965. 
+                    </bibl>
+                    <bibl>
+                         L. Lerat, Gallia 24, 1966, 367-368; fig. 37-39 (Fotos u. Zeichnungen). - AE 1967. 
+                    </bibl>
+                    <bibl>
+                         (o. Autor), in: M.-P. Rothé, Le Jura, Carte archéologique de la Gaule 39 (Paris 2001) 737-738; fig. 529 (Zeichnung). 
+                    </bibl>
+                    <bibl>
+                         M. Gschaid, JRGZ 41, 1994, 354-355, Nr. 11. (B) 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                C(aio) Licinio Pompti/na Latini fil(io) Cam/[p]ano (H)aeduo sa/cerd(oti) III provin/[c]iarum Galliar(um) / [offi]cis et hono/[rib]us omnibus / domesticis / fu[nc]to Seq(uani) / [p]ublice
+            --><div type="edition" xml:lang="la"><head>Text</head><ab><lb n="1"/>
+                <expan><abbr>C</abbr><ex>aio</ex></expan> Licinio Pompti<lb break="no" n="2"/>na Latini <expan><abbr>fil</abbr><ex>io</ex></expan> Cam<lb break="no" n="3"/><supplied reason="lost">p</supplied>ano <expan><ex>H</ex><abbr>aeduo</abbr></expan> sa<lb break="no" n="4"/><expan><abbr>cerd</abbr><ex>oti</ex></expan> III provin<lb break="no" n="5"/><supplied reason="lost">c</supplied>iarum <expan><abbr>Galliar</abbr><ex>um</ex></expan> <lb n="6"/><supplied reason="lost">offi</supplied>cis et hono<lb break="no" n="7"/><supplied reason="lost">rib</supplied>us omnibus <lb n="8"/>domesticis <lb n="9"/>fu<supplied reason="lost">nc</supplied>to <expan><abbr>Seq</abbr><ex>uani</ex></expan> <lb n="10"/><supplied reason="lost">p</supplied>ublice
+            </ab></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> Der Hauptteil des Altars wurde, vermutlich als Spolie verschleppt, 1734 am angegebenen Fundort gefunden und ist heute verschollen. Ein Fragment der oberen linken Ecke des Inschriftfeldes, der linke Rand von Z. 9, Teile der Bekrönung mit Dübellöchern für zwei Füße einer Statue (mit Bleiresten) sowie Teile des Sockels wurden 1965 in Villards d'Héria im gallo-römischen Heiligtum gefunden. (B): Bei AE 1965; Lerat 1965; CIL 13, 05353 die ältere Lesung ohne die neuen Fragmente; Gschaid: kleinere Abweichungen in Lesung/Ergänzung.</p>
+            </div>
+        </body>
+    </text>
+</TEI>

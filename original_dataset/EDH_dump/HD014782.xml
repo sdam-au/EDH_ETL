@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="de" xml:base="ex-epidoctemplate.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Ehreninschrift auf Tafel</title>
+            </titleStmt>  
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <idno type="URI">http://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD014782</idno>
+                <idno type="TM">210006</idno><idno type="localID">HD014782</idno>
+                <availability>
+                    <p>© Heidelberg Academy of Sciences and Humanities</p>
+                    <licence target="http://creativecommons.org/licenses/by-sa/4.0/">This file is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        
+                        
+                        
+                        <repository ref="www.trismegistos.org/">Avenches, Mus. Romain, Depot</repository>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType ref="http://www.eagle-network.eu/voc/objtyp/lod/257">Tafel</objectType>
+                                    <material ref="http://www.eagle-network.eu/voc/material/lod/48">Marmor</material>
+                                    <p/>
+                                    <dimensions unit="cm">
+                                        <height>60</height>
+                                        <width>300</width>
+                                        <depth/>
+                                    </dimensions>
+                                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000">nein</rs>
+                                </support>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/21">unbestimmt</rs>
+
+
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions>
+                                    <width unit="cm"/>
+                                    <height unit="cm">14.7-14.1</height>
+                                </dimensions>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="provinceItalicRegion" ref="http://www.trismegistos.org/place/016528">Germania superior</placeName><placeName>Aventicum (Civitas Helvetiorum)</placeName></origPlace>
+                            <origDate notBefore-custom="0071" notAfter-custom="0200" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">71 AD – 200 AD
+                            </origDate>
+                        </origin>
+                        <provenance type="found">  
+                            <date notAfter="1918">1918</date>
+                        <placeName ref="http://www.geonames.org/2661661">Avenches</placeName><placeName type="modern_region" ref="http://www.geonames.org/">Canton de Vaud</placeName><placeName type="modernCountry" ref="http://www.geonames.org/countries/ch/">Schweiz</placeName></provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Marked-up according to the EpiDoc Guidelines</p>
+            <classDecl>
+                <taxonomy>
+                    <category xml:id="representation">
+                        <catDesc>Digitized other representations</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term ref="http://www.eagle-network.eu/voc/typeins/lod/69">Ehreninschrift</term>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="ar">Arabic</language>
+                <language ident="en">English</language>
+                <language ident="fr">French</language>
+                <language ident="de">German</language>
+                <language ident="grc">Ancient Greek</language>
+                <language ident="grc-Latn">Transliterated Greek</language>
+                <language ident="el">Modern Greek</language>
+                <language ident="he">Hebrew</language>
+                <language ident="it">Italian</language>
+                <language ident="la">Latin</language>
+                <language ident="sp">Spanish</language>
+            </langUsage>
+        <creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+        <revisionDesc>
+         <change when="2019-08-28" who="Osnabrügge">
+             überprüft an Zeichnung
+         </change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016701.JPG">
+            <desc>F016701</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016705.JPG">
+            <desc>F016705</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016707.JPG">
+            <desc>F016707</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016709.JPG">
+            <desc>F016709</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016711.JPG">
+            <desc>F016711</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016700.JPG">
+            <desc>F016700</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016702.JPG">
+            <desc>F016702</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016706.JPG">
+            <desc>F016706</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016708.JPG">
+            <desc>F016708</desc>
+        </graphic>
+        <graphic url="http://edh-www.adw.uni-heidelberg.de/fotos/F016710.JPG">
+            <desc>F016710</desc>
+        </graphic>
+
+
+    </facsimile>
+    <text>
+        <body>
+                       
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        AE 1967, 0327. (B) 
+                    </bibl>
+                    <bibl>
+                         T. Pékary, Pro Aventico 19, 1967, 46-48, Nr. 2; Abb. 2c (Zeichnung). - AE 1967. (B) 
+                    </bibl>
+                    <bibl>
+                         S. Oelschig, Kaleidoskop der Epigraphik. Katalog und Rekonstruktion der römischen Steininschriften von Avenches/Aventicum (Avenches 2009) 96-102, Nr. 7004; Abb. 2 (Zeichnung). 
+                    </bibl>
+
+                </listBibl>
+            </div>
+            
+            
+            <!--
+                [- - - praef]ecto [f]abrum [- - -]I[- - -] / [- - - ci]vitas Helv[e]tio[r]um [- - -] // [- - -]O(?)[- - -] / [- - -]HO[- - -] // $]A[- - -] / [- - -]S[& // [- - -]VI[- - -] / [- - - - - - // $]E[& // - - - - - -] / [- - -]O[- - -] // $]ES[& // $]M[& // $]V[& // $]H(?)[& // $]D[& // $]I[& // [- - -]T[- - -] / [- - - - - - // $]O(?)[& // $]C[& // $]E(?)[& // $]R[& // $]R[& // $]I(?)O[&
+            --><div type="edition" xml:lang="la"><head>Text</head><div n="1" type="textpart"><ab><lb n="1"/>
+                <gap reason="lost" extent="unknown" unit="character"/><supplied reason="lost">praef</supplied>ecto <supplied reason="lost">f</supplied>abrum <gap reason="lost" extent="unknown" unit="character"/>I<gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/><supplied reason="lost">ci</supplied>vitas Helv<supplied reason="lost">e</supplied>tio<supplied reason="lost">r</supplied>um <gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="2" type="textpart"><ab><lb n="1"/> <gap reason="lost" extent="unknown" unit="character"/><expan><abbr>O</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/>HO<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="3" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>A<gap reason="lost" extent="unknown" unit="character"/> <lb n="2"/><gap reason="lost" extent="unknown" unit="character"/>S<gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="4" type="textpart"><ab><lb n="1"/> <gap reason="lost" extent="unknown" unit="character"/>VI<gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="5" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>E<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="6" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>O<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="7" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>ES<gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="8" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>M<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="9" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>V<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="10" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>H</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="11" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>D<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="12" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>I<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="13" type="textpart"><ab><lb n="1"/> <gap reason="lost" extent="unknown" unit="character"/>T<gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/> </ab></div><div n="14" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>O</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="15" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>C<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="16" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>E</abbr><ex cert="low"/></expan><gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="17" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>R<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="18" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/>R<gap reason="lost" extent="unknown" unit="character"/> </ab></div><div n="19" type="textpart"><ab><lb n="0"/> <gap reason="lost" extent="unknown" unit="line"/> <lb n="1"/><gap reason="lost" extent="unknown" unit="character"/><expan><abbr>I</abbr><ex cert="low"/>O</expan><gap reason="lost" extent="unknown" unit="character"/> <lb n="0"/><gap reason="lost" extent="unknown" unit="line"/>
+            </ab></div></div>
+            <div type="apparatus">
+                <p/>
+            </div>
+            <div type="commentary">
+                <p> 18 zum Teil aneinanderpassende Fragmente einer Inschrift. Die angegebene Breite ist ungefähr und bezieht sich auf die Rekonstruktion. Ursprünglicher Anbringungsort nach Oelschig Architravbereich der Exedra H', insula 40. Pékary ordnete der Inschrift noch weitere Fragmente zu; Lesung nach Oelschig, der ebenfalls noch weitere Fragmente zuordnete (Oelschig 7003.16 = Text 2; Nr. 7004.4 = Text 3; 7004.11 mit 7005.7, 7005.27 und 7005.46 = Text 4; 7004.13 = Text 5; 7004.12 = Text 6; 7004.15 = Text 7; 7005.2 = Text 8; 7005.3 = Text 9; 7005.18 = Text 10; 7005.20; 7005.23; 7005.24 = Text 11; 7005.33; 7005.36-39 = Text 12-15; 7005.41 = Text 16; 7005.13 = Text 17; 7005.14 = Text 18) Nach Oelschig mögliecherweise noch zugehörig: Nr. 7005.18 = https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD079883. Die Fragmente wurden anscheinend in der Masse zwischen 1872 und 1918 gefunden. (B): AE 1967, Pékary: Z. 1: f?]abrum ...; Z. 2: H[e]lv[e]tio[r]um; AE 1967: public[e]; Pékary: [public]e. AE 1967: Zeilenfall nicht angegeben.</p>
+            </div>
+        </body>
+    </text>
+</TEI>
