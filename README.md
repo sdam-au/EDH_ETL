@@ -1,4 +1,4 @@
-# edh_workflow
+# Workflow of the EDH dataset analysis - preliminary
 A test of the EDH epigraphic data workflow
 
 
