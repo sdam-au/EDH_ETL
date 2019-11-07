@@ -12,19 +12,31 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## EDH dataset
-Source of data: https://edh-www.adw.uni-heidelberg.de/data/export
+Source of data: <https://edh-www.adw.uni-heidelberg.de/data/export>, downloaded 20019-11-07
+Github repository: <https://github.com/sdam-au/edh_workflow>
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Total files: 80,692 
+Format: Epidoc XML
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+##Setting up the environment
+```{r}
+install.packages("XML")
+install.packages("dplyr")
+install.packages("xml2")
 
-```{r cars}
-summary(cars)
+
+library("XML")
+library("methods")
+library("xml2")
+library("dplyr")
+
+
 ```
+
 
 ## Including Plots
 
-You can also embed plots, for example:
+Continue here https://stackoverflow.com/questions/49196674/read-multiple-xml-files-in-r-and-combine-the-data
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
