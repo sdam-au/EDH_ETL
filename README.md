@@ -1,6 +1,6 @@
-# SDAM Project Workflow for analyzing the EDH datase
+# SDAM Project workflow for analyzing the EDH dataset
 
-Perhaps this repository will serve us as a template for our future collaborative research projects.
+Perhaps this repository will serve us as a template for our future collaborative research projects. But still have to discuss appropriate structure and naming habits.
 
 Here we will out together our  scripts  in R and Python for manipulating and anylizing the EDH dataset.
 
