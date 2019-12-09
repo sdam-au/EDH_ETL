@@ -1,12 +1,12 @@
-# SDAM Project workflow for analyzing the EDH dataset
+# SDAM Project Workflow for analyzing the EDH datase
 
-Perhaps this repository will serve us as a template for our future collaborative research projects. But still have to discuss appropriate structure and naming habits.
+Perhaps this repository will serve us as a template for our future collaborative research projects.
 
-Here we will out together our  scripts  in R and Python for manipulating and anylizing the EDH dataset.
+Here we will put together our scripts in R and Python for manipulating and anylizing the EDH dataset.
 
 The EDH dataset can be obtained in two ways:
-a) via the XML files
-b) via the API.
+a) via the XML files downloaded;
+b) via the web API.
 
 The data via the API are easily accessible and have been extracted by means of R and Python in a rather straigtforward way. To obtain the whole dataset of circa 72,000 inscriptions into a Python dataframe takes about 12 minutes (see the respected Python notebook).
 
