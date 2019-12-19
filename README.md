@@ -1,6 +1,6 @@
 # SDAM Project Workflow for accesing and analyzing the EDH dataset
 
-This repository contains scripts for accesing and analysing epigraphic datasets from the API of the [Epigraphic Database Heidelberg] (https://edh-www.adw.uni-heidelberg.de/data/api).
+This repository contains scripts for accesing and analysing epigraphic datasets from the API of the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api).
 The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
 ## Dataset 
