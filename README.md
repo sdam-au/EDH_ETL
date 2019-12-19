@@ -1,4 +1,5 @@
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+https://img.shields.io/badge/status-in__progress-brightgreen
 
 # SDAM Project Workflow for accesing and analyzing the EDH dataset
 
