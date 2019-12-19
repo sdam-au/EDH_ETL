@@ -5,7 +5,9 @@ The repository will serve as a template for SDAM future collaborative research p
 
 ## Dataset 
 The EDH dataset can be obtained in two ways:
+
 a) via the XML files downloaded https://edh-www.adw.uni-heidelberg.de/data/export
+
 b) via the web API https://edh-www.adw.uni-heidelberg.de/data/api
 
 The workflow is designed so we can access the dataset via API, tranform it into JSON and then save it in the SDAM project repository in Sciencedata.dk. If we are unable to access the Sciencedata.dk, please contact us at sdam.cas@list.au.dk.
