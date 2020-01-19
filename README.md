@@ -34,11 +34,11 @@ To enrich the JSON with geodata, we have used the following [script 1_3](https:/
 1. Milestones and inscriptions associated with roads (under development,
 [script 2_0](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_MILESTONES.ipynb))
 
-2. Diachronic study (Quantitative chronological analysis of inscriptions, under development)
-[script_2_1](https://github.com/sdam-au/edh_workflow/blob/0e59a532fe3201249ba4700d8451c24d5d79e2c4/scripts/2_py_DIACHRONICAL-ANALYSIS.ipynb)
+2. Diachronic study (Quantitative chronological analysis of inscriptions, under development
+[script_2_1](https://github.com/sdam-au/edh_workflow/blob/0e59a532fe3201249ba4700d8451c24d5d79e2c4/scripts/2_py_DIACHRONICAL-ANALYSIS.ipynb))
 
-3. Geospatial study(Quantitative spatial analysis of inscriptions, under development)
-[TBA]()
+3. Geospatial study(Quantitative spatial analysis of inscriptions, under development
+[TBA]())
 
 
 
