@@ -27,12 +27,18 @@ However, the dataset from the API is a simplified one, primarily to be used for 
 
 Therefore, we decided to enrich the JSON created from the API files with data from the original XML files, which also including some additional variables (see [script 1_2](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)).
 
-To enrich the JSON with geodata, we have used the following [script 1_3](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)
+To enrich the JSON with geodata available via EDH, we have used the following script, so the epigraphic dat acontains also a geospatial information (see [script 1_3](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
 
 ### Data analyzing scripts 
 
 1. Milestones and inscriptions associated with roads (under development,
 [script 2_0](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_MILESTONES.ipynb))
+
+2. Diachronic study (Quantitative chronological analysis of inscriptions, under development
+[script_2_1](https://github.com/sdam-au/edh_workflow/blob/0e59a532fe3201249ba4700d8451c24d5d79e2c4/scripts/2_py_DIACHRONICAL-ANALYSIS.ipynb))
+
+3. Geospatial study (Quantitative spatial analysis of inscriptions, under development
+[TBA]())
 
 
 
