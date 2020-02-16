@@ -31,13 +31,13 @@ To enrich the JSON with geodata available via EDH, we have used the following sc
 ### Data analyzing scripts 
 
 1. Milestones and inscriptions associated with roads (under development,
-[script 2_0](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_MILESTONES_research.ipynb))
+[script 2_0 in Python](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_MILESTONES_research.ipynb))
 
 2. Diachronic study (Quantitative chronological analysis of inscriptions, under development
-[script_2_Temporal](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_TEMPORAL-ANALYSIS_research.ipynb))
+[script_2_Temporal in Python](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_TEMPORAL-ANALYSIS_research.ipynb))
 
 3. Geospatial study (Quantitative spatial analysis of inscriptions, under development
-[script_2_Spatial](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_SPATIAL-ANALYSIS_research.ipynb))
+[script_2_Spatial in Python](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_SPATIAL-ANALYSIS_research.ipynb))
 
 
 
