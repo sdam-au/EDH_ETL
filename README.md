@@ -33,9 +33,6 @@ To enrich the JSON with geodata available via EDH, we have used the following sc
 ### Data analyzing scripts 
 Figures and exports with the outputs of analysed dataset that were produced by the scripts below are stored in the folder ```reports```.
 
-1. Milestones and inscriptions associated with roads (under development,
-[script 2_0 in Python](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_MILESTONES_research.ipynb))
-
 2. Diachronic study (Quantitative chronological analysis of inscriptions, under development
 [script_2_Temporal in Python](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_TEMPORAL-ANALYSIS_research.ipynb))
 
