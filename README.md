@@ -30,14 +30,6 @@ Therefore, we decided to enrich the JSON created from the API files with data fr
 
 To enrich the JSON with geodata available via EDH, we have used the following script, so the epigraphic dat acontains also a geospatial information (see [script 1_3](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
 
-### Data analyzing scripts 
-Figures and exports with the outputs of analysed dataset that were produced by the scripts below are stored in the folder ```reports```.
-
-2. Diachronic study (Quantitative chronological analysis of inscriptions, under development
-[script_2_Temporal in Python](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_TEMPORAL-ANALYSIS_research.ipynb))
-
-3. Geospatial study (Quantitative spatial analysis of inscriptions, under development
-[script_2_Spatial in Python](https://github.com/sdam-au/edh_workflow/blob/master/scripts/2_py_SPATIAL-ANALYSIS_research.ipynb))
 
 # Script accessing workflow (internal SDAM project):
 
