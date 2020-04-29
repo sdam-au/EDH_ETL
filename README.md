@@ -3,19 +3,33 @@
 
 
 # SDAM Project Pilot Workflow for accesing and analyzing the EDH dataset ('quantitative epigraphy in 2020')
-This repository contains scripts for accesing and analysing epigraphic datasets from the API of the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api).
-The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
+This repository contains scripts for accesing and analysing epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
-## Dataset 
-The EDH dataset can be obtained in two ways:
+The scripts  access the dataset via API, tranform it into a JSON, merge these data  with some other data, and save the outcome to SDAM project directory in sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for this purpose, see https://github.com/sdam-au/sddk. If you want to save the dataset in your preferred location, the scripts need to be modified.
 
-a) via the Epidoc XML files available at https://edh-www.adw.uni-heidelberg.de/data/export
+## Data
+**The final dataset** produced by the scripts in this repo is called `EDH_utf8` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder, owned by Vojtěch Kaše, or you have to rerun all scripts on your own. Here is path to the file on sciencedata.dk: 
 
-b) via the web API available at https://edh-www.adw.uni-heidelberg.de/data/api
+`SDAM_root/SDAM_data/EDH/EDH_utf8.json`
 
-The current workflow combines the contents of JSON, XML files and geospatial data from EDH (GeoJSON, https://edh-www.adw.uni-heidelberg.de/download/edhGeographicData.json) and is saved as JSON.
+Alternatively, you can also use `SDAM_root/SDAM_data/EDH/EDH_inscriptions_rich.json`. It is the same, just using a different encoding.
 
-The workflow is designed so we can access the dataset via API, tranform it into JSON and then save it in the SDAM project repository in Sciencedata.dk. If we are unable to access the Sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for this purpose, see https://github.com/sdam-au/sddk. If you want to save the dataset in your preferred location, scripts need to be modified.
+To upload these data into python as a pandas dataframe, you can use this
+
+```python
+!pip install sddk
+import sddk
+auth = sddk.configure_session_and_url("SDAM_root", "648597@au.dk")
+EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_utf8.json", "df", auth)
+```
+
+**The source data** come from two places:
+
+a) the Epidoc XML files available at https://edh-www.adw.uni-heidelberg.de/data/export
+
+b)  the web API available at https://edh-www.adw.uni-heidelberg.de/data/api (inscriptions and findspots)
+
+The scripts merge data from these sources into on pandas dataframe, which is then exported into one JSON file for further usage
 
 ## Scripts
 
