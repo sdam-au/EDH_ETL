@@ -36,7 +36,6 @@ user <- readline("your sciencedata username: ")
 
 2. Make the request (you will be asked for password in a new pop-up window)
 
-Sample data for testing (5000 inscriptions only)
 ```{r, echo = FALSE }
 resp = request("EDH_utf8.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
@@ -102,7 +101,8 @@ EDH_clean$type_of_inscription_clean[number]
 EDH_clean$type_of_inscription_certainty[number]
 ```
 
-## 4. Checking there are no provinces with question mark
+
+## 4. Checking there are no type of inscriptions with question mark
 ```{r}
 EDH_clean$type_of_inscription_clean %>%
   unique() %>%
@@ -117,31 +117,41 @@ EDH_clean$type_of_inscription_clean %>%
 unique(EDH_clean$material)
 ```
 
-## 2. Creating new column `material_clean` with main categories of the material based on Regula Expressions
+## 2. Creating new column `material_clean` with main categories of the material based on Regular Expressions
 ```{r}
 EDH_clean$material_clean <- ifelse(grepl("[Mm]ar[mor|ble]", EDH_clean$material, ignore.case = T), "Marble",
-ifelse(grepl("[Ll]imestone|[Kk]alkstein", EDH_clean$material, ignore.case = T), "Limestone",
+ifelse(grepl("[Ll]imestone|[Kk]alkstein|[Kk]alsktein|[Kk]alksstein", EDH_clean$material, ignore.case = T), "Limestone",
 ifelse(grepl("[Aa]ndesit", EDH_clean$material, ignore.case = T), "Andesit",
 ifelse(grepl("[Bb]asalt", EDH_clean$material, ignore.case = T), "Basalt",
-ifelse(grepl("[Bb]reccia", EDH_clean$material, ignore.case = T), "Breccia",
+ifelse(grepl("[Bb]reccia", EDH_clean$material, ignore.case = T), "Breccia", 
+ifelse(grepl("[Dd]olomit", EDH_clean$material, ignore.case = T), "Dolomit", 
+ifelse(grepl("[Gg]agat|[Jj]et", EDH_clean$material, ignore.case = T), "Jet",
 ifelse(grepl("[Gg]neis", EDH_clean$material, ignore.case = T), "Gneiss",
 ifelse(grepl("[Gg]ranit", EDH_clean$material, ignore.case = T), "Granit",
+ifelse(grepl("[Hh][e|Ã¤|ä]matit", EDH_clean$material, ignore.case = T), "Hematit",   
+ifelse(grepl("[Pp]orphyr", EDH_clean$material, ignore.case = T), "Porphyr",
+ifelse(grepl("[Pp]eperin", EDH_clean$material, ignore.case = T), "Peperin",
 ifelse(grepl("[Qq]uartz", EDH_clean$material, ignore.case = T), "Quartz",
 ifelse(grepl("[Ss]andst[one|ein]", EDH_clean$material, ignore.case = T), "Sandstone",
- ifelse(grepl("[Ss]chiefer|[Ss]late", EDH_clean$material, ignore.case = T), "Slate",       
+ifelse(grepl("[Ss]chiefer|[Ss]late", EDH_clean$material, ignore.case = T), "Slate",       
 ifelse(grepl("[Ss]teatit", EDH_clean$material, ignore.case = T), "Steatit",
+ifelse(grepl("[Tt]rachyte", EDH_clean$material, ignore.case = T), "Trachyte",
 ifelse(grepl("[Tt]ravertin", EDH_clean$material, ignore.case = T), "Travertine",
 ifelse(grepl("[Tt]uff", EDH_clean$material, ignore.case = T), "Tuff",
-ifelse(grepl("[Gg]old|[Bb]ronz|[Ss]il[vb]|[Bb]lei|[Ll]ead|[Ii]ron|[Ee]isen|[Bb]rass|[Mm]essing|[Zz]inn|[Tt]in", EDH_clean$material, ignore.case = T), "Metal",  
+ifelse(grepl("[Gg]old|[Bb]ronz|[Ss]il[vb]|[Bb]lei|[Ll]ead|[Ii]ron|[Ee]isen|[Bb]rass|[Mm]essing|[Zz]inn|[Tt]in|[Kk]upfer|[Mm]etal|[Bb]roze", EDH_clean$material, ignore.case = T), "Metal",  
 ifelse(grepl("[Kk]nochen|[Bb]one", EDH_clean$material, ignore.case = T), "Bone",
 ifelse(grepl("[Hh]olz|[Ww]ood", EDH_clean$material, ignore.case = T), "Wood",
 ifelse(grepl("[Gg]las", EDH_clean$material, ignore.case = T), "Glass",
-ifelse(grepl("[Tt]on|[Cc]lay|[Pp]ottery", EDH_clean$material, ignore.case = T), "Pottery",
+ifelse(grepl("[Tt]on|[Cc]lay|[Pp]ottery|[Ll]ehm", EDH_clean$material, ignore.case = T), "Clay",
 ifelse(grepl("[Rr]ock|[Gg]estein", EDH_clean$material, ignore.case = T), "Rock",
 ifelse(grepl("[Aa]labaster", EDH_clean$material, ignore.case = T), "Alabaster",
+ifelse(grepl("[Ee]lfenbein|[Ii]vory", EDH_clean$material, ignore.case = T), "Ivory",
+ifelse(grepl("[Ll]e[ath|d]er", EDH_clean$material, ignore.case = T), "Leather", 
+ifelse(grepl("[Bb]ernstein|[Aa]mber", EDH_clean$material, ignore.case = T), "Amber",     
+ifelse(grepl("[Pp]utz|[Pp]laster", EDH_clean$material, ignore.case = T), "Plaster", 
 ifelse(grepl("NULL", EDH_clean$material, ignore.case = T), "NA",
                                           "Other")
-                                   ))))))))))))))))))))
+                                   ))))))))))))))))))))))))))))))
 ```
 
 # Comparing the `material` with `material_clean` column
@@ -149,6 +159,12 @@ ifelse(grepl("NULL", EDH_clean$material, ignore.case = T), "NA",
 number <- c(120:125)
 EDH_clean$material[number]
 EDH_clean$material_clean[number]
+```
+
+```{r}
+EDH_clean$material_clean %>%
+  unique() %>%
+  sort(decreasing = FALSE)
 ```
 
 # Cleaning `height`, `width` and `depth` attributes
@@ -171,14 +187,14 @@ EDH_clean$depth_cm <- as.numeric(str_replace(EDH_clean$depth_cm, pattern = " cm"
 ```{r}
 dim <- c(EDH_clean$height, EDH_clean$width, EDH_clean$depth)
 dims <- c(EDH_clean$height_cm, EDH_clean$width_cm, EDH_clean$depth_cm)
-interval <- c(100:103)
+interval <- c(10000:10004)
 
 # automated checks
 dim[interval]
 dims[interval]
 
-# testing if we can perform numeric operations
-dims[1]+dims[2]
+# random testing if we can perform numeric operations
+dims[256]+dims[8989]
 ```
 
 # Cleaning `type_of_monument` attribute
@@ -200,21 +216,27 @@ EDH_clean$type_of_monument_clean[number]
 EDH_clean$type_of_monument_certainty[number]
 ```
 
+```{r}
+EDH_clean$type_of_monument_clean %>%
+  unique() %>%
+  sort(decreasing = FALSE)
+```
+
 # Cleaning `findspot_ancient` attribute
 
 ## 1. Cleaning `findspot_ancient` to a new column `findspot_ancient_clean`
 ```{r}
-EDH_clean <- EDH_clean %>%
-  mutate(findspot_ancient_clean = str_replace(EDH_clean$findspot_ancient, pattern=", bei|, aus", replacement = ""))
+EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient, pattern="[,. ] bei| aus", replacement = "")
 EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern="\\?", replacement = "")
-EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern=", inter", replacement = "")
+EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern=", inter|, zwischen", replacement = "")
 EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern="(^[\\(])(.+)([\\)]$)", replacement = "\\2")
+EDH_clean$findspot_ancient_clean <-str_replace(EDH_clean$findspot_ancient_clean, pattern = ",$", replacement = "")
 ```
 
 # Creating an index of localization certainty `findspot_ancient_certainty`
 ```{r}
 EDH_clean$findspot_ancient_certainty <- ifelse(grepl(" bei| aus]", EDH_clean$findspot_ancient, ignore.case = T), "Estimated",
-ifelse(grepl("inter", EDH_clean$findspot_ancient, ignore.case = T), "In between",
+ifelse(grepl("inter|zwischen", EDH_clean$findspot_ancient, ignore.case = T), "In between",
 ifelse(grepl("\\?", EDH_clean$findspot_ancient, ignore.case = T), "Uncertain",
 ifelse(grepl("^\\(", EDH_clean$findspot_ancient, ignore.case = T), "Uncertain",
 ifelse(grepl("NULL", EDH_clean$findspot_ancient, ignore.case = T), "NULL",
@@ -223,11 +245,12 @@ ifelse(grepl("NULL", EDH_clean$findspot_ancient, ignore.case = T), "NULL",
 
 ## Checking the results
 ```{r}
-interval <- c(1:10)
+interval <- c(10000:10010)
 EDH_clean$findspot_ancient[interval]
 EDH_clean$findspot_ancient_clean[interval]
 EDH_clean$findspot_ancient_certainty[interval]
 ```
+
 ### Checking the success rate of cleaning `findspot_ancient`
 ```{r}
 cleaned_findspot <- unique(EDH_clean$findspot_ancient_clean) %>%
@@ -236,6 +259,13 @@ original_findspot <- unique(EDH_clean$findspot_ancient) %>%
   length()
 cleaning_rate <- 100 - (cleaned_findspot /(original_findspot/100))
 ```
+
+```{r}
+EDH_clean$findspot_ancient_clean %>%
+  unique() %>%
+  sort(decreasing = TRUE)
+```
+
 
 # Cleaning epigraphic text for tidy text mining analysis (word and sentence centered)
 
