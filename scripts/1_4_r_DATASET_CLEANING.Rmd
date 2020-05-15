@@ -38,7 +38,7 @@ user <- readline("your sciencedata username: ")
 
 Sample data for testing (5000 inscriptions only)
 ```{r, echo = FALSE }
-resp = request("EDH_sample.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+resp = request("EDH_utf8.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 
@@ -874,13 +874,14 @@ EDH_clean <- EDH_clean %>%
 ```{r}
 EDH_cleaned_json <- rjson::toJSON(EDH_clean)
 
-write(EDH_cleaned_json, file="EDH_cleaned_sample.json")
+write(EDH_cleaned_json, file="EDH_cleaned.json")
 user <- readline("your sciencedata username: ")
-request("EDH_cleaned_sample.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
+request("EDH_cleaned.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 # Remove local copy of the json
 ```{r}
-file.remove("EDH_cleaned_sample.json")
+file.remove("EDH_cleaned.json")
+#file.remove("EDH_cleaned_sample.json")
 ```
