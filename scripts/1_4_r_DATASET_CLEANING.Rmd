@@ -56,6 +56,13 @@ EDH_clean <- EDH_tibble %>%
   mutate(province_label_clean = str_replace(EDH_tibble$province_label, pattern="\\?", replacement = ""))
 ```
 
+## Clean the workspace to save RAM
+```{r}
+remove(EDH_tibble)
+remove(list_json)
+```
+
+
 ## 2. Creating new column with `province_label_certainty` to record the uncertainty from `province_label` column
 ```{r}
 EDH_clean$province_label_certainty <- ifelse(grepl("\\?", EDH_clean$province_label, ignore.case = T), "Uncertain", "Certain")
