@@ -22,7 +22,7 @@ library(tidytext)
 library(dplyr)
 library(stringr)
 library(sdam)
-library(rjson)
+library(jsonlite)
 library(getPass)
 library(formatR)
 ```
@@ -43,9 +43,9 @@ resp = request("EDH_utf8.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_dat
 
 3. Make a list from the request and display the first six records (head)
 ```{r}
-list_json <- fromJSON(resp)
+list_json <- jsonlite::fromJSON(resp)
 EDH_tibble = as_tibble(list_json)
-head(EDH_tibble)
+#View(EDH_tibble)
 ```
 # Cleaning `province_label` attribute
 
@@ -210,7 +210,7 @@ EDH_clean$type_of_monument_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_mo
 ```
 ## 3. Checking the result
 ```{r}
-number <- 1333
+number <- 1334
 EDH_clean$type_of_monument[number]
 EDH_clean$type_of_monument_clean[number]
 EDH_clean$type_of_monument_certainty[number]
@@ -902,7 +902,8 @@ EDH_clean <- EDH_clean %>%
 
 # Saving to Sciencedata
 ```{r}
-EDH_cleaned_json <- rjson::toJSON(EDH_clean)
+EDH_clean_tibble <- as_tibble(EDH_clean)
+EDH_cleaned_json <- jsonlite::toJSON(EDH_clean)
 
 write(EDH_cleaned_json, file="EDH_cleaned.json")
 user <- readline("your sciencedata username: ")
@@ -912,6 +913,6 @@ request("EDH_cleaned.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/E
 
 # Remove local copy of the json
 ```{r}
-file.remove("EDH_cleaned.json")
+file.remove("E./DH_cleaned.json")
 #file.remove("EDH_cleaned_sample.json")
 ```
