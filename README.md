@@ -1,11 +1,22 @@
+# Workflow for the Quantitative Analysis of the EDH dataset (access and preparation, 'quantitative epigraphy in 2020')
+* ETL
+
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png "Creative Commons License CC BY-NC-SA 4.0")](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Project_status](https://img.shields.io/badge/status-in__progress-brightgreen "Project status logo")
+---
 
-
-# SDAM Project Pilot Workflow for accesing and analyzing the EDH dataset ('quantitative epigraphy in 2020')
+## Purpose
 This repository contains scripts for accesing and analysing epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
 The scripts  access the dataset via API, tranform it into a JSON, merge these data  with some other data, and save the outcome to SDAM project directory in sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for this purpose, see https://github.com/sdam-au/sddk. If you want to save the dataset in your preferred location, the scripts need to be modified.
+
+## Authors
+* Petra Heřmánková [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6349-0540), SDAM project, petra@ancientsocialcomplexity.org
+* Vojtěch Kaše [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)]([0000-0002-6601-1605](https://www.google.com/url?q=http://orcid.org/0000-0002-6601-1605&sa=D&ust=1588773325679000)), SDAM project, vojtech.kase@gmail.com
+
+## License
+CC-BY-SA 4.0, see attached License.md
+
 
 ## Data
 **The final dataset** produced by the scripts in this repo is called `EDH_utf8.json` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own. Here is a path to the file on sciencedata.dk: 
@@ -61,8 +72,15 @@ To enrich the JSON with geodata available via EDH, we have used the following sc
 5. Google Colab includes all basic libraries but requires an install of unusual libraries once per session.
 6. Committing any changes back to Github has to be further tested.
 
+## DOI
+[Here will be DOI or some other identifier once we have it]
 
+### References
+[Here will go related articles or other sources we will publish/create]
 
+## Screenshots
+![Example screenshot](./img/screenshot.png)
+TBA
 
 
 
