@@ -1,4 +1,4 @@
-# Workflow for the Quantitative Analysis of the EDH dataset (access and preparation, 'quantitative epigraphy in 2020')
+# ETL Workflow for the Quantitative Analysis of the EDH dataset ('quantitative epigraphy in 2020')
 * ETL
 
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png "Creative Commons License CC BY-NC-SA 4.0")](https://creativecommons.org/licenses/by-nc-sa/4.0/)
