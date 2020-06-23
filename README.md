@@ -55,6 +55,24 @@ Therefore, we decided to enrich the JSON created from the API files with data fr
 
 To enrich the JSON with geodata available via EDH, we have used the following script, so the epigraphic dat acontains also a geospatial information (see [script 1_3](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
 
+####Scripts overview
+* [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb))
+
+* [1_2_py_EXTRACTION_edh-xml_files.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)
+  * input: `EDH_dump.zip`
+  * output: `edh_xml_data_[timestamp].json`
+
+* [1_3_py_MERGING_API_GEO_and_XML.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb).
+  * input1: `EDH_geographies_raw.json`
+  * input2: `EDH_onebyone.json`
+  * input3: `edh_xml_data_[timestamp].json` (latest verified: 2020-06-23)
+  * output1: `EDH_inscriptions_rich[_timestamp]?.json`
+  * output2: `EDH_utf8_sample.json`
+
+**data storage**: `SDAM_root/SDAM_data/EDH` folder on sciencedata.dk
+
+
+
 
 # Script accessing workflow (internal SDAM project):
 
