@@ -67,7 +67,7 @@ To enrich the JSON with geodata available via EDH, we have used the following sc
   * input1: `EDH_geographies_raw.json`
   * input2: `EDH_onebyone.json`
   * input3: `edh_xml_data_[timestamp].json` (latest verified: 2020-06-23)
-  * output1: `EDH_inscriptions_rich[_timestamp]?.json`
+  * output1: `EDH_merged[_timestamp]?.json`
   * output2: `EDH_utf8_sample.json`
 
 
