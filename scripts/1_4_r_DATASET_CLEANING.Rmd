@@ -37,7 +37,7 @@ user <- readline("your sciencedata username: ")
 2. Make the request (you will be asked for password in a new pop-up window)
 
 ```{r, echo = FALSE }
-resp = request("EDH_utf8.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+resp = request("EDH_merged_2020-06-23.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 
@@ -905,9 +905,9 @@ EDH_clean <- EDH_clean %>%
 EDH_clean_tibble <- as_tibble(EDH_clean)
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean)
 
-write(EDH_cleaned_json, file="EDH_cleaned.json")
+write(EDH_cleaned_json, file="EDH_cleaned_2020-06-26.json")
 user <- readline("your sciencedata username: ")
-request("EDH_cleaned.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
+request("EDH_cleaned_2020-06-26.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
