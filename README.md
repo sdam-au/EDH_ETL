@@ -1,16 +1,27 @@
+# ETL Workflow for the Quantitative Analysis of the EDH dataset ('quantitative epigraphy in 2020')
+* ETL
+
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png "Creative Commons License CC BY-NC-SA 4.0")](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Project_status](https://img.shields.io/badge/status-in__progress-brightgreen "Project status logo")
+---
 
-
-# SDAM Project Pilot Workflow for accesing and analyzing the EDH dataset ('quantitative epigraphy in 2020')
+## Purpose
 This repository contains scripts for accesing and analysing epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
 The scripts  access the dataset via API, tranform it into a JSON, merge these data  with some other data, and save the outcome to SDAM project directory in sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for this purpose, see https://github.com/sdam-au/sddk. If you want to save the dataset in your preferred location, the scripts need to be modified.
 
+## Authors
+* Petra Heřmánková [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6349-0540), SDAM project, petra@ancientsocialcomplexity.org
+* Vojtěch Kaše [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)]([0000-0002-6601-1605](https://www.google.com/url?q=http://orcid.org/0000-0002-6601-1605&sa=D&ust=1588773325679000)), SDAM project, vojtech.kase@gmail.com
+
+## License
+CC-BY-SA 4.0, see attached License.md
+
+
 ## Data
 **The final dataset** produced by the scripts in this repo is called `EDH_utf8.json` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own. Here is a path to the file on sciencedata.dk: 
 
-`SDAM_root/SDAM_data/EDH/EDH_utf8.json`
+`SDAM_root/SDAM_data/EDH/EDH_cleaned.json`
 
 Alternatively, you can also use `SDAM_root/SDAM_data/EDH/EDH_inscriptions_rich.json`. It is the same, just using a different encoding.
 
@@ -19,8 +30,8 @@ To upload these data into python as a pandas dataframe, you can use this (using 
 ```python
 !pip install sddk
 import sddk
-auth = sddk.configure_session_and_url("SDAM_root", "648597@au.dk")
-EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_utf8.json", "df", auth)
+auth = sddk.configure("SDAM_root", "648597@au.dk") # where "648597@au.dk is owner of the shared folder, i.e. Vojtěch
+EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_cleaned.json", "df", auth)
 ```
 
 **The original data** from the scripts come from two sources:
@@ -42,7 +53,29 @@ However, the dataset from the API is a simplified one (when compared with the re
 
 Therefore, we decided to enrich the JSON created from the API files with data from the original XML files, which also including some additional variables (see [script 1_2](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)).
 
-To enrich the JSON with geodata available via EDH, we have used the following script, so the epigraphic dat acontains also a geospatial information (see [script 1_3](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
+To enrich the JSON with geodata available via EDH, we have used the following script, so the epigraphic data contains also a geospatial information (see [script 1_3](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
+
+**data storage**: `SDAM_root/SDAM_data/EDH` folder on sciencedata.dk
+
+* [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb))
+  * input: requests to [https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?](https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?)
+  * output: `EDH_onebyone.json`
+  
+
+* [1_2_py_EXTRACTION_edh-xml_files.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)
+  * input: `EDH_dump.zip`
+  * output: `edh_xml_data_[timestamp].json`
+
+* [1_3_py_MERGING_API_GEO_and_XML.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb).
+  * input1: `EDH_geographies_raw.json`
+  * input2: `EDH_onebyone.json`
+  * input3: `edh_xml_data_[timestamp].json` (latest verified: 2020-06-23)
+  * output1: `EDH_merged[_timestamp]?.json`
+  * output2: `EDH_utf8_sample.json`
+  
+* [1_4_r_DATASET_CLEANING.Rmd](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)
+  * input: `EDH_merged[_timestamp]?.json`
+  * output: `EDH_cleaned[_timestamp]?.json`
 
 
 # Script accessing workflow (internal SDAM project):
@@ -61,8 +94,15 @@ To enrich the JSON with geodata available via EDH, we have used the following sc
 5. Google Colab includes all basic libraries but requires an install of unusual libraries once per session.
 6. Committing any changes back to Github has to be further tested.
 
+## DOI
+[Here will be DOI or some other identifier once we have it]
 
+### References
+[Here will go related articles or other sources we will publish/create]
 
+## Screenshots
+![Example screenshot](./img/screenshot.png)
+TBA
 
 
 
