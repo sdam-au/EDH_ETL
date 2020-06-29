@@ -55,13 +55,16 @@ Therefore, we decided to enrich the JSON created from the API files with data fr
 
 To enrich the JSON with geodata available via EDH, we have used the following script, so the epigraphic data contains also a geospatial information (see [script 1_3](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
 
-**data storage**: `SDAM_root/SDAM_data/EDH` folder on sciencedata.dk
+Script (see [script 1_4](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)) cleans the epigraphic text to produce several versions of text of all inscriptions (ready for further text mining, quantitative analysis, NLP analysis etc). Details on the cleaning process and the decision behind individual steps of the model can be found in the repository [epigraphic_cleaning](https://github.com/sdam-au/epigraphic_cleaning). 
+
+## Data storage: 
+
+`SDAM_root/SDAM_data/EDH` folder on sciencedata.dk
 
 * [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb))
   * input: requests to [https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?](https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?)
   * output: `EDH_onebyone.json`
   
-
 * [1_2_py_EXTRACTION_edh-xml_files.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)
   * input: `EDH_dump.zip`
   * output: `edh_xml_data_[timestamp].json`
@@ -74,8 +77,8 @@ To enrich the JSON with geodata available via EDH, we have used the following sc
   * output2: `EDH_utf8_sample.json`
   
 * [1_4_r_DATASET_CLEANING.Rmd](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)
-  * input: `EDH_merged[_timestamp]?.json`
-  * output: `EDH_cleaned[_timestamp]?.json`
+  * input: `EDH_merged[_timestamp].json`
+  * output: `EDH_cleaned[_timestamp].json`
 
 
 # Script accessing workflow (internal SDAM project):
