@@ -72,13 +72,13 @@ Script (see [script 1_4](https://github.com/sdam-au/edh_workflow/blob/master/scr
 * [1_3_py_MERGING_API_GEO_and_XML.ipynb](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb).
   * input1: `EDH_geographies_raw.json`
   * input2: `EDH_onebyone.json`
-  * input3: `edh_xml_data_[timestamp].json` (latest verified: 2020-06-23)
-  * output1: `EDH_merged[_timestamp]?.json`
+  * input3: `edh_xml_data_[timestamp].json` (latest verified version: 2020-06-23)
+  * output1: `EDH_merged_[timestamp]?.json`
   * output2: `EDH_utf8_sample.json`
   
 * [1_4_r_DATASET_CLEANING.Rmd](https://github.com/sdam-au/edh_workflow/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)
-  * input: `EDH_merged[_timestamp].json`
-  * output: `EDH_cleaned[_timestamp].json`
+  * input: `EDH_merged_[timestamp].json`
+  * output: `EDH_cleaned_[timestamp].json` (latest verified version: 2020-06-26)
 
 
 # Script accessing workflow (internal SDAM project):
