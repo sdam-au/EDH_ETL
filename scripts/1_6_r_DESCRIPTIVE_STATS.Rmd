@@ -1,0 +1,110 @@
+---
+title: "EDH descriptive stats"
+author: "Petra Hermankova"
+date: "06/08/2020"
+output:
+  html_document:
+    theme: cerulean
+    toc: yes
+    toc_depth: 3
+---
+
+```{r setup, echo=TRUE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error=TRUE)
+devtools::install_github("mplex/cedhar", subdir="pkg/sdam")
+#install.packages("tidyverse")
+#install.packages("getPass")
+#install.packages("formatR")
+install.packages("Hmisc")
+
+library(tidyverse)
+library(tidytext)
+library(sdam)
+library(jsonlite)
+library(getPass)
+library(formatR)
+library(Hmisc)
+
+```
+
+# Loading data
+
+1. Input your sciencedata.dk username - type directly into the RStudio console
+```{r, echo = FALSE }
+user <- readline("your sciencedata username: ")
+```
+
+2. Make the request (you will be asked for password in a new pop-up window)
+
+```{r, echo = FALSE }
+resp = request("EDH_cleaned_2020-06-26.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+```
+
+
+3. Make a list from the request and display the first six records (head)
+```{r}
+list_json <- jsonlite::fromJSON(resp)
+EDH_tibble = as_tibble(list_json)
+```
+
+# What is in the dataset? Descriptive stats
+
+## Total number of inscriptions
+```{r}
+describe(unlist(EDH_tibble$id))
+```
+
+```{r}
+total<- nrow(EDH_tibble)
+total
+```
+
+## Total number of inscriptions by language
+```{r}
+language<- as.data.frame(table(unlist(EDH_tibble$language)))
+language<- language %>% 
+  mutate(Percentage = Freq/(total/100))
+language$Percent_round<- round(language$Percentage, digits = 2)
+```
+
+## Date
+
+### How many % inscription has a start date
+```{r}
+not_before<- as.data.frame(unlist(EDH_tibble$not_before))
+nrow(not_before)/(total/100) 
+
+
+```
+
+### How many % inscription has an end date
+```{r}
+not_after<- as.data.frame(unlist(EDH_tibble$not_after))
+nrow(not_after)/(total/100)
+```
+
+### Earliest date
+```{r}
+describe(as.numeric(not_before$`unlist(EDH_tibble$not_before)`))
+```
+
+### Latest date
+```{r}
+describe(as.numeric(not_after$`unlist(EDH_tibble$not_after)`))
+```
+
+### Additional dating information available through the 'commentary'
+```{r}
+date_info <- EDH_tibble %>% 
+  select(not_before, not_after, commentary, origdate_text, origdate_attrs, year_of_find)
+
+date_info <- date_info %>% 
+  mutate(date_commentary = ifelse(grepl("\\(C\\):", commentary), "Date related commentary", "N/A"))
+
+date_commentary<- date_info %>% 
+  filter(date_commentary == "Date related commentary")
+
+nrow(date_commentary)/(total/100)
+```
+
+## Location - TBA
