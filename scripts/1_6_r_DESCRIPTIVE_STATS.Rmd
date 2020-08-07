@@ -96,7 +96,7 @@ describe(as.numeric(not_after$`unlist(EDH_tibble$not_after)`))
 ### Additional dating information available through the 'commentary'
 ```{r}
 date_info <- EDH_tibble %>% 
-  select(not_before, not_after, commentary, origdate_text, origdate_attrs, year_of_find)
+  select(id, not_before, not_after, commentary, origdate_text, origdate_attrs, year_of_find)
 
 date_info <- date_info %>% 
   mutate(date_commentary = ifelse(grepl("\\(C\\):", commentary), "Date related commentary", "N/A"))
@@ -107,4 +107,92 @@ date_commentary<- date_info %>%
 nrow(date_commentary)/(total/100)
 ```
 
-## Location - TBA
+## Location
+
+```{r}
+location<- EDH_tibble %>% 
+  select(id, coordinates, findspot_ancient, province_label, province_label_clean, province_label_certainty, country, modern_region, findspot_modern, findspot, present_location, edh_geography_uri, commentary)
+```
+
+### How many inscriptions have spatial coordinates
+```{r}
+coordinates <-as.data.frame(unlist(location$coordinates))
+nrow(coordinates)/(total/100)
+```
+### Known ancient findspot
+```{r}
+describe(unlist(location$findspot_ancient))
+```
+```{r}
+ancient_findspot <- as.data.frame(unlist(location$findspot_ancient))
+nrow(ancient_findspot)/(total/100)
+```
+#### Uncertain ancient findspot (?)
+```{r}
+ancient_findspot_uncert <- as.data.frame(str_subset(ancient_findspot$`unlist(location$findspot_ancient)`, "\\?"))
+nrow(ancient_findspot_uncert)/(total/100)
+```
+### Information about province
+
+```{r}
+nrow(dplyr::filter(location, location$province_label_clean != "unknown"))/(total/100)
+```
+#### Uncertain Roman province
+```{r}
+nrow(dplyr::filter(location, location$province_label_certainty == "Uncertain"))/(total/100)
+```
+
+#### Unknown province
+```{r}
+nrow(dplyr::filter(location, location$province_label_clean == "unknown"))/(total/100)
+```
+
+### Inscriptions with no spatial information
+```{r}
+no_coords <- location %>% 
+  filter(coordinates == "list()")
+
+# number of inscriptions no coordinates but with ancient findspot known
+nrow(as.data.frame(unlist(no_coords$findspot_ancient))) 
+nrow(as.data.frame(unlist(no_coords$findspot_ancient)))/(total/100)
+
+# number of inscriptions with no coordinates and ancient findspot unknown
+no_coords_no_findspot_anc <- no_coords %>% 
+  filter(findspot_ancient == "list()")
+nrow(no_coords_no_findspot_anc)
+nrow(no_coords_no_findspot_anc)/(total/100)
+
+# number of inscriptions with no coordinates, no ancient nor modern findpot known
+no_coords_no_findspot_a_m <- no_coords_no_findspot_anc %>% 
+  filter(findspot_modern == "list()")
+nrow(no_coords_no_findspot_a_m)
+nrow(no_coords_no_findspot_a_m)/(total/100)
+
+unique(no_coords_no_findspot_a_m$present_location)
+
+# number of inscriptions with no coordinates, no ancient nor modern findpot known, nor their present location
+no_coords_no_findspot_a_m_no_present<- no_coords_no_findspot_a_m %>% 
+  filter(present_location == "list()"| present_location == "lost")
+nrow(no_coords_no_findspot_a_m_no_present)
+nrow(no_coords_no_findspot_a_m_no_present)/(total/100)
+
+table(no_coords_no_findspot_a_m_no_present$province_label_clean)
+
+# inscriptions with no spatial information, not even province
+no_spatial_info<- no_coords_no_findspot_a_m_no_present %>% 
+  filter(province_label_clean == "unknown" & country == "unknown")
+nrow(no_spatial_info)
+nrow(no_spatial_info)/(total/100)
+
+# inscriptions with at least province or modern country spatial information
+province_modern_country<- no_coords_no_findspot_a_m_no_present %>% 
+  filter(province_label_clean != "unknown" & country != "unknown")
+nrow(province_modern_country)
+nrow(province_modern_country)/(total/100)
+
+```
+#### Inscriptions with 
+```{r}
+
+```
+
