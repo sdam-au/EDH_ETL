@@ -15,7 +15,7 @@ devtools::install_github("mplex/cedhar", subdir="pkg/sdam")
 #install.packages("tidyverse")
 #install.packages("getPass")
 #install.packages("formatR")
-install.packages("Hmisc")
+#install.packages("Hmisc")
 
 library(tidyverse)
 library(tidytext)
@@ -73,8 +73,6 @@ language$Percent_round<- round(language$Percentage, digits = 2)
 ```{r}
 not_before<- as.data.frame(unlist(EDH_tibble$not_before))
 nrow(not_before)/(total/100) 
-
-
 ```
 
 ### How many % inscription has an end date
@@ -127,19 +125,28 @@ describe(unlist(location$findspot_ancient))
 ancient_findspot <- as.data.frame(unlist(location$findspot_ancient))
 nrow(ancient_findspot)/(total/100)
 ```
+
 #### Uncertain ancient findspot (?)
 ```{r}
 ancient_findspot_uncert <- as.data.frame(str_subset(ancient_findspot$`unlist(location$findspot_ancient)`, "\\?"))
 nrow(ancient_findspot_uncert)/(total/100)
 ```
-### Information about province
 
+### Information about province
 ```{r}
 nrow(dplyr::filter(location, location$province_label_clean != "unknown"))/(total/100)
 ```
+
 #### Uncertain Roman province
 ```{r}
 nrow(dplyr::filter(location, location$province_label_certainty == "Uncertain"))/(total/100)
+province_uncert<- dplyr::filter(location, location$province_label_certainty == "Uncertain")
+
+# what is the present day location of inscriptions with an uncertain province
+table(unlist(province_uncert$present_location))
+
+# how many of them are from Rome
+str_subset(province_uncert$present_location, "Roma") 
 ```
 
 #### Unknown province
@@ -147,52 +154,138 @@ nrow(dplyr::filter(location, location$province_label_certainty == "Uncertain"))/
 nrow(dplyr::filter(location, location$province_label_clean == "unknown"))/(total/100)
 ```
 
-### Inscriptions with no spatial information
+### Inscriptions with no coordinates available
 ```{r}
 no_coords <- location %>% 
   filter(coordinates == "list()")
+```
 
-# number of inscriptions no coordinates but with ancient findspot known
-nrow(as.data.frame(unlist(no_coords$findspot_ancient))) 
-nrow(as.data.frame(unlist(no_coords$findspot_ancient)))/(total/100)
+#### number of inscriptions with no coordinates but with ancient findspot known
+```{r}
+no_coords_findspot_anc <- no_coords %>% 
+  filter(findspot_ancient != "list()")
 
-# number of inscriptions with no coordinates and ancient findspot unknown
+nrow(no_coords_findspot_anc)
+nrow(no_coords_findspot_anc)/(total/100)
+```
+
+#### number of inscriptions with no coordinates and ancient findspot unknown
+```{r}
 no_coords_no_findspot_anc <- no_coords %>% 
   filter(findspot_ancient == "list()")
 nrow(no_coords_no_findspot_anc)
 nrow(no_coords_no_findspot_anc)/(total/100)
+```
 
-# number of inscriptions with no coordinates, no ancient nor modern findpot known
+#### number of inscriptions with no coordinates, unknwon ancient findspot but know modern findspot
+```{r}
+no_coords_findspot_mod <- no_coords_no_findspot_anc %>% 
+  filter(findspot_modern != "list()")
+nrow(no_coords_findspot_mod)
+nrow(no_coords_findspot_mod)/(total/100)
+```
+
+#### number of inscriptions with no coordinates, no ancient nor modern findspot known
+```{r}
 no_coords_no_findspot_a_m <- no_coords_no_findspot_anc %>% 
   filter(findspot_modern == "list()")
 nrow(no_coords_no_findspot_a_m)
 nrow(no_coords_no_findspot_a_m)/(total/100)
+```
 
-unique(no_coords_no_findspot_a_m$present_location)
+#### inscriptions with no coordinates, no ancient nor modern findspot, but with known present location
+```{r}
+no_coords_present_location <- no_coords_no_findspot_a_m %>% 
+  filter(present_location != "list()" & present_location != "lost")
+nrow(no_coords_present_location)
+nrow(no_coords_present_location)/(total/100)
+```
 
-# number of inscriptions with no coordinates, no ancient nor modern findpot known, nor their present location
-no_coords_no_findspot_a_m_no_present<- no_coords_no_findspot_a_m %>% 
-  filter(present_location == "list()"| present_location == "lost")
+##### How many inscriptions with only present day location are from museums or private collections in total numbers and percentages
+```{r}
+nrow(as.data.frame(str_subset(no_coords_present_location$present_location, "Mus|Muz")))
+nrow(as.data.frame(str_subset(no_coords_present_location$present_location, "Mus|Muz")))/(nrow(no_coords_present_location)/100)
+nrow(as.data.frame(str_subset(no_coords_present_location$present_location, "Mus|Muz")))/(total/100)
+
+
+nrow(as.data.frame(str_subset(no_coords_present_location$present_location, "Priv")))
+nrow(as.data.frame(str_subset(no_coords_present_location$present_location, "Priv")))/(nrow(no_coords_present_location)/100)
+nrow(as.data.frame(str_subset(no_coords_present_location$present_location, "Priv")))/(total/100)
+```
+
+
+#### number of inscriptions with no coordinates, no ancient nor modern findpot known, nor their present location
+```{r}
+no_coords_no_findspot_a_m_no_present <- no_coords_no_findspot_a_m %>% 
+  filter(present_location == "list()" | present_location == "lost")
 nrow(no_coords_no_findspot_a_m_no_present)
 nrow(no_coords_no_findspot_a_m_no_present)/(total/100)
+```
 
-table(no_coords_no_findspot_a_m_no_present$province_label_clean)
+#### inscriptions with no coordinates, no ancient or modern findspot or present location, only with province information
+```{r}
+no_coords_province<- no_coords_no_findspot_a_m_no_present %>% 
+  filter(province_label_clean != "list()" & province_label_clean != "unknown")
+nrow(no_coords_province)
+nrow(no_coords_province)/(total/100)
 
-# inscriptions with no spatial information, not even province
+
+no_coords_province_unknown <- no_coords_no_findspot_a_m_no_present %>% 
+  filter(province_label_clean == "unknown")
+nrow(no_coords_province_unknown)
+```
+#### inscriptions with no coordinates, no ancient or modern findspot or present location, only with modern country information
+```{r}
+no_coords_country<- no_coords_no_findspot_a_m_no_present %>% 
+  filter(country != "list()" & country != "unknown")
+nrow(no_coords_country)
+nrow(no_coords_country)/(total/100)
+```
+
+
+#### inscriptions with no spatial information, not even province or modern country
+```{r}
 no_spatial_info<- no_coords_no_findspot_a_m_no_present %>% 
   filter(province_label_clean == "unknown" & country == "unknown")
 nrow(no_spatial_info)
 nrow(no_spatial_info)/(total/100)
-
-# inscriptions with at least province or modern country spatial information
-province_modern_country<- no_coords_no_findspot_a_m_no_present %>% 
-  filter(province_label_clean != "unknown" & country != "unknown")
-nrow(province_modern_country)
-nrow(province_modern_country)/(total/100)
-
 ```
-#### Inscriptions with 
-```{r}
+##### inscriptions with no spatial info but with commentary addressing their origin
 
+```{r}
+unique(no_spatial_info$commentary)
+```
+
+### Checking the precision of spatial coordinates with individual spatial info (ancient findspot, modern findspot, present location etc) 
+```{r}
+# ancient findspot
+coords_anc_findspot<- as.data.frame(cbind(id = location$id, coordinates = location$coordinates,findspot_ancient = location$findspot_ancient))
+
+coords_anc_findspot<- coords_anc_findspot %>% 
+  dplyr::filter(coordinates != "list()" & findspot_ancient != "list()")
+
+lat_long_anc_findspot<- coords_anc_findspot %>% 
+  separate(col = coordinates, into = c("latitude", "longitude"), sep = ",")
+
+lat_long_anc_findspot$latitude <- as.numeric(lat_long_anc_findspot$latitude)
+lat_long_anc_findspot$longitude <- as.numeric(lat_long_anc_findspot$longitude)
+```
+
+### Creating a map with ancient findspots to check the precision of coordinates
+```{r}
+library(leaflet)
+```
+
+```{r}
+map_ancient_findspot <-leaflet() %>%
+  addProviderTiles("Esri.WorldTopoMap", group = "Topo") %>%
+  #addProviderTiles("Esri.WorldImagery", group = "ESRI Aerial") %>%
+  addMarkers(lng = lat_long_anc_findspot$longitude, 
+             lat = lat_long_anc_findspot$latitude,
+             popup = paste0("<b> InscriptionID: </b>", lat_long_anc_findspot$id, 
+                            "<br><b> Ancient Findspot: </b>", lat_long_anc_findspot$findspot_ancient),
+    clusterOptions = markerClusterOptions()
+  )
+map_ancient_findspot
 ```
 
