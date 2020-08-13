@@ -72,13 +72,23 @@ language$Percent_round<- round(language$Percentage, digits = 2)
 ### How many % inscription has a start date
 ```{r}
 not_before<- as.data.frame(unlist(EDH_tibble$not_before))
+nrow(not_before)
 nrow(not_before)/(total/100) 
 ```
 
 ### How many % inscription has an end date
 ```{r}
 not_after<- as.data.frame(unlist(EDH_tibble$not_after))
+nrow(not_after)
 nrow(not_after)/(total/100)
+```
+
+### Number of inscriptions having both not_before and not_after date
+```{r}
+date_info_complete <- date_info %>% 
+  filter(not_before !="list()") %>% 
+  filter(not_after !="list()") 
+nrow(date_info_complete)
 ```
 
 ### Earliest date
@@ -96,14 +106,18 @@ describe(as.numeric(not_after$`unlist(EDH_tibble$not_after)`))
 date_info <- EDH_tibble %>% 
   select(id, not_before, not_after, commentary, origdate_text, origdate_attrs, year_of_find)
 
-date_info <- date_info %>% 
-  mutate(date_commentary = ifelse(grepl("\\(C\\):", commentary), "Date related commentary", "N/A"))
+date_commentary <- date_info %>% 
+  filter(commentary != "list()" )
 
-date_commentary<- date_info %>% 
-  filter(date_commentary == "Date related commentary")
-
+nrow(date_commentary)
 nrow(date_commentary)/(total/100)
+
+str_subset(date_commentary$commentary, "Datierung")
 ```
+
+
+
+
 
 ## Location
 
