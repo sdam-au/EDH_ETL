@@ -24,7 +24,7 @@ library(jsonlite)
 library(getPass)
 library(formatR)
 library(Hmisc)
-
+library(purrr)
 ```
 
 # Loading data
@@ -43,8 +43,8 @@ resp = request("EDH_cleaned_2020-06-26.json", path="/sharingin/648597@au.dk/SDAM
 
 3. Make a list from the request and display the first six records (head)
 ```{r}
-list_json <- jsonlite::fromJSON(resp)
-EDH_tibble = as_tibble(list_json)
+  list_json <- jsonlite::fromJSON(resp)
+  EDH_tibble = as_tibble(list_json)
 ```
 
 # What is in the dataset? Descriptive stats
@@ -83,14 +83,6 @@ nrow(not_after)
 nrow(not_after)/(total/100)
 ```
 
-### Number of inscriptions having both not_before and not_after date
-```{r}
-date_info_complete <- date_info %>% 
-  filter(not_before !="list()") %>% 
-  filter(not_after !="list()") 
-nrow(date_info_complete)
-```
-
 ### Earliest date
 ```{r}
 describe(as.numeric(not_before$`unlist(EDH_tibble$not_before)`))
@@ -104,10 +96,11 @@ describe(as.numeric(not_after$`unlist(EDH_tibble$not_after)`))
 ### Additional dating information available through the 'commentary'
 ```{r}
 date_info <- EDH_tibble %>% 
-  select(id, not_before, not_after, commentary, origdate_text, origdate_attrs, year_of_find)
+  select(id, not_before, not_after, commentary, origdate_text, year_of_find) 
 
 date_commentary <- date_info %>% 
   filter(commentary != "list()" )
+date_commentary
 
 nrow(date_commentary)
 nrow(date_commentary)/(total/100)
@@ -115,6 +108,14 @@ nrow(date_commentary)/(total/100)
 str_subset(date_commentary$commentary, "Datierung")
 ```
 
+
+### Number of inscriptions having both not_before and not_after date
+```{r}
+date_info_complete <- date_info %>% 
+  filter(not_before !="list()") %>% 
+  filter(not_after !="list()") 
+nrow(date_info_complete)
+```
 
 
 
@@ -302,4 +303,9 @@ map_ancient_findspot <-leaflet() %>%
   )
 map_ancient_findspot
 ```
+
+
+
+
+
 
