@@ -8,39 +8,30 @@
 ## Purpose
 This repository contains scripts for accesing and analysing epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
-The scripts  access the dataset via API, tranform it into a JSON, merge these data  with some other data, and save the outcome to SDAM project directory in sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for this purpose, see https://github.com/sdam-au/sddk. If you want to save the dataset in your preferred location, the scripts need to be modified.
+The scripts  access the dataset via API, tranform it into a JSON, merge and enrich these data with geospatial data, and save the outcome to SDAM project directory in Sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for this purpose, see https://github.com/sdam-au/sddk. If you want to save the dataset in your preferred location, the scripts need to be modified.
 
 ## Authors
 * Petra Heřmánková [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6349-0540) SDAM project, petra@ancientsocialcomplexity.org
 * Vojtěch Kaše [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)]([0000-0002-6601-1605](https://www.google.com/url?q=http://orcid.org/0000-0002-6601-1605&sa=D&ust=1588773325679000)) SDAM project, vojtech.kase@gmail.com
 
 ## License
-CC-BY-SA 4.0, see attached License.md
+[CC-BY-SA 4.0](https://github.com/sdam-au/EDH_ETL/blob/master/LICENSE.md)
 
 
 ## Data
-**The final dataset** produced by the scripts in this repo is called `EDH_utf8.json` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own. Here is a path to the file on sciencedata.dk: 
+**The final dataset** produced by the scripts in this repo is called `EDH_cleaned[timestamp].json` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own. Here is a path to the file on sciencedata.dk: 
 
 `SDAM_root/SDAM_data/EDH/EDH_cleaned.json`
 
 Alternatively, you can also use `SDAM_root/SDAM_data/EDH/EDH_inscriptions_rich.json`. It is the same, just using a different encoding.
 
-To upload these data into python as a pandas dataframe, you can use this (using th [sddk](https://pypi.org/project/sddk/) package):
-
-```python
-!pip install sddk
-import sddk
-auth = sddk.configure("SDAM_root", "648597@au.dk") # where "648597@au.dk is owner of the shared folder, i.e. Vojtěch
-EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_cleaned.json", "df", auth)
-```
-
 **The original data** from the scripts come from two sources:
 
-a) the Epidoc XML files available at https://edh-www.adw.uni-heidelberg.de/data/export
+a) the Epidoc XML files available at https://edh-www.adw.uni-heidelberg.de/data/export (inscriptions)
 
-b)  the web API available at https://edh-www.adw.uni-heidelberg.de/data/api (inscriptions and findspots)
+b) the web API available at https://edh-www.adw.uni-heidelberg.de/data/api (inscriptions and geospatial data)
 
-The scripts merge data from these sources into on pandas dataframe, which is then exported into one JSON file for further usage
+The scripts merge data from these sources into on pandas dataframe, which is then exported into one JSON file for further usage.
 
 ## Scripts
 
@@ -63,7 +54,7 @@ Script (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/
 
 * [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb))
   * input: requests to [https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?](https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?)
-  * output: `EDH_onebyone.json`
+  * output: `EDH_onebyone[timestamp].json`
   
 * [1_2_py_EXTRACTION_edh-xml_files.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)
   * input: `EDH_dump.zip`
@@ -81,21 +72,16 @@ Script (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/
   * output: `EDH_cleaned_[timestamp].json` (latest verified version: 2020-06-26)
 
 
-# Script accessing workflow (internal SDAM project):
+# Script accessing workflow:
 
-## Offline scenario
+To upload these data into **Python** as a pandas dataframe, you can use this (using th [sddk](https://pypi.org/project/sddk/) package):
 
-1. Download scripts from Github and run locally in Jupyter Notebook, but check the dependencies and libraries. 
-2. The documentation needs further tests and elaboration.
-
-## Online scenario
-
-1. Go to Google Colab & sign in with your Google email account. 
-2. Create a new notebook, select Github tab.
-3. Paste in the URL of the notebook on Github (choose from dropdown menu, if you are using the same email account for Github and for Google).
-4. Ingest and save to your own Goodle drive into Google Colab folder (it may be done automatically).
-5. Google Colab includes all basic libraries but requires an install of unusual libraries once per session.
-6. Committing any changes back to Github has to be further tested.
+```python
+!pip install sddk
+import sddk
+auth = sddk.configure("SDAM_root", "648597@au.dk") # where "648597@au.dk is owner of the shared folder, i.e. Vojtěch
+EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_cleaned.json", "df", auth)
+```
 
 ## DOI
 [Here will be DOI or some other identifier once we have it]
