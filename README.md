@@ -36,21 +36,18 @@ The scripts merge data from these sources into on pandas dataframe, which is the
 ## Scripts
 
 ### Data accessing scripts
-Primarily we use Python to access the API (in Google Colab notebooks) and then R and Python to analyse the data. The scripts can be found in the folder ```scripts```.
+Primarily we use Python scripts (Jupyter notebooks) for accessing the API & extracting data from it, parse the XML files for additional metadata and combining these two reseources into one. Subsequently, we use both R and Python for further cleaning, transformming and analyzing the data. The scripts can be found in the folder ```scripts```.
 
-The data via the API are easily accessible and have been extracted by means of R and Python in a rather straigtforward way. To obtain the whole dataset of circa 80,000 inscriptions into a Python dataframe takes about 12 minutes (see the respective [script 1_1](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb)). We have decided to save the dataframe as JSON for interoperability reasons between Python and R.
+The data via the API are easily accessible and might be extracted by means of R and Python in a rather straigtforward way. To obtain the whole dataset of circa 80,000 inscriptions into a Python dataframe takes about 12 minutes (see the respective [script 1_1](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb)). We have decided to save the dataframe as a JSON file for interoperability reasons between Python and R.
 
-However, the dataset from the API is a simplified one (when compared with the records online and in XML), primarily to be used for queries in the web interface. For instance, the API data encode the whole information about dating by means of two variables: "not_before" and "not_before". This makes us curious about how the data translate dating information like "around the middle of the 4th century CE." etc. 
+However, the dataset from the API is a simplified one (when compared with the records online and in XML), primarily to be used for queries in the web interface. ` For instance, the API data encode the whole information about dating by means of two variables: "not_before" and "not_before". This makes us curious about how the data translate dating information like "around the middle of the 4th century CE." etc. `
 
 Therefore, we decided to enrich the JSON created from the API files with data from the original XML files, which also including some additional variables (see [script 1_2](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)).
 
-To enrich the JSON with geodata available via EDH, we have used the following script, so the epigraphic data contains also a geospatial information (see [script 1_3](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
+To enrich the JSON with geodata available via EDH, we have developed the following script: [script 1_3](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
 
 Script (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)) cleans the epigraphic text to produce several versions of text of all inscriptions (ready for further text mining, quantitative analysis, NLP analysis etc). Details on the cleaning process and the decision behind individual steps of the model can be found in the repository [epigraphic_cleaning](https://github.com/sdam-au/epigraphic_cleaning). 
 
-## Data storage: 
-
-`SDAM_root/SDAM_data/EDH` folder on sciencedata.dk
 
 * [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb))
   * input: requests to [https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?](https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?)
@@ -82,6 +79,10 @@ import sddk
 auth = sddk.configure("SDAM_root", "648597@au.dk") # where "648597@au.dk is owner of the shared folder, i.e. Vojtěch
 EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_cleaned.json", "df", auth)
 ```
+
+## Data storage: 
+
+`SDAM_root/SDAM_data/EDH` folder on sciencedata.dk
 
 ## DOI
 [Here will be DOI or some other identifier once we have it]
