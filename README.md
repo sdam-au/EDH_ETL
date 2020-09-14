@@ -40,8 +40,7 @@ Primarily we use Python scripts (Jupyter notebooks) for accessing the API & ext
 
 The data via the API are easily accessible and might be extracted by means of R and Python in a rather straigtforward way. To obtain the whole dataset of circa 80,000 inscriptions into a Python dataframe takes about 12 minutes (see the respective [script 1_1](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb)). We have decided to save the dataframe as a JSON file for interoperability reasons between Python and R.
 
-However, the dataset from the API is a simplified one (when compared with the records online and in XML), primarily to be used for queries in the web interface. ` For instance, the API data encode the whole information about dating by means of two variables: "not_before" and "not_before". This makes us curious about how the data translate dating information like "around the middle of the 4th century CE." etc. `
-
+However, the dataset from the API is a simplified one (when compared with the records online and in XML), primarily to be used for queries in the web interface.  For instance, the API data encode the whole information about dating by means of two variables: "not_before" and "not_before". This makes us curious about how the data translate dating information like "around the middle of the 4th century CE." etc. 
 Therefore, we decided to enrich the JSON created from the API files with data from the original XML files, which also including some additional variables (see [script 1_2](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)).
 
 To enrich the JSON with geodata available via EDH, we have developed the following script: [script 1_3](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
@@ -54,14 +53,14 @@ Script (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/
   * output: `EDH_onebyone[timestamp].json`
   
 * [1_2_py_EXTRACTION_edh-xml_files.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)
-  * input: `EDH_dump.zip`
-  * output: `edh_xml_data_[timestamp].json`
+  * input: `edhEpidocDump_HD[first_number]-HD[last_number].zip` at [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
+  * output: `EDH_xml_data_[timestamp].json`
 
 * [1_3_py_MERGING_API_GEO_and_XML.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb).
-  * input1: `EDH_geographies_raw.json`
-  * input2: `EDH_onebyone.json`
-  * input3: `edh_xml_data_[timestamp].json` (latest verified version: 2020-06-23)
-  * output1: `EDH_merged_[timestamp]?.json`
+  * input1: `EDH_geographies_raw.json` at [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
+  * input2: `EDH_onebyone[timestamp].json`
+  * input3: `EDH_xml_data_[timestamp].json` (latest verified version: 2020-06-23)
+  * output1: `EDH_merged_[timestamp].json`
   * output2: `EDH_utf8_sample.json`
   
 * [1_4_r_DATASET_CLEANING.Rmd](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)
