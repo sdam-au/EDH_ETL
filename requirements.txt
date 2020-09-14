@@ -1,0 +1,8 @@
+numpy
+pandas
+
+beautifulsoup4 # parsing xml files
+
+matplotlib # plotting
+
+sddk # sciencedata.dk
