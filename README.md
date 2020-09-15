@@ -3,6 +3,9 @@
 
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png "Creative Commons License CC BY-NC-SA 4.0")](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Project_status](https://img.shields.io/badge/status-in__progress-brightgreen "Project status logo")
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sdam-au/EDH_ETL/master)
+
 ---
 
 ## Purpose
