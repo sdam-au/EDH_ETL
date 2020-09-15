@@ -1,8 +1,14 @@
+# analysis
 numpy
 pandas
 
 beautifulsoup4 # parsing xml files
 
-matplotlib # plotting
+# plotting
+matplotlib
+seaborn
+
+# spatial
+geopandas
 
 sddk # sciencedata.dk
