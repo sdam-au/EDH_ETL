@@ -51,6 +51,9 @@ To enrich the JSON with geodata available via EDH, we have developed the followi
 Script (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)) cleans the epigraphic text to produce several versions of text of all inscriptions (ready for further text mining, quantitative analysis, NLP analysis etc). Details on the cleaning process and the decision behind individual steps of the model can be found in the repository [epigraphic_cleaning](https://github.com/sdam-au/epigraphic_cleaning). 
 
 
+* [1_0_py_EXTRACTING-GEOGRAPHIES.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_0_py_EXTRACTING-GEOGRAPHIES.ipynb))
+  * input: file "edhGeographicData.json ", containting all EDH geographies, loaded from [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
+  * output: `EDH_geo_dict_[timestamp].json`
 * [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb))
   * input: requests to [https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?](https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?)
   * output: `EDH_onebyone[timestamp].json`
