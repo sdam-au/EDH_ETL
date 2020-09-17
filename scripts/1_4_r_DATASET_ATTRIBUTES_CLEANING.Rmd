@@ -1,0 +1,554 @@
+---
+title: "EDH dataset cleaning and streamlining"
+author: "Petra Hermankova"
+date: "17/09/2020"
+output:
+  html_document:
+    theme: cerulean
+    toc: yes
+    toc_depth: 3
+---
+
+```{r setup, echo=TRUE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error=TRUE)
+devtools::install_github("mplex/cedhar", subdir="pkg/sdam")
+#install.packages("rjson")
+#install.packages("tidyverse")
+#install.packages("getPass")
+#install.packages("formatR")
+
+library(tidyverse)
+library(sdam)
+library(jsonlite)
+library(getPass)
+library(formatR)
+library(ggpubr)
+```
+
+### Loading data
+
+1. Input your sciencedata.dk username - type directly into the RStudio console
+```{r, echo = FALSE }
+user <- readline("your sciencedata username: ")
+```
+
+2. Make the request (you will be asked for password in a new pop-up window)
+
+```{r, echo = FALSE }
+resp = request("EDH_merged_2020-09-17.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+```
+
+
+3. Make a list from the request and display the first six records (head)
+```{r}
+list_json <- jsonlite::fromJSON(resp)
+EDH_tibble = as_tibble(list_json)
+#View(EDH_tibble)
+```
+
+# Showing all attribute names before we start the cleaning process
+```{r}
+names(EDH_tibble)
+```
+
+# Upon inspection, we have found that there is no cleaning needed for:
+`responsible_individual, letter_size, not_after, literature, work_status, people, transcription, uri, last_update, language, id, edh_geography_uri, commentary, trismegistos_uri,  not_before, year_of_find, external_image_uris, religion, fotos, geography, social_economic_legal_history, military, coordinates, idno_tm, placenames_refs, origdate_attrs, layout_execution, support_objecttype, support_material, support_decoration, support_decoration_text, keywords_term`
+
+The attributes containing text of an inscription will be cleaned in a separate script:
+`diplomatic_text, transcription,text_edition`
+
+## Clean the workspace to save RAM
+```{r}
+remove(list_json)
+```
+
+# Cleaning `type_of_inscription` attribute
+
+## 1. Checking for consistency of the EAGLE LOD data (keywors_term) and the free-text typology (type_of_inscription).
+```{r}
+insc_typology <- unnest(as.data.frame(cbind(type_of_inscription=EDH_tibble$type_of_inscription, keywords_term=EDH_tibble$keywords_term, keywords_term_text = EDH_tibble$keywords_term_text)))
+
+insc_typology_api<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(type_of_inscription, sort = TRUE)
+
+insc_typology_xml<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(keywords_term_text, sort = TRUE)
+```
+## 1.1. Plotting the results
+```{r, fig.height=8, fig.width=15}
+type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
+type_xml<- ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n))
+
+
+type_insc_compare <- ggarrange(type_api, type_xml,
+                    labels = c("API data", "XML data"),
+                    ncol = 2, nrow = 1)
+type_insc_compare
+```
+
+
+## 2. Creating new column `type_of_inscription` stripped of all question marks
+
+```{r}
+EDH_clean <- EDH_tibble %>%
+  mutate(type_of_inscription_clean = str_replace(EDH_tibble$type_of_inscription, pattern="\\?", replacement = ""))
+```
+### 2.1 Plotting the cleaned results
+```{r, fig.height=100%, fig.width=7}
+
+type_api_clean <-as.data.frame(table(EDH_clean$type_of_inscription_clean))
+
+type_api_cleaned<- ggplot(type_api_clean, aes(y=Var1, x=Freq)) + geom_col(aes(fill=Freq)) + labs(y= "type_of_inscription_clean", x="n")
+type_api_cleaned
+```
+
+## 3. Creating new column with `type_of_inscription_certainty` to record the uncertainty from `type_of_inscription` column
+
+```{r}
+EDH_clean$type_of_inscription_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_inscription, ignore.case = T), "Uncertain", "Certain")
+```
+
+## 4. Checking the result with random inscription
+```{r}
+number <- 20
+EDH_clean$type_of_inscription[number]
+EDH_clean$type_of_inscription_clean[number]
+EDH_clean$type_of_inscription_certainty[number]
+```
+
+
+## 4. Checking there are no type of inscription types with questionmark
+```{r}
+EDH_clean$type_of_inscription_clean %>%
+  unique() %>%
+  sort(decreasing = FALSE)
+`````
+
+# Cleaning `height`, `width` and `depth` attributes
+
+## !. Inspecting the quality of data entry
+
+```{r}
+head(unlist(EDH_tibble$height))
+head(unlist(EDH_tibble$width))
+head(unlist(EDH_tibble$depth))
+```
+
+
+## 2. Cleaning the brackets around the values
+```{r}
+EDH_clean <- EDH_clean %>%
+  mutate(height_cm = str_replace_all(EDH_clean$height, pattern = "[()]", "")) %>%
+  mutate(width_cm = str_replace_all(EDH_clean$width, pattern = "[()]", "")) %>%
+  mutate(depth_cm = str_replace_all(EDH_clean$depth, pattern = "[()]", ""))
+```
+## 3. Cleaning the text and converting as numeric
+```{r}
+EDH_clean$height_cm <- as.numeric(str_replace(EDH_clean$height_cm, pattern = " cm", ""))
+EDH_clean$width_cm <- as.numeric(str_replace(EDH_clean$width_cm, pattern = " cm", ""))
+EDH_clean$depth_cm <- as.numeric(str_replace(EDH_clean$depth_cm, pattern = " cm", ""))
+```
+## 4. Testing the cleaning and conversion to numbers
+```{r}
+dim <- c(EDH_clean$height, EDH_clean$width, EDH_clean$depth)
+dims <- c(EDH_clean$height_cm, EDH_clean$width_cm, EDH_clean$depth_cm)
+interval <- c(10000:10004)
+
+# automated checks
+dim[interval]
+dims[interval]
+
+# random testing if we can perform numeric operations
+dims[256]+dims[8989]
+```
+
+# Cleaning `material` attribute
+
+## 1. Checking for consistency of the EAGLE LOD data (support_material) and the free-text typology (material).
+```{r}
+material_typology <- unnest(as.data.frame(cbind(material=EDH_tibble$material, support_material=EDH_tibble$support_material, support_material_text = EDH_tibble$support_material_text)))
+
+material_typology_api<- material_typology %>% select(material, support_material_text) %>% count(material, sort = TRUE)
+material_typology_api
+
+material_typology_xml<- material_typology %>% select(material, support_material_text) %>% count(support_material_text, sort = TRUE)
+material_typology_xml
+
+# compare how consistent are the LOD inscription types assigned to an inscription (#LOD 138 == Ignoratur/Unknown, 60 == Limestone, 75 == Sandstone, 48 == Marble)
+material_typology %>% count(support_material, sort=TRUE)
+
+# Explore what different free-text descriptions are available for LOD 48 == Marble
+material_typology %>% filter(support_material == "http://www.eagle-network.eu/voc/material/lod/48") %>% unique()
+
+```
+
+## 2. Exploring the contents of the `material`column
+
+```{r}
+unique(unlist(EDH_clean$material))
+```
+
+## 3. Creating new column `material_clean` with main categories of the material based on Regular Expressions
+```{r}
+EDH_clean$material_clean <- ifelse(grepl("[Mm]ar[mor|ble]", EDH_clean$material, ignore.case = T), "Marble",
+ifelse(grepl("[Ll]imestone|[Kk]alkstein|[Kk]alsktein|[Kk]alksstein", EDH_clean$material, ignore.case = T), "Limestone",
+ifelse(grepl("[Aa]ndesit", EDH_clean$material, ignore.case = T), "Andesit",
+ifelse(grepl("[Bb]asalt", EDH_clean$material, ignore.case = T), "Basalt",
+ifelse(grepl("[Bb]reccia", EDH_clean$material, ignore.case = T), "Breccia", 
+ifelse(grepl("[Dd]olomit", EDH_clean$material, ignore.case = T), "Dolomit", 
+ifelse(grepl("[Gg]agat|[Jj]et", EDH_clean$material, ignore.case = T), "Jet",
+ifelse(grepl("[Gg]neis", EDH_clean$material, ignore.case = T), "Gneiss",
+ifelse(grepl("[Gg]ranit", EDH_clean$material, ignore.case = T), "Granit",
+ifelse(grepl("[Hh][e|Ã¤|ä]matit", EDH_clean$material, ignore.case = T), "Hematit",   
+ifelse(grepl("[Pp]orphyr", EDH_clean$material, ignore.case = T), "Porphyr",
+ifelse(grepl("[Pp]eperin", EDH_clean$material, ignore.case = T), "Peperin",
+ifelse(grepl("[Qq]uartz", EDH_clean$material, ignore.case = T), "Quartz",
+ifelse(grepl("[Ss]andst[one|ein]", EDH_clean$material, ignore.case = T), "Sandstone",
+ifelse(grepl("[Ss]chiefer|[Ss]late", EDH_clean$material, ignore.case = T), "Slate",       
+ifelse(grepl("[Ss]teatit", EDH_clean$material, ignore.case = T), "Steatit",
+ifelse(grepl("[Tt]rachyte", EDH_clean$material, ignore.case = T), "Trachyte",
+ifelse(grepl("[Tt]ravertin", EDH_clean$material, ignore.case = T), "Travertine",
+ifelse(grepl("[Tt]uff", EDH_clean$material, ignore.case = T), "Tuff",
+ifelse(grepl("[Gg]old|[Bb]ronz|[Ss]il[vb]|[Bb]lei|[Ll]ead|[Ii]ron|[Ee]isen|[Bb]rass|[Mm]essing|[Zz]inn|[Tt]in|[Kk]upfer|[Mm]etal|[Bb]roze", EDH_clean$material, ignore.case = T), "Metal",
+ifelse(grepl("[Kk]nochen|[Bb]one", EDH_clean$material, ignore.case = T), "Bone",
+ifelse(grepl("[Hh]olz|[Ww]ood", EDH_clean$material, ignore.case = T), "Wood",
+ifelse(grepl("[Gg]las", EDH_clean$material, ignore.case = T), "Glass",
+ifelse(grepl("[Tt]on|[Cc]lay|[Pp]ottery|[Ll]ehm", EDH_clean$material, ignore.case = T), "Clay",
+ifelse(grepl("[Rr]ock|[Gg]estein", EDH_clean$material, ignore.case = T), "Rock",
+ifelse(grepl("[Aa]labaster", EDH_clean$material, ignore.case = T), "Alabaster",
+ifelse(grepl("[Ee]lfenbein|[Ii]vory", EDH_clean$material, ignore.case = T), "Ivory",
+ifelse(grepl("[Ll]e[ath|d]er", EDH_clean$material, ignore.case = T), "Leather", 
+ifelse(grepl("[Bb]ernstein|[Aa]mber", EDH_clean$material, ignore.case = T), "Amber",     
+ifelse(grepl("[Pp]utz|[Pp]laster", EDH_clean$material, ignore.case = T), "Plaster", 
+ifelse(grepl("[Ll]ava", EDH_clean$material, ignore.case = T), "Lava",       
+ifelse(grepl("[Kk]reide|[Cc]halk", EDH_clean$material, ignore.case = T), "Chalk", 
+ifelse(grepl("NULL", EDH_clean$material, ignore.case = T), "NA",
+                                          "Other")
+                                   ))))))))))))))))))))))))))))))))
+```
+
+## 4. Comparing the `material` with `material_clean` column
+```{r}
+number <- c(120:125)
+EDH_clean$material[number]
+EDH_clean$material_clean[number]
+```
+
+## 5. Checking for unique values
+```{r}
+EDH_clean$material_clean %>%
+  unique() %>%
+  sort(decreasing = FALSE)
+```
+
+## 6. Checking what material are contained in the Other category 
+```{r}
+EDH_clean %>% 
+  select(material, material_clean) %>% 
+  filter(material_clean == "Other") %>% 
+  unlist()
+```
+
+## 7. Comparing the `material_clean` == "Marble" with the XML derived data in `support_material_text` and checking the consistency
+```{r}
+EDH_clean %>% 
+  select(material, material_clean, support_material_text) %>% 
+  filter(material_clean == "Marble") %>% 
+  unnest() %>% 
+  count(support_material_text, sort = TRUE)
+```
+
+# Cleaning `type_of_monument` attribute
+
+## 1. Checking for consistency of the EAGLE LOD data (objecttype) and the free-text typology (type_of_monument)
+```{r}
+object_typology <- unnest(as.data.frame(cbind(type_of_monument=EDH_tibble$type_of_monument, support_objecttype=EDH_tibble$support_objecttype, support_objecttype_text = EDH_tibble$support_objecttype_text)))
+
+# checking for typological consistencies between Tafel=tabula
+object_typology %>% filter(support_objecttype_text == "Tafel") %>% count(type_of_monument)
+object_typology %>% filter(type_of_monument == "tabula") %>% count(support_objecttype_text)
+
+# compare how consistent are the LOD inscription types assigned to an inscription (#LOD 2 == Ignoratur/Unknown, 257 == Tafel/Slab, 29 == Small altar, 250 == Stele)
+object_typology %>% count(support_objecttype, sort=TRUE)
+
+# Explore what different free-text descriptions are available for LOD 2 == Ignoratur
+object_typology %>% filter(support_objecttype == "http://www.eagle-network.eu/voc/objtyp/lod/2") %>% unique()
+```
+
+## 2. Creating new column `type_of_monument_clean` stripped of all ?
+```{r}
+EDH_clean <- EDH_clean %>%
+  mutate(type_of_monument_clean = str_replace(EDH_clean$type_of_monument, pattern="\\?", replacement = ""))
+```
+
+## 3. Creating new column with `type_of_monument_certainty` to record the uncertainty from `province_label` column
+```{r}
+EDH_clean$type_of_monument_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_monument, ignore.case = T), "Uncertain", "Certain")
+```
+
+## 4. Checking the result
+```{r}
+number <- 1334
+EDH_clean$type_of_monument[number]
+EDH_clean$type_of_monument_clean[number]
+EDH_clean$type_of_monument_certainty[number]
+```
+
+```{r}
+EDH_clean$type_of_monument_clean %>%
+  unique() %>%
+  sort(decreasing = FALSE)
+```
+
+# Cleaning `province_label` attribute
+
+## 1. Checking the quality of data entry
+```{r}
+unique(unlist(EDH_clean$province_label))
+```
+
+
+## 2. Creating new column `province_label_clean` stripped of all questionmarks
+```{r}
+EDH_clean <- EDH_clean %>%
+  mutate(province_label_clean = str_replace(EDH_tibble$province_label, pattern="\\?", replacement = ""))
+```
+
+## 3. Creating new column with `province_label_certainty` to record the uncertainty from `province_label` column
+```{r}
+EDH_clean$province_label_certainty <- ifelse(grepl("\\?", EDH_clean$province_label, ignore.case = T), "Uncertain", "Certain")
+```
+## 4. Checking the result
+```{r}
+number <- 856
+EDH_clean$province_label[number]
+EDH_clean$province_label_clean[number]
+EDH_clean$province_label_certainty[number]
+```
+
+## 5. Checking there are no provinces with question mark
+```{r}
+EDH_clean$province_label_clean %>%
+  unique() %>%
+  sort(decreasing = FALSE)
+```
+
+# Cleaning `country` attribute
+
+## 1. Checking the quality of data entry
+```{r}
+unique(unlist(EDH_clean$country))
+```
+
+## 2. Creating new column `country_clean` stripped of all questionmarks
+```{r}
+EDH_clean <- EDH_clean %>%
+  mutate(country_clean = str_replace(EDH_tibble$country, pattern="\\?", replacement = ""))
+```
+## 3. Creating new column with `country_certainty` to record the uncertainty from `country` column
+```{r}
+EDH_clean$country_certainty <- ifelse(grepl("\\?", EDH_clean$country, ignore.case = T), "Uncertain", "Certain")
+```
+## 4. Checking the result
+```{r}
+number <- 1257
+EDH_clean$country[number]
+EDH_clean$country_clean[number]
+EDH_clean$country_certainty[number]
+```
+
+## 5. Checking there are no countries with questionmark
+```{r}
+EDH_clean$country_clean %>%
+  unique() %>%
+  sort(decreasing = FALSE)
+```
+
+# Cleaning `findspot_ancient` attribute
+
+## 1. Checking the quality of data entry on the first 100 entries
+```{r}
+unique(unlist(EDH_clean$findspot_ancient))[1:100]
+```
+
+
+
+
+## 2. Cleaning `findspot_ancient` to a new column `findspot_ancient_clean`
+```{r}
+EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient, pattern="[,. ] bei| aus", replacement = "")
+EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern="\\?", replacement = "")
+EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern=", inter|, zwischen", replacement = "")
+EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern="(^[\\(])(.+)([\\)]$)", replacement = "\\2")
+EDH_clean$findspot_ancient_clean <-str_replace(EDH_clean$findspot_ancient_clean, pattern = ",$", replacement = "")
+```
+
+# 3. Creating an index of localization certainty `findspot_ancient_certainty`
+```{r}
+EDH_clean$findspot_ancient_certainty <- ifelse(grepl(" bei| aus]", EDH_clean$findspot_ancient, ignore.case = T), "Estimated",
+ifelse(grepl("inter|zwischen", EDH_clean$findspot_ancient, ignore.case = T), "In between",
+ifelse(grepl("\\?", EDH_clean$findspot_ancient, ignore.case = T), "Uncertain",
+ifelse(grepl("^\\(", EDH_clean$findspot_ancient, ignore.case = T), "Uncertain Name",
+ifelse(grepl("NULL", EDH_clean$findspot_ancient, ignore.case = T), "NULL",
+       "Certain" )))))
+```
+
+## 4. Checking the results
+```{r}
+interval <- c(10400:10410)
+EDH_clean$findspot_ancient[interval]
+EDH_clean$findspot_ancient_clean[interval]
+EDH_clean$findspot_ancient_certainty[interval]
+```
+
+### 4.1. Checking the success rate of cleaning `findspot_ancient`
+```{r}
+cleaned_findspot <- unique(EDH_clean$findspot_ancient_clean) %>%
+  length()
+original_findspot <- unique(EDH_clean$findspot_ancient) %>%
+  length()
+cleaning_rate <- 100 - (cleaned_findspot /(original_findspot/100))
+cleaning_rate
+```
+## 5. Listing the unique values from the first 100 inscriptions to check the output quality 
+```{r}
+EDH_clean$findspot_ancient_clean[1:100] %>%
+  unique() %>%
+  sort(decreasing = FALSE) 
+```
+
+
+# Cleaning `modern_region` attribute
+
+## 1. Checking the quality of data entry
+
+```{r}
+unique(unlist(EDH_clean$modern_region))[1:100]
+```
+## 2. Creating new column `modern_region_clean` stripped of all questionmarks
+```{r}
+EDH_clean <- EDH_clean %>%
+  mutate(modern_region_clean = str_replace(EDH_tibble$modern_region, pattern="\\?", replacement = ""))
+```
+## 3. Creating new column with `modern_region_certainty` to record the uncertainty from `country` column
+```{r}
+EDH_clean$modern_region_certainty <- ifelse(grepl("\\?", EDH_clean$modern_region, ignore.case = T), "Uncertain", "Certain")
+```
+## 4. Checking the result
+```{r}
+number <- 12048
+EDH_clean$modern_region[number]
+EDH_clean$modern_region_clean[number]
+EDH_clean$modern_region_certainty[number]
+```
+
+##NOTE: There is still a lof of encoding problems possibly coming from the original source
+```{r}
+sort(unique(unlist(EDH_clean$modern_region_clean)))[1:100]
+```
+
+# Cleaning `findspot_modern` attribute
+
+## 1. Checking the quality of data entry
+
+```{r}
+unique(unlist(EDH_clean$findspot_modern))[1:100]
+```
+## 2. Creating new column `finsdpot_modern_clean` stripped of all questionmarks
+```{r}
+EDH_clean <- EDH_clean %>%
+  mutate(findspot_modern_clean = str_replace(EDH_tibble$findspot_modern, pattern="\\?", replacement = ""))
+```
+## 3. Creating new column with `finsdpot_modern_certainty` to record the uncertainty from `country` column
+```{r}
+EDH_clean$findspot_modern_certainty <- ifelse(grepl("\\?", EDH_clean$findspot_modern, ignore.case = T), "Uncertain", "Certain")
+```
+## 4. Checking the result
+```{r}
+number <- 12048
+EDH_clean$findspot_modern[number]
+EDH_clean$findspot_modern_clean[number]
+EDH_clean$findspot_modern_certainty[number]
+```
+
+##NOTE: There is still a lof of encoding problems possibly coming from the original source
+```{r}
+sort(unique(unlist(EDH_clean$findspot_modern_clean)))[1:100]
+```
+
+# Cleaning `findspot` attribute
+
+## 1. Checking the quality of data entry
+
+```{r}
+unique(unlist(EDH_clean$findspot))[1:100]
+```
+## 2. Creating new column `finsdpot_clean` stripped of all questionmarks
+```{r}
+EDH_clean <- EDH_clean %>%
+  mutate(findspot_clean = str_replace(EDH_tibble$findspot, pattern="\\?", replacement = ""))
+```
+## 3. Creating new column with `finsdpot_certainty` to record the uncertainty from `country` column
+```{r}
+EDH_clean$findspot_certainty <- ifelse(grepl("\\?", EDH_clean$findspot, ignore.case = T), "Uncertain", 
+                                       ifelse(grepl("NULL", EDH_clean$findspot, ignore.case = T), "NA", 
+                                       "Certain"))
+```
+
+## 4. Checking the result
+```{r}
+number <- 12048
+EDH_clean$findspot[number]
+EDH_clean$findspot_clean[number]
+EDH_clean$findspot_certainty[number]
+```
+
+##NOTE: There is still a lof of encoding problems possibly coming from the original source
+```{r}
+sort(unique(unlist(EDH_clean$findspot_clean)))[1:20]
+```
+
+## Cleaning the `origdate_text` attribute
+
+## 1. Checking the quality of data entry
+
+```{r}
+head(EDH_clean$origdate_text)
+```
+
+## 2. Cleaning multi-white spaces at the end of the string and checking the results
+```{r}
+EDH_clean<- EDH_clean %>% 
+  mutate(origdate_text_clean = gsub(pattern="\\s+$", replacement="", x=origdate_text))
+head(EDH_clean$origdate_text_clean)
+```
+
+
+
+## 1. Checking the quality of data entry `layout_execution` attribute (LOD 21 == Ignoratur, 88 = Graffito, 77 =  Stamped/Gestempelt/Ex forma)
+```{r}
+unique(unlist(EDH_tibble$layout_execution_text))
+
+```
+
+
+## 1. Checking the quality of data entry `support_decoration` attribute (LOD 1000 == not present, 2000 == yes)
+```{r}
+decoration<- as.data.frame(table(unlist(EDH_clean$support_decoration)))
+decoration
+```
+
+
+# Saving to Sciencedata
+```{r}
+EDH_clean_tibble <- as_tibble(EDH_clean)
+EDH_cleaned_json <- jsonlite::toJSON(EDH_clean)
+
+write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-17.json")
+user <- readline("your sciencedata username: ")
+request("EDH_attrs_cleaned_2020-09-17.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
+        method="PUT", cred=c(user, getPass("your sciencedata password: ")))
+```
+
+# Remove local copy of the json
+```{r}
+file.remove("./EDH_attrs_cleaned_2020-09-17.json")
+```
