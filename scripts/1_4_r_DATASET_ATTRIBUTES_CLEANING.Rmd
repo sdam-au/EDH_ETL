@@ -55,7 +55,7 @@ names(EDH_tibble)
 `responsible_individual, letter_size, not_after, literature, work_status, people, transcription, uri, last_update, language, id, edh_geography_uri, commentary, trismegistos_uri,  not_before, year_of_find, external_image_uris, religion, fotos, geography, social_economic_legal_history, military, coordinates, idno_tm, placenames_refs, origdate_attrs, layout_execution, support_objecttype, support_material, support_decoration, support_decoration_text, keywords_term`
 
 The attributes containing text of an inscription will be cleaned in a separate script:
-`diplomatic_text, transcription,text_edition`
+`diplomatic_text, transcription, text_edition`
 
 ## Clean the workspace to save RAM
 ```{r}
