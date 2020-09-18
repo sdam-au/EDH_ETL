@@ -9,9 +9,9 @@
 ---
 
 ## Purpose
-This repository contains scripts for accesing and analysing epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
+This repository contains scripts for accesing, extracting and transforming epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
-The scripts  access the dataset via API, tranform it into a JSON, merge and enrich these data with geospatial data, and save the outcome to SDAM project directory in Sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for this purpose, see https://github.com/sdam-au/sddk. If you want to save the dataset in your preferred location, the scripts need to be modified.
+The scripts access the main dataset via a web API, tranform it into one dataframe object, merge and enrich these data with geospatial data and additional data from xml files, and save the outcome to SDAM project directory in Sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for accessing sciencedata.dk from Python (see https://github.com/sdam-au/sddk). If you want to save the dataset in a different location, the scripts need to be modified.
 
 ## Authors
 * Petra Heřmánková [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6349-0540) SDAM project, petra@ancientsocialcomplexity.org
@@ -22,7 +22,7 @@ The scripts  access the dataset via API, tranform it into a JSON, merge and enri
 
 
 ## Data
-**The final dataset** produced by the scripts in this repo is called `EDH_cleaned[timestamp].json` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own. Here is a path to the file on sciencedata.dk: 
+**The final dataset** produced by the scripts in this repo is called `EDH_cleaned_[timestamp].json` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own. Here is a path to the file on sciencedata.dk: 
 
 `SDAM_root/SDAM_data/EDH/EDH_cleaned.json`
 
