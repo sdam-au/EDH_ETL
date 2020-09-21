@@ -8,6 +8,12 @@ beautifulsoup4 # parsing xml files
 matplotlib
 seaborn
 
+# google
+google-auth
+gspread
+gspread_dataframe
+
+
 # spatial
 geopandas
 
