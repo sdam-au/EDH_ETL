@@ -1,7 +1,7 @@
 ---
 title: "EDH dataset cleaning and streamlining"
 author: "Petra Hermankova"
-date: "17/09/2020"
+date: "22/09/2020"
 output:
   html_document:
     theme: cerulean
@@ -11,7 +11,7 @@ output:
 
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-devtools::install_github("mplex/cedhar", subdir="pkg/sdam")
+devtools::install_github("sdam-au/sdam")
 #install.packages("rjson")
 #install.packages("tidyverse")
 #install.packages("getPass")
@@ -35,7 +35,7 @@ user <- readline("your sciencedata username: ")
 2. Make the request (you will be asked for password in a new pop-up window)
 
 ```{r, echo = FALSE }
-resp = request("EDH_merged_2020-09-17.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 
@@ -52,7 +52,7 @@ names(EDH_tibble)
 ```
 
 # Upon inspection, we have found that there is no cleaning needed for:
-`responsible_individual, letter_size, not_after, literature, work_status, people, transcription, uri, last_update, language, id, edh_geography_uri, commentary, trismegistos_uri,  not_before, year_of_find, external_image_uris, religion, fotos, geography, social_economic_legal_history, military, coordinates, idno_tm, placenames_refs, origdate_attrs, layout_execution, support_objecttype, support_material, support_decoration, support_decoration_text, keywords_term`
+`responsible_individual, letter_size, not_after, literature, work_status, people, transcription, uri, last_update, language, id, edh_geography_uri, commentary, trismegistos_uri,  not_before, year_of_find, external_image_uris, religion, fotos, geography, social_economic_legal_history, military, coordinates, idno_tm, placenames_refs, layout_execution, support_objecttype, support_material, support_decoration, keywords_term`
 
 The attributes containing text of an inscription will be cleaned in a separate script:
 `diplomatic_text, transcription, text_edition`
@@ -72,6 +72,7 @@ insc_typology_api<- insc_typology %>% select(type_of_inscription, keywords_term_
 
 insc_typology_xml<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(keywords_term_text, sort = TRUE)
 ```
+
 ## 1.1. Plotting the results
 ```{r, fig.height=8, fig.width=15}
 type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
@@ -103,12 +104,13 @@ type_api_cleaned
 ## 3. Creating new column with `type_of_inscription_certainty` to record the uncertainty from `type_of_inscription` column
 
 ```{r}
-EDH_clean$type_of_inscription_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_inscription, ignore.case = T), "Uncertain", "Certain")
+EDH_clean$type_of_inscription_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_inscription, ignore.case = T), "Uncertain", 
+                                                  ifelse(grepl("NULL", EDH_clean$type_of_inscription, ignore.case = T), "NULL", "Certain"))
 ```
 
 ## 4. Checking the result with random inscription
 ```{r}
-number <- 20
+number <- 50
 EDH_clean$type_of_inscription[number]
 EDH_clean$type_of_inscription_clean[number]
 EDH_clean$type_of_inscription_certainty[number]
@@ -176,14 +178,13 @@ material_typology_xml
 material_typology %>% count(support_material, sort=TRUE)
 
 # Explore what different free-text descriptions are available for LOD 48 == Marble
-material_typology %>% filter(support_material == "http://www.eagle-network.eu/voc/material/lod/48") %>% unique()
-
+material_typology %>% filter(support_material == "48") %>% unique()
 ```
 
 ## 2. Exploring the contents of the `material`column
 
 ```{r}
-unique(unlist(EDH_clean$material))
+unique(unlist(EDH_clean$material))[1:100]
 ```
 
 ## 3. Creating new column `material_clean` with main categories of the material based on Regular Expressions
@@ -220,7 +221,7 @@ ifelse(grepl("[Bb]ernstein|[Aa]mber", EDH_clean$material, ignore.case = T), "Amb
 ifelse(grepl("[Pp]utz|[Pp]laster", EDH_clean$material, ignore.case = T), "Plaster", 
 ifelse(grepl("[Ll]ava", EDH_clean$material, ignore.case = T), "Lava",       
 ifelse(grepl("[Kk]reide|[Cc]halk", EDH_clean$material, ignore.case = T), "Chalk", 
-ifelse(grepl("NULL", EDH_clean$material, ignore.case = T), "NA",
+ifelse(grepl("NULL", EDH_clean$material, ignore.case = T), "NULL",
                                           "Other")
                                    ))))))))))))))))))))))))))))))))
 ```
@@ -270,7 +271,7 @@ object_typology %>% filter(type_of_monument == "tabula") %>% count(support_objec
 object_typology %>% count(support_objecttype, sort=TRUE)
 
 # Explore what different free-text descriptions are available for LOD 2 == Ignoratur
-object_typology %>% filter(support_objecttype == "http://www.eagle-network.eu/voc/objtyp/lod/2") %>% unique()
+object_typology %>% filter(support_objecttype == "2") %>% unique()
 ```
 
 ## 2. Creating new column `type_of_monument_clean` stripped of all ?
@@ -281,12 +282,13 @@ EDH_clean <- EDH_clean %>%
 
 ## 3. Creating new column with `type_of_monument_certainty` to record the uncertainty from `province_label` column
 ```{r}
-EDH_clean$type_of_monument_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_monument, ignore.case = T), "Uncertain", "Certain")
+EDH_clean$type_of_monument_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_monument, ignore.case = T), "Uncertain", 
+                                               ifelse(grepl("NULL", EDH_clean$type_of_monument, ignore.case = T), "NULL", "Certain"))
 ```
 
 ## 4. Checking the result
 ```{r}
-number <- 1334
+number <- 13345
 EDH_clean$type_of_monument[number]
 EDH_clean$type_of_monument_clean[number]
 EDH_clean$type_of_monument_certainty[number]
@@ -314,7 +316,8 @@ EDH_clean <- EDH_clean %>%
 
 ## 3. Creating new column with `province_label_certainty` to record the uncertainty from `province_label` column
 ```{r}
-EDH_clean$province_label_certainty <- ifelse(grepl("\\?", EDH_clean$province_label, ignore.case = T), "Uncertain", "Certain")
+EDH_clean$province_label_certainty <- ifelse(grepl("\\?", EDH_clean$province_label, ignore.case = T), "Uncertain", 
+                                             ifelse(grepl("NULL", EDH_clean$province_label, ignore.case = T), "NULL", "Certain"))
 ```
 ## 4. Checking the result
 ```{r}
@@ -345,7 +348,8 @@ EDH_clean <- EDH_clean %>%
 ```
 ## 3. Creating new column with `country_certainty` to record the uncertainty from `country` column
 ```{r}
-EDH_clean$country_certainty <- ifelse(grepl("\\?", EDH_clean$country, ignore.case = T), "Uncertain", "Certain")
+EDH_clean$country_certainty <- ifelse(grepl("\\?", EDH_clean$country, ignore.case = T), "Uncertain", 
+                                      ifelse(grepl("NULL", EDH_clean$country, ignore.case = T), "NULL", "Certain"))
 ```
 ## 4. Checking the result
 ```{r}
@@ -430,7 +434,8 @@ EDH_clean <- EDH_clean %>%
 ```
 ## 3. Creating new column with `modern_region_certainty` to record the uncertainty from `country` column
 ```{r}
-EDH_clean$modern_region_certainty <- ifelse(grepl("\\?", EDH_clean$modern_region, ignore.case = T), "Uncertain", "Certain")
+EDH_clean$modern_region_certainty <- ifelse(grepl("\\?", EDH_clean$modern_region, ignore.case = T), "Uncertain",
+                                            ifelse(grepl("NULL", EDH_clean$modern_region, ignore.case = T), "NULL", "Certain"))
 ```
 ## 4. Checking the result
 ```{r}
@@ -459,7 +464,8 @@ EDH_clean <- EDH_clean %>%
 ```
 ## 3. Creating new column with `finsdpot_modern_certainty` to record the uncertainty from `country` column
 ```{r}
-EDH_clean$findspot_modern_certainty <- ifelse(grepl("\\?", EDH_clean$findspot_modern, ignore.case = T), "Uncertain", "Certain")
+EDH_clean$findspot_modern_certainty <- ifelse(grepl("\\?", EDH_clean$findspot_modern, ignore.case = T), "Uncertain", 
+                                              ifelse(grepl("NULL", EDH_clean$findspot_modern, ignore.case = T), "NULL", "Certain"))
 ```
 ## 4. Checking the result
 ```{r}
@@ -489,7 +495,7 @@ EDH_clean <- EDH_clean %>%
 ## 3. Creating new column with `finsdpot_certainty` to record the uncertainty from `country` column
 ```{r}
 EDH_clean$findspot_certainty <- ifelse(grepl("\\?", EDH_clean$findspot, ignore.case = T), "Uncertain", 
-                                       ifelse(grepl("NULL", EDH_clean$findspot, ignore.case = T), "NA", 
+                                       ifelse(grepl("NULL", EDH_clean$findspot, ignore.case = T), "NULL", 
                                        "Certain"))
 ```
 
@@ -541,13 +547,13 @@ decoration
 EDH_clean_tibble <- as_tibble(EDH_clean)
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean)
 
-write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-17.json")
+write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-22.json")
 user <- readline("your sciencedata username: ")
-request("EDH_attrs_cleaned_2020-09-17.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
+request("EDH_attrs_cleaned_2020-09-22.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 # Remove local copy of the json
 ```{r}
-file.remove("./EDH_attrs_cleaned_2020-09-17.json")
+file.remove("./EDH_attrs_cleaned_2020-09-22.json")
 ```
