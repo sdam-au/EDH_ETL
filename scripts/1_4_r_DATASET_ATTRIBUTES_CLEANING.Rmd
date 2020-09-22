@@ -526,7 +526,6 @@ head(EDH_clean$origdate_text_clean)
 ## 1. Checking the quality of data entry `layout_execution` attribute (LOD 21 == Ignoratur, 88 = Graffito, 77 =  Stamped/Gestempelt/Ex forma)
 ```{r}
 unique(unlist(EDH_tibble$layout_execution_text))
-
 ```
 
 
