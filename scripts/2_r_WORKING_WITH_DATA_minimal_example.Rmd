@@ -1,0 +1,42 @@
+---
+title: "Working with EDH data"
+subtitle: "Minimal Example: how to load the dataset"
+author: "Petra Hermankova"
+date: "22/09/2020"
+output:
+  html_document:
+    theme: cerulean
+    toc: yes
+    toc_depth: 3
+---
+
+```{r setup, echo=TRUE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error=TRUE)
+devtools::install_github("sdam-au/sdam")
+
+library(tidyverse)
+library(sdam)
+library(jsonlite)
+library(getPass)
+```
+
+
+### Loading data
+1. Input your sciencedata.dk username - type directly into the RStudio console
+```{r, echo = FALSE }
+user <- readline("your sciencedata username: ")
+```
+
+2. Make the request (you will be asked for password in a new pop-up window)
+
+```{r, echo = FALSE }
+resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+```
+
+
+3. Make a list from the request and display the first six records (head)
+```{r}
+list_json <- jsonlite::fromJSON(resp)
+EDH_tibble = as_tibble(list_json)
+head(EDH_tibble)
+```
