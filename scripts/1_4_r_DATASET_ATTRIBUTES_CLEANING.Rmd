@@ -43,7 +43,7 @@ resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_
 ```{r}
 list_json <- jsonlite::fromJSON(resp)
 EDH_tibble = as_tibble(list_json)
-#View(EDH_tibble)
+head(EDH_tibble)
 ```
 
 # Showing all attribute names before we start the cleaning process
@@ -73,6 +73,7 @@ insc_typology_api<- insc_typology %>% select(type_of_inscription, keywords_term_
 insc_typology_xml<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(keywords_term_text, sort = TRUE)
 ```
 
+
 ## 1.1. Plotting the results
 ```{r, fig.height=8, fig.width=15}
 type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
@@ -96,7 +97,7 @@ EDH_clean <- EDH_tibble %>%
 ```{r, fig.height=100%, fig.width=7}
 
 type_api_clean <-as.data.frame(table(EDH_clean$type_of_inscription_clean))
-
+  
 type_api_cleaned<- ggplot(type_api_clean, aes(y=Var1, x=Freq)) + geom_col(aes(fill=Freq)) + labs(y= "type_of_inscription_clean", x="n")
 type_api_cleaned
 ```
@@ -122,11 +123,11 @@ EDH_clean$type_of_inscription_certainty[number]
 EDH_clean$type_of_inscription_clean %>%
   unique() %>%
   sort(decreasing = FALSE)
-`````
+```
 
-# Cleaning `height`, `width` and `depth` attributes
+# Cleaning `height` and `width` and `depth` attributes
 
-## !. Inspecting the quality of data entry
+## 1. Inspecting the quality of data entry
 
 ```{r}
 head(unlist(EDH_tibble$height))
@@ -469,7 +470,8 @@ EDH_clean$findspot_modern_certainty <- ifelse(grepl("\\?", EDH_clean$findspot_mo
 ```
 ## 4. Checking the result
 ```{r}
-number <- 12048
+number <- 12049
+
 EDH_clean$findspot_modern[number]
 EDH_clean$findspot_modern_clean[number]
 EDH_clean$findspot_modern_certainty[number]
@@ -529,7 +531,18 @@ head(EDH_clean$origdate_text_clean)
 
 
 
-## 1. Checking the quality of data entry `layout_execution` attribute (LOD 21 == Ignoratur, 88 = Graffito, 77 =  Stamped/Gestempelt/Ex forma)
+## 1. Checking the quality of data entry `layout_execution` attribute and the LOD
+```{r}
+
+execution_typology <-unnest(as.data.frame(cbind(layout_execution=EDH_tibble$layout_execution, layout_execution_text=EDH_tibble$layout_execution_text)))
+
+# compare how consistent are the LOD inscription types assigned to an inscription (#LOD 21 == Ignoratur, 88 = Graffito, 77 =  Stamped/Gestempelt/Ex forma)
+execution_typology %>% count(layout_execution, sort=TRUE)
+
+# Explore what different free-text descriptions are available for LOD 48 == Marble
+execution_typology %>% filter(layout_execution == "88") %>% unique()
+```
+## 2. Checking the quality of data entry `layout_execution_text` attribute 
 ```{r}
 unique(unlist(EDH_tibble$layout_execution_text))
 ```
