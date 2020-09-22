@@ -20,9 +20,17 @@ library(jsonlite)
 library(getPass)
 ```
 
+# Loading data as anonymous use (no credentials needed)
 
-### Loading data
+Please ignore and close the pop-up window asking for username and login. The data will then download itself without login credentials.
+```{r}
+resp = request("7e56da592b8a20b2ebbf68c72cc74e76", path="/public", method="GET")
+```
+
+# ALTERNATIVE: Loading data with Sciencedata.dk login credentials
+
 1. Input your sciencedata.dk username - type directly into the RStudio console
+
 ```{r, echo = FALSE }
 user <- readline("your sciencedata username: ")
 ```
@@ -34,9 +42,14 @@ resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_
 ```
 
 
-3. Make a list from the request and display the first six records (head)
+# Make a tibble from the request and display the first six records (head)
+
 ```{r}
 list_json <- jsonlite::fromJSON(resp)
 EDH_tibble = as_tibble(list_json)
 head(EDH_tibble)
 ```
+
+# Work with the data
+
+For examples of how to work with the dataset in R, see e.g. other EDH_ETL R scripts(https://github.com/sdam-au/EDH_ETL/tree/master/scripts) or EDH_exploration R scripts(https://github.com/sdam-au/EDH_exploration).
