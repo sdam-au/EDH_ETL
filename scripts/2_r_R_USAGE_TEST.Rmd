@@ -24,7 +24,7 @@ library(getPass)
 
 Please ignore and close the pop-up window asking for username and login. The data will then download itself without login credentials.
 ```{r}
-resp = request("7e56da592b8a20b2ebbf68c72cc74e76", path="/public", method="GET")
+resp = request("EDH_attrs_cleaned_2020-09-22.json", path="/public/b6b6afdb969d378b70929e86e58ad975", method="GET")
 ```
 
 # ALTERNATIVE: Loading data with Sciencedata.dk login credentials
@@ -38,7 +38,7 @@ user <- readline("your sciencedata username: ")
 2. Make the request (you will be asked for password in a new pop-up window)
 
 ```{r, echo = FALSE }
-resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+resp = request("EDH_attrs_cleaned_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 

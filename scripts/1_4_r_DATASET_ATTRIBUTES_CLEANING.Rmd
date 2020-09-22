@@ -562,7 +562,7 @@ EDH_cleaned_json <- jsonlite::toJSON(EDH_clean)
 
 write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-22.json")
 user <- readline("your sciencedata username: ")
-request("EDH_attrs_cleaned_2020-09-22.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/",
+request("EDH_attrs_cleaned_2020-09-22.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
