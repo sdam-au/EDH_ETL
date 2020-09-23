@@ -371,7 +371,7 @@ EDH_clean$country_clean %>%
 
 ## 1. Checking the quality of data entry on the first 100 entries
 ```{r}
-unique(unlist(EDH_clean$findspot_ancient))[1:100]
+unique(unlist(EDH_clean$findspot_ancient))
 ```
 
 
@@ -383,7 +383,7 @@ EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient, patt
 EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern="\\?", replacement = "")
 EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern=", inter|, zwischen", replacement = "")
 EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern="(^[\\(])(.+)([\\)]$)", replacement = "\\2")
-EDH_clean$findspot_ancient_clean <-str_replace(EDH_clean$findspot_ancient_clean, pattern = ",$", replacement = "")
+EDH_clean$findspot_ancient_clean <- str_replace(EDH_clean$findspot_ancient_clean, pattern = ",$", replacement = "")
 ```
 
 # 3. Creating an index of localization certainty `findspot_ancient_certainty`
@@ -408,17 +408,27 @@ EDH_clean$findspot_ancient_certainty[interval]
 ```{r}
 cleaned_findspot <- unique(EDH_clean$findspot_ancient_clean) %>%
   length()
+cleaned_findspot 
 original_findspot <- unique(EDH_clean$findspot_ancient) %>%
   length()
+original_findspot
 cleaning_rate <- 100 - (cleaned_findspot /(original_findspot/100))
 cleaning_rate
 ```
+### 4.2 Checking the ration of certainty categories
+```{r}
+findspot_certainty_overview<- EDH_clean %>% select(findspot_ancient_certainty, findspot_ancient_clean) %>% count(findspot_ancient_certainty) %>% 
+  mutate(Percentage = round(n/(nrow(EDH_clean)/100), digits = 2))
+findspot_certainty_overview
+```
+
 ## 5. Listing the unique values from the first 100 inscriptions to check the output quality 
 ```{r}
 EDH_clean$findspot_ancient_clean[1:100] %>%
   unique() %>%
   sort(decreasing = FALSE) 
 ```
+
 
 
 # Cleaning `modern_region` attribute
@@ -565,6 +575,7 @@ user <- readline("your sciencedata username: ")
 request("EDH_attrs_cleaned_2020-09-22.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
+
 
 # Remove local copy of the json
 ```{r}
