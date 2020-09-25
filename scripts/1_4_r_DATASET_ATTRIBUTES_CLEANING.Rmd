@@ -12,6 +12,7 @@ output:
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
 devtools::install_github("sdam-au/sdam")
+#install.packages("tidyjson")
 #install.packages("rjson")
 #install.packages("tidyverse")
 #install.packages("getPass")
@@ -23,6 +24,7 @@ library(jsonlite)
 library(getPass)
 library(formatR)
 library(ggpubr)
+
 ```
 
 ### Loading data
@@ -30,6 +32,7 @@ library(ggpubr)
 1. Input your sciencedata.dk username - type directly into the RStudio console
 ```{r, echo = FALSE }
 user <- readline("your sciencedata username: ")
+
 ```
 
 2. Make the request (you will be asked for password in a new pop-up window)
@@ -41,8 +44,11 @@ resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_
 
 3. Make a list from the request and display the first six records (head)
 ```{r}
-list_json <- jsonlite::fromJSON(resp)
+
+list_json <- jsonlite::fromJSON(resp) #, flatten=TRUE)
 EDH_tibble = as_tibble(list_json)
+
+
 head(EDH_tibble)
 ```
 
@@ -567,17 +573,18 @@ decoration
 
 # Saving to Sciencedata
 ```{r}
-EDH_clean_tibble <- as_tibble(EDH_clean)
-EDH_cleaned_json <- jsonlite::toJSON(EDH_clean)
 
-write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-22.json")
+EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox=TRUE)
+
+write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-25.json")
+
 user <- readline("your sciencedata username: ")
-request("EDH_attrs_cleaned_2020-09-22.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
+request("EDH_attrs_cleaned_2020-09-25.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 
 # Remove local copy of the json
 ```{r}
-file.remove("./EDH_attrs_cleaned_2020-09-22.json")
+file.remove("./EDH_attrs_cleaned_2020-09-25.json")
 ```
