@@ -12,11 +12,6 @@ output:
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
 devtools::install_github("sdam-au/sdam")
-#install.packages("tidyjson")
-#install.packages("rjson")
-#install.packages("tidyverse")
-#install.packages("getPass")
-#install.packages("formatR")
 
 library(tidyverse)
 library(sdam)
@@ -32,7 +27,6 @@ library(ggpubr)
 1. Input your sciencedata.dk username - type directly into the RStudio console
 ```{r, echo = FALSE }
 user <- readline("your sciencedata username: ")
-
 ```
 
 2. Make the request (you will be asked for password in a new pop-up window)
@@ -43,14 +37,15 @@ resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_
 
 
 3. Make a list from the request and display the first six records (head)
-```{r}
 
+```{r}
 list_json <- jsonlite::fromJSON(resp) #, flatten=TRUE)
 EDH_tibble = as_tibble(list_json)
 
 
 head(EDH_tibble)
 ```
+
 
 # Showing all attribute names before we start the cleaning process
 ```{r}
@@ -181,7 +176,7 @@ material_typology_api
 material_typology_xml<- material_typology %>% select(material, support_material_text) %>% count(support_material_text, sort = TRUE)
 material_typology_xml
 
-# compare how consistent are the LOD inscription types assigned to an inscription (#LOD 138 == Ignoratur/Unknown, 60 == Limestone, 75 == Sandstone, 48 == Marble)
+# Compare how consistent are the LOD inscription types assigned to an inscription (#LOD 138 == Ignoratur/Unknown, 60 == Limestone, 75 == Sandstone, 48 == Marble)
 material_typology %>% count(support_material, sort=TRUE)
 
 # Explore what different free-text descriptions are available for LOD 48 == Marble
@@ -377,7 +372,7 @@ EDH_clean$country_clean %>%
 
 ## 1. Checking the quality of data entry on the first 100 entries
 ```{r}
-unique(unlist(EDH_clean$findspot_ancient))
+unique(unlist(EDH_clean$findspot_ancient))[1:100]
 ```
 
 
@@ -576,15 +571,15 @@ decoration
 
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox=TRUE)
 
-write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-25.json")
+write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-28.json")
 
-user <- readline("your sciencedata username: ")
-request("EDH_attrs_cleaned_2020-09-25.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
+#user <- readline("your sciencedata username: ")
+request("EDH_attrs_cleaned_2020-09-28.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 
 # Remove local copy of the json
 ```{r}
-file.remove("./EDH_attrs_cleaned_2020-09-25.json")
+file.remove("./EDH_attrs_cleaned_2020-09-28.json")
 ```
