@@ -3,7 +3,6 @@
 
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png "Creative Commons License CC BY-NC-SA 4.0")](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Project_status](https://img.shields.io/badge/status-in__progress-brightgreen "Project status logo")
-
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sdam-au/EDH_ETL/master)
 
 ---
@@ -22,11 +21,11 @@ The scripts access the main dataset via a web API, tranform it into one datafram
 
 
 ## Data
-**The final dataset** produced by the scripts in this repo is called `EDH_cleaned_[timestamp].json` and is located in our project datastorage on `sciencedata.dk`. To access this file, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own. Here is a path to the file on sciencedata.dk: 
+**The final dataset** produced by the scripts in this repo is called `EDH_attrs_cleaned_[timestamp].json` and is located in our project datastorage on `sciencedata.dk` in the public folder. You can access the file without having to login into sciencedata.dk. Here is a path to the file on sciencedata.dk: 
 
-`SDAM_root/SDAM_data/EDH/EDH_cleaned.json`
+`SDAM_root/SDAM_data/EDH/public/EDH_attrs_cleaned[timestamp].json`
 
-Alternatively, you can also use `SDAM_root/SDAM_data/EDH/EDH_inscriptions_rich.json`. It is the same, just using a different encoding.
+To access the files created in previous steps of the ETL process, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own.
 
 **The original data** from the scripts come from two sources:
 
@@ -39,39 +38,64 @@ The scripts merge data from these sources into on pandas dataframe, which is the
 ## Scripts
 
 ### Data accessing scripts
-Primarily we use Python scripts (Jupyter notebooks) for accessing the API & extracting data from it, parse the XML files for additional metadata and combining these two reseources into one. Subsequently, we use both R and Python for further cleaning, transformming and analyzing the data. The scripts can be found in the folder ```scripts```.
+Primarily we use Python scripts (Jupyter notebooks) for accessing the API & extracting data from it, parse the XML files for additional metadata and combining these two reseources into one. Subsequently, we use both R and Python for further cleaning and transformming the data. The scripts can be found in the folder ```scripts``` and they are named according to the sequence they should run in.
 
-The data via the API are easily accessible and might be extracted by means of R and Python in a rather straigtforward way. To obtain the whole dataset of circa 80,000 inscriptions into a Python dataframe takes about 12 minutes (see the respective [script 1_1](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb)). We have decided to save the dataframe as a JSON file for interoperability reasons between Python and R.
+The data via the API are easily accessible and might be extracted by means of R and Python in a rather straigtforward way. 
+First we extract the geocordinates from the public API, using the [script 1_0](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_0_py_EXTRACTING-GEOGRAPHIES.ipynb). 
 
-However, the dataset from the API is a simplified one (when compared with the records online and in XML), primarily to be used for queries in the web interface.  For instance, the API data encode the whole information about dating by means of two variables: "not_before" and "not_before". This makes us curious about how the data translate dating information like "around the middle of the 4th century CE." etc. 
-Therefore, we decided to enrich the JSON created from the API files with data from the original XML files, which also including some additional variables (see [script 1_2](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)).
+As a next step we access the public API to access and download all the incriptions. To obtain the whole dataset of circa 81,000+ inscriptions into a Python dataframe takes about 12 minutes (see the respective [script 1_1](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb)). We have decided to save the dataframe as a JSON file for interoperability reasons between Python and R.
 
-To enrich the JSON with geodata available via EDH, we have developed the following script: [script 1_3](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
+However, the dataset from the API is a simplified one (when compared with the records online and in XML), primarily to be used for queries in the web interface.  For instance, the API data encode the whole information about dating by means of two variables: "not_before" and "not_before". This makes us curious about how the data translate dating information like "around the middle of the 4th century CE." etc. Therefore, we decided to enrich the JSON created from the API files with data from the original XML files, which also including some additional variables (see [script 1_2](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)).
 
-Script (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)) cleans the epigraphic text to produce several versions of text of all inscriptions (ready for further text mining, quantitative analysis, NLP analysis etc). Details on the cleaning process and the decision behind individual steps of the model can be found in the repository [epigraphic_cleaning](https://github.com/sdam-au/epigraphic_cleaning). 
+To enrich the JSON with geodata extracted in the script 1_0, we have developed the following script: [script 1_3](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)).
 
+In the next step we clean and streamline the API attributes in a reproducible way, (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_ATTRIBUTES_CLEANING.Rmd)) so they are ready for any future analysis. We keep the original attributes along with the new clean ones.
 
-* [1_0_py_EXTRACTING-GEOGRAPHIES.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_0_py_EXTRACTING-GEOGRAPHIES.ipynb))
-  * input: file "edhGeographicData.json ", containting all EDH geographies, loaded from [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
-  * output: `EDH_geo_dict_[timestamp].json`
-* [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb))
-  * input: requests to [https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?](https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?)
-  * output: `EDH_onebyone[timestamp].json`
+The cleaning process of the text of inscriptions is stored separately in [EDH_exploration repository](https://github.com/sdam-au/EDH_exploration) where it will be also discussed.
+
+---
+
+#### [1_0_py_EXTRACTING-GEOGRAPHIES.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_0_py_EXTRACTING-GEOGRAPHIES.ipynb)
+
+_Extracting geographical coordinates_
+|| File | Source commentary |
+| :---       |         ---: |         ---: |
+| input |`edhGeographicData.json`| containting all EDH geographies, loaded from [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
+| output | `EDH_geo_dict_[timestamp].json` ||
+
+#### [1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_1_py_EXTRACTION_edh-inscriptions-from-web-api.ipynb)
+ 
+_Extracting all inscriptions from API_
+|| File | Source commentary |
+| :---       |         ---: |         ---: |
+| input| requests to [https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?](https://edh-www.adw.uni-heidelberg.de/data/api/inscriptions/search?)||
+| output| `EDH_onebyone[timestamp].json`||
+
+#### [1_2_py_EXTRACTION_edh-xml_files.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)
+
+_Extracting XML files_
+|| File | Source commentary |
+| :---       |         ---: |         ---: |
+| input| `edhEpidocDump_HD[first_number]-HD[last_number].zip`| [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
+| output| `EDH_xml_data_[timestamp].json`||
+
+#### [1_3_py_MERGING_API_GEO_and_XML.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb)
+
+_Merging geographies, API, and XML files_
+|| File | Source commentary |
+| :---       |         ---: |         ---: |
+| input 1 | `EDH_geographies_raw.json`| [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)|
+| input 2| `EDH_onebyone[timestamp].json`||
+| input 3| `EDH_xml_data_[timestamp].json`|| 
+| output| `EDH_merged_[timestamp].json`||
   
-* [1_2_py_EXTRACTION_edh-xml_files.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_2_py_EXTRACTION_edh-xml_files.ipynb)
-  * input: `edhEpidocDump_HD[first_number]-HD[last_number].zip` at [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
-  * output: `EDH_xml_data_[timestamp].json`
+#### [1_4_r_DATASET_CLEANING.Rmd](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_ATTRIBUTES_CLEANING.Rmd)
 
-* [1_3_py_MERGING_API_GEO_and_XML.ipynb](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_3_py_MERGING_API_GEO_and_XML.ipynb).
-  * input1: `EDH_geographies_raw.json` at [https://edh-www.adw.uni-heidelberg.de/data/export](https://edh-www.adw.uni-heidelberg.de/data/export)
-  * input2: `EDH_onebyone[timestamp].json`
-  * input3: `EDH_xml_data_[timestamp].json` (latest verified version: 2020-06-23)
-  * output1: `EDH_merged_[timestamp].json`
-  * output2: `EDH_utf8_sample.json`
-  
-* [1_4_r_DATASET_CLEANING.Rmd](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_CLEANING.Rmd)
-  * input: `EDH_merged_[timestamp].json`
-  * output: `EDH_cleaned_[timestamp].json` (latest verified version: 2020-06-26)
+_Cleaning and streamlining attributes_
+|| File | Source commentary |
+| :---       |         ---: |         ---: |
+| input| `EDH_merged_[timestamp].json`||
+| output| `EDH_attrs_cleaned_[timestamp].json`||
 
 
 # Script accessing workflow:
