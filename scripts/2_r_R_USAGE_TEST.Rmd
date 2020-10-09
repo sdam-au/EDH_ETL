@@ -26,6 +26,7 @@ Please ignore and close the pop-up window asking for username and login. The dat
 ```{r}
 resp = request("EDH_attrs_cleaned_2020-09-30.json", path="/public/b6b6afdb969d378b70929e86e58ad975", method="GET")
 ```
+Now you can move to the next step and Make a tibble from the request's resp.
 
 # ALTERNATIVE: Loading data with Sciencedata.dk login credentials
 
@@ -40,6 +41,7 @@ user <- readline("your sciencedata username: ")
 ```{r, echo = FALSE }
 resp = request("EDH_attrs_cleaned_2020-09-30.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
+Now you can move to the next step and Make a tibble from the request's resp.
 
 # Make a tibble from the request and display the first six records (head)
 
