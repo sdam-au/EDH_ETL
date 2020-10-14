@@ -10,7 +10,9 @@
 ## Purpose
 This repository contains scripts for accesing, extracting and transforming epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
-The scripts access the main dataset via a web API, tranform it into one dataframe object, merge and enrich these data with geospatial data and additional data from xml files, and save the outcome to SDAM project directory in Sciencedata.dk. If you are unable to access the sciencedata.dk, please contact us at sdam.cas@list.au.dk. A separate Python package ```sddk``` was created specifically for accessing sciencedata.dk from Python (see https://github.com/sdam-au/sddk). If you want to save the dataset in a different location, the scripts need to be modified.
+The scripts access the main dataset via a web API, tranform it into one dataframe object, merge and enrich these data with geospatial data and additional data from xml files, and save the outcome to SDAM project directory on sciencedata.dk. Since the most important data files are in a [public folder](https://sciencedata.dk/shared/b6b6afdb969d378b70929e86e58ad975), you can use and re-run our analyses even without a sciencedata.dk account and access to our team folder. If you face any issues with accessing the data, please contact us at sdam.cas@list.au.dk.
+
+A separate Python package ```sddk``` was created specifically for accessing sciencedata.dk from Python (see https://github.com/sdam-au/sddk). If you want to save the dataset in a different location, the scripts might be easily modified.
 
 ## Authors
 * Petra Heřmánková [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6349-0540) SDAM project, petra@ancientsocialcomplexity.org
