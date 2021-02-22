@@ -40,6 +40,10 @@ To access the files created in previous steps of the ETL process, you can use th
 
 The scripts merge data from these sources into on pandas dataframe, which is then exported into one JSON file for further usage.
 
+## Metadata
+
+[EDH dataset metadata](https://docs.google.com/spreadsheets/d/1O_4EH-POKqUgq5K-B1DbbJQ8WWF0NQ6s12dCiW29MbA/edit?usp=sharing) with descriptions for all attributes.
+
 ## Scripts
 
 ### Data accessing scripts
