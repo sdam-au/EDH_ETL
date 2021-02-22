@@ -21,17 +21,20 @@ The scripts access the main dataset via a web API, tranform it into one datafram
 
 
 ## Data
-**The final dataset** produced by the scripts in this repo is called `EDH_attrs_cleaned_[timestamp].json` and is located in our project datastorage on `sciencedata.dk` in the public folder. You can access the file without having to login into sciencedata.dk. Here is a path to the file on sciencedata.dk: 
+**The final dataset** produced by the scripts in this repo is called `EDH_text_cleaned_[timestamp].json` and is located in our project datastorage on `sciencedata.dk` in the public folder. You can access the file without having to login into sciencedata.dk. Here is a path to the file on sciencedata.dk: 
 
-`SDAM_root/SDAM_data/EDH/public/EDH_attrs_cleaned[timestamp].json`
+`SDAM_root/SDAM_data/EDH/public/EDH_text_cleaned[timestamp].json`
 
-To access the files created in previous steps of the ETL process, you either need a sciencedata.dk account and an access to `SDAM_root` folder (owned by Vojtěch Kaše), or you have to rerun all scripts on your own.
+or 
+
+`https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_text_cleaned_2021-01-21.json`
+
+To access the files created in previous steps of the ETL process, you can use the dataset from the public folder, or you have to rerun all scripts on your own.
 
 **The original data** from the scripts come from two sources:
 
-a) the Epidoc XML files available at https://edh-www.adw.uni-heidelberg.de/data/export (inscriptions)
-
-b) the web API available at https://edh-www.adw.uni-heidelberg.de/data/api (inscriptions and geospatial data)
+1. the Epidoc XML files available at https://edh-www.adw.uni-heidelberg.de/data/export (inscriptions)
+1. the web API available at https://edh-www.adw.uni-heidelberg.de/data/api (inscriptions and geospatial data)
 
 The scripts merge data from these sources into on pandas dataframe, which is then exported into one JSON file for further usage.
 
@@ -51,7 +54,7 @@ To enrich the JSON with geodata extracted in the script 1_0, we have developed t
 
 In the next step we clean and streamline the API attributes in a reproducible way, (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_ATTRIBUTES_CLEANING.Rmd)) so they are ready for any future analysis. We keep the original attributes along with the new clean ones.
 
-The cleaning process of the text of inscriptions is stored separately in [EDH_exploration repository](https://github.com/sdam-au/EDH_exploration) where it will be also discussed.
+The cleaning process of the text of inscriptions is in the [script 1_45](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_5_r_TEXT_INCRIPTION_CLEANING.Rmd).
 
 ---
 
@@ -98,6 +101,16 @@ _Cleaning and streamlining attributes_
 | output| `EDH_attrs_cleaned_[timestamp].json`||
 
 
+#### [1_5_r_TEXT_INSCRIPTION_CLEANING](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_5_r_TEXT_INSCRIPTION_CLEANING.Rmd)
+
+_Cleaning and streamlining of the text of the inscription_
+|| File | Source commentary |
+| :---       |         ---: |         ---: |
+| input| `EDH_attrs_cleaned_[timestamp].json`||
+| output| `EDH_text_cleaned_[timestamp].json` ||
+
+---
+
 # Script accessing workflow:
 
 To upload these data into **Python** as a pandas dataframe, you can use this (using th [sddk](https://pypi.org/project/sddk/) package):
@@ -111,17 +124,12 @@ EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_cleaned.json", "df", auth)
 
 ## Data storage: 
 
-`SDAM_root/SDAM_data/EDH` folder on sciencedata.dk
+`SDAM_root/SDAM_data/EDH/public` folder on sciencedata.dk or alternatively as `https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/` 
 
-## DOI
-[Here will be DOI or some other identifier once we have it]
+## How to cite us
 
-### References
-[Here will go related articles or other sources we will publish/create]
+[Here will be DOI from Zenodo]
 
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-TBA
 
 
 
