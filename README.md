@@ -3,7 +3,6 @@
 
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png "Creative Commons License CC BY-NC-SA 4.0")](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Project_status](https://img.shields.io/badge/status-in__progress-brightgreen "Project status logo")
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sdam-au/EDH_ETL/master)
 
 ---
 
@@ -60,7 +59,7 @@ To enrich the JSON with geodata extracted in the script 1_0, we have developed t
 
 In the next step we clean and streamline the API attributes in a reproducible way, (see [script 1_4](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_4_r_DATASET_ATTRIBUTES_CLEANING.Rmd)) so they are ready for any future analysis. We keep the original attributes along with the new clean ones.
 
-The cleaning process of the text of inscriptions is in the [script 1_45](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_5_r_TEXT_INCRIPTION_CLEANING.Rmd).
+The cleaning process of the text of inscriptions is in the [script 1_5](https://github.com/sdam-au/EDH_ETL/blob/master/scripts/1_5_r_TEXT_INCRIPTION_CLEANING.Rmd).
 
 ---
 
@@ -119,14 +118,26 @@ _Cleaning and streamlining of the text of the inscription_
 
 # Script accessing workflow:
 
+**PYTHON**
+
 To upload these data into **Python** as a pandas dataframe, you can use this (using th [sddk](https://pypi.org/project/sddk/) package):
 
 ```python
 !pip install sddk
 import sddk
 auth = sddk.configure("SDAM_root", "648597@au.dk") # where "648597@au.dk is owner of the shared folder, i.e. Vojtěch
-EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_cleaned.json", "df", auth)
+EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_text_cleaned_[timestamp].json", "df", auth)
 ```
+
+**R**
+
+To upload these data into **R** as a dataframe, you can use [sdam package](https://github.com/sdam-au/sdam)):
+
+```r
+user <- readline("your sciencedata username: ")
+resp = request("EDH_text_cleaned_[timestamp].json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+```
+
 
 ## Data storage: 
 
