@@ -134,7 +134,7 @@ EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_text_cleaned_[timestamp].json", "df
 To upload these data into **R** as a tibble/dataframe, you can use [sdam package](https://github.com/sdam-au/sdam)):
 
 ```r
-resp = request("EDH_text_cleaned_2021-01-21.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", anonymous = TRUE, cred = NULL)
+resp = request("EDH_text_cleaned_2021-01-21.json", path="public/b6b6afdb969d378b70929e86e58ad975/", method="GET", anonymous = TRUE)
 
 
 list_json <- jsonlite::fromJSON(resp)
