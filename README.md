@@ -125,8 +125,8 @@ To upload these data into **Python** as a pandas dataframe, you can use this (us
 ```python
 !pip install sddk
 import sddk
-auth = sddk.configure("SDAM_root", "648597@au.dk") # where "648597@au.dk is owner of the shared folder, i.e. Vojtěch
-EDH_utf8 = sddk.read_file("SDAM_data/EDH/EDH_text_cleaned_[timestamp].json", "df", auth)
+auth = sddk.configure("SDAM_root", "648597@au.dk") # where "648597@au.dk is owner of the shared folder
+EDH = sddk.read_file("SDAM_data/EDH/EDH_text_cleaned_[timestamp].json", "df", auth)
 ```
 
 **R**
@@ -149,6 +149,7 @@ EDH = as_tibble(list_json)
 ## How to cite us
 
 `Heřmánková, Petra, & Kaše, Vojtěch. (2021). EDH_text_cleaned_2021_01_21 (Version 1.0) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.4888168`
+[http://doi.org/10.5281/zenodo.4888168](http://doi.org/10.5281/zenodo.4888168)
 
 
 
