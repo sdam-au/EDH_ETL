@@ -7,7 +7,7 @@
 ---
 
 ## Purpose
-This repository contains scripts for accesing, extracting and transforming epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/data/api). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
+This repository contains scripts for accesing, extracting and transforming epigraphic datasets from the [Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/). The repository will serve as a template for SDAM future collaborative research projects in accesing and analysing large digital datasets.
 
 The scripts access the main dataset via a web API, tranform it into one dataframe object, merge and enrich these data with geospatial data and additional data from xml files, and save the outcome to SDAM project directory on sciencedata.dk. Since the most important data files are in a [public folder](https://sciencedata.dk/shared/b6b6afdb969d378b70929e86e58ad975), you can use and re-run our analyses even without a sciencedata.dk account and access to our team folder. If you face any issues with accessing the data, please contact us at sdam.cas@list.au.dk.
 
@@ -41,7 +41,7 @@ The scripts merge data from these sources into on pandas dataframe, which is the
 
 ## Metadata
 
-[EDH dataset metadata](https://docs.google.com/spreadsheets/d/1O_4EH-POKqUgq5K-B1DbbJQ8WWF0NQ6s12dCiW29MbA/edit?usp=sharing) with descriptions for all attributes.
+[EDH dataset metadata](https://github.com/sdam-au/EDH_ETL/blob/master/EDH_dataset_metadata_SDAM.csv) with descriptions for all attributes.
 
 ## Scripts
 
