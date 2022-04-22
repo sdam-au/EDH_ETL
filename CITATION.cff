@@ -1,5 +1,3 @@
-# YAML 1.2
----
 abstract: "This repository contains scripts for accessing, extracting and transforming epigraphic datasets from the Epigraphic Database Heidelberg (https://edh.ub.uni-heidelberg.de/) in a reproducible manner."
 
 authors: 
