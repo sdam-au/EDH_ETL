@@ -148,9 +148,10 @@ EDH = as_tibble(list_json)
 
 ## How to cite us
 
-`Heřmánková, Petra, & Kaše, Vojtěch. (2021). EDH_text_cleaned_2021_01_21 (Version 1.0) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.4888168`
+DATASET: `Heřmánková, Petra, & Kaše, Vojtěch. (2021). EDH_text_cleaned_2021_01_21 (Version 1.0) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.4888168`
 [http://doi.org/10.5281/zenodo.4888168](http://doi.org/10.5281/zenodo.4888168)
 
+SCRIPTS: TBA
 
 
 
