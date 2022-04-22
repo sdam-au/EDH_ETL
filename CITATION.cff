@@ -1,0 +1,24 @@
+# YAML 1.2
+---
+abstract: "This repository contains scripts for accessing, extracting and transforming epigraphic datasets from the Epigraphic Database Heidelberg (https://edh.ub.uni-heidelberg.de/) in a reproducible manner."
+
+authors: 
+  -
+    affiliation: "Aarhus University"
+    family-names: "Heřmánková"
+    given-names: Petra
+    orcid: "https://orcid.org/0000-0002-6349-0540"
+  -
+    affiliation: "Aarhus University"
+    family-names: Kaše
+    given-names: Vojtěch
+    orcid: "https://orcid.org/0000-0002-6601-1605"
+
+cff-version: "1.2.0"
+license: "CC-BY-SA 4.0"
+message: "If you use this software, please cite it using the provided metadata."
+repository-code: "https://github.com/sdam-au/EDH_ETL"
+title: "EDH ETL"
+version: "1.0"
+doi: 10.5281/zenodo.XXXX
+date-released: 2022-04-22
