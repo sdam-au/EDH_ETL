@@ -18,5 +18,5 @@ message: "If you use this software, please cite it using the provided metadata."
 repository-code: "https://github.com/sdam-au/EDH_ETL"
 title: "EDH ETL"
 version: "1.0"
-doi: 10.5281/zenodo.XXXX
+doi: 10.5281/zenodo.6478243
 date-released: 2022-04-22
