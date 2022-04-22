@@ -17,6 +17,6 @@ license: "CC-BY-SA 4.0"
 message: "If you use this software, please cite it using the provided metadata."
 repository-code: "https://github.com/sdam-au/EDH_ETL"
 title: "EDH ETL"
-version: "1.0"
+version: "1.1"
 doi: 10.5281/zenodo.6478243
 date-released: 2022-04-22
