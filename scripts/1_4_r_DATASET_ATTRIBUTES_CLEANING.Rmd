@@ -1,5 +1,5 @@
 ---
-title: "EDH dataset cleaning and streamlining"
+title: "Cleaning and streamlining of the original EDH attributes"
 author: "Petra Hermankova"
 date: "22/09/2020"
 output:
