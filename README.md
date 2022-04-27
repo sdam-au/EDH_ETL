@@ -151,7 +151,7 @@ EDH = as_tibble(list_json)
 DATASET: `Heřmánková, Petra, & Kaše, Vojtěch. (2021). EDH_text_cleaned_2021_01_21 (v1.0) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.4888168`
 [http://doi.org/10.5281/zenodo.4888168](http://doi.org/10.5281/zenodo.4888168)
 
-SCRIPTS: `Petra Heřmánková, & Vojtěch Kaše. (2021). sdam-au/EDH_ETL: Scripts (v1.1). Zenodo. https://doi.org/10.5281/zenodo.6478243` [https://doi.org/10.5281/zenodo.6478243](https://doi.org/10.5281/zenodo.6478243)
+SCRIPTS: `Petra Heřmánková, & Vojtěch Kaše. (2021). sdam-au/EDH_ETL: Scripts (v1.2). Zenodo. https://doi.org/10.5281/zenodo.6478243` [https://doi.org/10.5281/zenodo.6478243](https://doi.org/10.5281/zenodo.6478243)
 
 
 
