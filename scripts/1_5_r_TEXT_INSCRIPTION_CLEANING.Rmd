@@ -1,5 +1,5 @@
 ---
-title: "Cleaning of the text of EDH inscriptions"
+title: "Automated cleaning of the text of EDH inscriptions for text mining purposes"
 author: "Petra Hermankova"
 date: "17/09/2020"
 output:
@@ -42,7 +42,7 @@ EDH_clean <- as_tibble(list_json)
 ```
 
 
-# Cleaning epigraphic text for tidy text mining analysis (word and sentence centered)
+# Cleaning epigraphic text for a text mining analysis (word and sentence centered)
 
 *Aim:* The main purpose of this script is to clean large collections of epigraphic texts all at once in order to create cleaned texts ready for text mining analysis. The output clean texts can be used for a) word centered text mining, also known as the tidytext approach (https://www.tidytextmining.com/) or for b) sentence centered text mining, as part of the Natural Language Processing (https://en.wikipedia.org/wiki/Natural_language_processing).
 
