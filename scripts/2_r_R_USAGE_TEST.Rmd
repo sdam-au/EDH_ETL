@@ -2,7 +2,7 @@
 title: "Working with EDH data"
 subtitle: "Minimal Example: how to load the dataset"
 author: "Petra Hermankova"
-date: "22/09/2020"
+date: "13/09/2022"
 output:
   html_document:
     theme: cerulean
@@ -10,45 +10,31 @@ output:
     toc_depth: 3
 ---
 
-```{r setup, echo=TRUE, message=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-devtools::install_github("sdam-au/sdam")
-
+```{r setup, include=FALSE, echo=FALSE}
+require("knitr")
 library(tidyverse)
-library(sdam)
 library(jsonlite)
-library(getPass)
 ```
 
-# Loading data as anonymous use (no credentials needed)
+## Loading data
 
-Please ignore and close the pop-up window asking for username and login. The data will then download itself without login credentials.
+Load the dataset from Sciencedata.dk
 ```{r}
-resp = request("EDH_attrs_cleaned_2020-09-30.json", path="/public/b6b6afdb969d378b70929e86e58ad975", method="GET")
+EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/1f5f56d09903fe259c0906add8b3a55e/EDH_text_cleaned_2021-01-21.json")
 ```
-Now you can move to the next step and Make a tibble from the request's resp.
-
-# ALTERNATIVE: Loading data with Sciencedata.dk login credentials
-
-1. Input your sciencedata.dk username - type directly into the RStudio console
-
-```{r, echo = FALSE }
-user <- readline("your sciencedata username: ")
+Or load local dataset if you have it
+```{r}
+EDH <- jsonlite::fromJSON("../data/EDH_text_cleaned_2021-01-21.json")
 ```
-
-2. Make the request (you will be asked for password in a new pop-up window)
-
-```{r, echo = FALSE }
-resp = request("EDH_attrs_cleaned_2020-09-30.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
-```
-Now you can move to the next step and Make a tibble from the request's resp.
-
-# Make a tibble from the request and display the first six records (head)
+You can also load the dataset directly from Zenodo
 
 ```{r}
-list_json <- jsonlite::fromJSON(resp)
-EDH_tibble = as_tibble(list_json)
-head(EDH_tibble)
+EDH <- jsonlite::fromJSON("https://zenodo.org/record/4888168/files/EDH_text_cleaned_2021-01-21.json?download=1")
+```
+
+# Dataset exploration
+```{r}
+names(EDH)
 ```
 
 # Work with the data
