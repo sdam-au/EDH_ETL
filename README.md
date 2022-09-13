@@ -46,11 +46,6 @@ SCRIPTS 2021: `Heřmánková, Petra, & Kaše, Vojtěch. (2021). sdam-au/EDH_ETL:
 
 [EDH 2021 dataset metadata](https://github.com/sdam-au/EDH_ETL/blob/master/EDH_2021_dataset_metadata_SDAM.csv) with descriptions for all attributes.
 
-
-## Data storage: 
-
-
-
 ## Data
 
 ### The original raw data
