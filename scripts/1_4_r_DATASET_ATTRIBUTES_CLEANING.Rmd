@@ -11,14 +11,14 @@ output:
 
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-#devtools::install_github("sdam-au/sdam")
+devtools::install_github("sdam-au/sdam")
 
 library(tidyverse)
 library(sdam)
 library(jsonlite)
 library(getPass)
 library(formatR)
-#library(ggpubr)
+library(ggpubr)
 
 ```
 
