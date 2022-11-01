@@ -11,14 +11,14 @@ output:
 
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-devtools::install_github("sdam-au/sdam")
+#devtools::install_github("sdam-au/sdam")
 
 library(tidyverse)
 library(sdam)
 library(jsonlite)
 library(getPass)
 library(formatR)
-library(ggpubr)
+#library(ggpubr)
 
 ```
 
@@ -32,14 +32,14 @@ user <- readline("your sciencedata username: ")
 2. Make the request (you will be asked for password in a new pop-up window)
 
 ```{r, echo = FALSE }
-resp = request("EDH_merged_2020-09-22.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+resp = request("EDH_merged_2022-11-01.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 
 3. Make a list from the request and display the first six records (head)
 
 ```{r}
-list_json <- jsonlite::fromJSON(resp) #, flatten=TRUE)
+list_json <- jsonlite::fromJSON(resp) # , flatten=TRUE)
 EDH_tibble = as_tibble(list_json)
 
 
@@ -95,7 +95,7 @@ EDH_clean <- EDH_tibble %>%
   mutate(type_of_inscription_clean = str_replace(EDH_tibble$type_of_inscription, pattern="\\?", replacement = ""))
 ```
 ### 2.1 Plotting the cleaned results
-```{r, fig.height=100%, fig.width=7}
+```{r, fig.height=8, fig.width=7}
 
 type_api_clean <-as.data.frame(table(EDH_clean$type_of_inscription_clean))
   
