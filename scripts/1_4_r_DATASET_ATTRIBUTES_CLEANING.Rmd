@@ -11,14 +11,15 @@ output:
 
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-devtools::install_github("sdam-au/sdam")
+#devtools::install_github("sdam-au/sdam")
 
 library(tidyverse)
 library(sdam)
 library(jsonlite)
 library(getPass)
 library(formatR)
-library(ggpubr)
+library(dplyr)
+#library(ggpubr)
 
 ```
 
@@ -32,7 +33,7 @@ user <- readline("your sciencedata username: ")
 2. Make the request (you will be asked for password in a new pop-up window)
 
 ```{r, echo = FALSE }
-resp = request("EDH_merged_2022-11-01.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
+resp = request("EDH_merged_2022-11-02.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 
@@ -61,38 +62,49 @@ The attributes containing text of an inscription will be cleaned in a separate s
 ## Clean the workspace to save RAM
 ```{r}
 remove(list_json)
+remove(resp)
 ```
 
 # Cleaning `type_of_inscription` attribute
 
 ## 1. Checking for consistency of the EAGLE LOD data (keywors_term) and the free-text typology (type_of_inscription).
 ```{r}
-insc_typology <- unnest(as.data.frame(cbind(type_of_inscription=EDH_tibble$type_of_inscription, keywords_term=EDH_tibble$keywords_term, keywords_term_text = EDH_tibble$keywords_term_text)))
+insc_typology <- unnest(as.data.frame(cbind(type_of_inscription=EDH_tibble$type_of_inscription, keywords_term=EDH_tibble$keywords_term, keywords_term_text = EDH_tibble$keywords_term_text)), cols=c("type_of_inscription", "keywords_term", "keywords_term_text"))
 
-insc_typology_api<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(type_of_inscription, sort = TRUE)
+insc_typology_api <- insc_typology %>% count(type_of_inscription, sort=TRUE)
+insc_typology_xml <- insc_typology %>% count(keywords_term_text, sort=TRUE)
 
-insc_typology_xml<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(keywords_term_text, sort = TRUE)
+#insc_typology_api$type_of_inscription <- unlist(insc_typology_api$type_of_inscription, use.names = F)
+#insc_typology_xml$keywords_term_text <- unlist(insc_typology_xml$keywords_term_text, use.names = F)
+
+#insc_typology_api<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(type_of_inscription, sort = TRUE)
+#insc_typology_xml<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(keywords_term_text, sort = TRUE)
 ```
-
 
 ## 1.1. Plotting the results
 ```{r, fig.height=8, fig.width=15}
-type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
-type_xml<- ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n))
+ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n)) + geom_point()
+ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n)) + geom_point()
+#type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
+#type_xml<- ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n))
+#type_insc_compare <- ggarrange(type_api, type_xml,
+#                    labels = c("API data", "XML data"),
+#                    ncol = 2, nrow = 1)
+#type_insc_compare
 
-
-type_insc_compare <- ggarrange(type_api, type_xml,
-                    labels = c("API data", "XML data"),
-                    ncol = 2, nrow = 1)
-type_insc_compare
 ```
 
 
 ## 2. Creating new column `type_of_inscription` stripped of all question marks
 
 ```{r}
+#EDH_tibble$type_of_inscription[sapply(EDH_tibble$type_of_inscription, is.null)] <- NA
+
 EDH_clean <- EDH_tibble %>%
   mutate(type_of_inscription_clean = str_replace(EDH_tibble$type_of_inscription, pattern="\\?", replacement = ""))
+
+#EDH_clean <- EDH_tibble %>%
+#  mutate(type_of_inscription_clean = str_replace(unlist(EDH_tibble$type_of_inscription), pattern="\\?", replacement = ""))
 ```
 ### 2.1 Plotting the cleaned results
 ```{r, fig.height=8, fig.width=7}
@@ -290,7 +302,7 @@ EDH_clean$type_of_monument_certainty <- ifelse(grepl("\\?", EDH_clean$type_of_mo
 
 ## 4. Checking the result
 ```{r}
-number <- 13345
+number <- 13344
 EDH_clean$type_of_monument[number]
 EDH_clean$type_of_monument_clean[number]
 EDH_clean$type_of_monument_certainty[number]
