@@ -15,7 +15,8 @@ knitr::opts_chunk$set(echo = TRUE, error=TRUE)
 
 library(tidyverse)
 library(sdam)
-library(jsonlite)
+library(rjson)
+#library(jsonlite)
 library(getPass)
 library(formatR)
 library(dplyr)
@@ -40,7 +41,8 @@ resp = request("EDH_merged_2022-11-02.json", path="/sharingin/648597@au.dk/SDAM_
 3. Make a list from the request and display the first six records (head)
 
 ```{r}
-list_json <- jsonlite::fromJSON(resp) # , flatten=TRUE)
+list_json <- rjson::fromJSON(file="~/Projects/EDH_ETL_repo/data/large_data/EDH_merged.json") # , flatten=TRUE)
+#list_json <- jsonlite::fromJSON(resp) # , flatten=TRUE)
 EDH_tibble = as_tibble(list_json)
 
 
@@ -73,18 +75,13 @@ insc_typology <- unnest(as.data.frame(cbind(type_of_inscription=EDH_tibble$type_
 
 insc_typology_api <- insc_typology %>% count(type_of_inscription, sort=TRUE)
 insc_typology_xml <- insc_typology %>% count(keywords_term_text, sort=TRUE)
-
-#insc_typology_api$type_of_inscription <- unlist(insc_typology_api$type_of_inscription, use.names = F)
-#insc_typology_xml$keywords_term_text <- unlist(insc_typology_xml$keywords_term_text, use.names = F)
-
-#insc_typology_api<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(type_of_inscription, sort = TRUE)
-#insc_typology_xml<- insc_typology %>% select(type_of_inscription, keywords_term_text) %>% count(keywords_term_text, sort = TRUE)
 ```
 
 ## 1.1. Plotting the results
 ```{r, fig.height=8, fig.width=15}
 ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n)) + geom_point()
 ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n)) + geom_point()
+
 #type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
 #type_xml<- ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n))
 #type_insc_compare <- ggarrange(type_api, type_xml,
@@ -463,7 +460,7 @@ EDH_clean$modern_region_certainty <- ifelse(grepl("\\?", EDH_clean$modern_region
 ```
 ## 4. Checking the result
 ```{r}
-number <- 12048
+number <- 1234
 EDH_clean$modern_region[number]
 EDH_clean$modern_region_clean[number]
 EDH_clean$modern_region_certainty[number]
@@ -526,7 +523,7 @@ EDH_clean$findspot_certainty <- ifelse(grepl("\\?", EDH_clean$findspot, ignore.c
 
 ## 4. Checking the result
 ```{r}
-number <- 12048
+number <- 1123
 EDH_clean$findspot[number]
 EDH_clean$findspot_clean[number]
 EDH_clean$findspot_certainty[number]
@@ -583,10 +580,10 @@ decoration
 
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox=TRUE)
 
-write(EDH_cleaned_json, file="EDH_attrs_cleaned_2020-09-28.json")
+write(EDH_cleaned_json, file="EDH_attrs_cleaned_2022-11-02.json")
 
 #user <- readline("your sciencedata username: ")
-request("EDH_attrs_cleaned_2020-09-28.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
+request("EDH_attrs_cleaned_2022-11-02.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
