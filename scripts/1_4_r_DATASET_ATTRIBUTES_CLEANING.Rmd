@@ -11,8 +11,9 @@ output:
 
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-#devtools::install_github("sdam-au/sdam")
+setwd(dirname(dirname(rstudioapi::getSourceEditorContext()$path)))
 
+#devtools::install_github("sdam-au/sdam") # sdam package is now on cran
 library(tidyverse)
 library(sdam)
 library(rjson)
@@ -575,20 +576,15 @@ decoration
 ```
 
 
-# Saving to Sciencedata
+# Saving locally to large_date (in .gitignore) and to Sciencedata
 ```{r}
 
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox=TRUE)
 
-write(EDH_cleaned_json, file="EDH_attrs_cleaned_2022-11-02.json")
+write(EDH_cleaned_json, file="data/large_data/EDH_attrs_cleaned_2022-11-03.json")
 
 #user <- readline("your sciencedata username: ")
-request("EDH_attrs_cleaned_2022-11-02.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
+request("data/large_data/EDH_attrs_cleaned_2022-11-03.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
-```
 
-
-# Remove local copy of the json
-```{r}
-file.remove("./EDH_attrs_cleaned_2020-09-28.json")
 ```

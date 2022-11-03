@@ -12,33 +12,32 @@ output:
 
 ```{r setup, echo=TRUE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-devtools::install_github("sdam-au/sdam")
+#install.packages("sdam")
+setwd(dirname(dirname(rstudioapi::getSourceEditorContext()$path)))
+
 
 library(sdam)
 library(jsonlite)
 library(tibble)
 library(tidyverse)
-library(rjson)
+library(getPass)
+#library(rjson)
 ```
 ## Loading data
-1. Load the dataset, if you have Sciencedata.dk credentials
-
-```{r, echo=FALSE}
-mycred_secret<- readLines("~/mysecret.txt")
-```
+1. Load the dataset either locally or from sciencedata.dk (if you have not run the previous script)
 
 ```{r, loading data}
-resp = request("EDH_attrs_cleaned_2020-09-30.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=mycred_secret)
-```
 
-```{r, echo=FALSE}
-remove(mycred_secret)
-```
-
-2. Make a list and tibble from the request function
-```{r}
-list_json <- jsonlite::fromJSON(resp)
+list_json <- jsonlite::fromJSON("../data/large_data/EDH_attrs_cleaned_2022-11-03.json")
+#list_json <- jsonlite::fromJSON(resp)
 EDH_clean <- as_tibble(list_json)
+
+# or from sciencedata (you need a mysecret.txt file)
+#mycred_secret<- readLines("~/mysecret.txt")
+#resp = request("EDH_attrs_cleaned_2022-11-03.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=mycred_secret)
+#list_json <- rjson::fromJSON(resp)
+#EDH_clean <- as_tibble(list_json)
+#remove(mycred_secret)
 ```
 
 
@@ -708,19 +707,16 @@ EDH_clean <- EDH_clean %>%
 
 
 
-# Saving to Sciencedata
+# Saving locally (to large_data)
 ```{r}
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox = TRUE)
-
-write(EDH_cleaned_json, file="EDH_text_cleaned_2021-01-21.json")
-request("EDH_text_cleaned_2021-01-21.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
-        method="PUT", cred=c(mycred_secret[1], mycred_secret[2]))
+write(EDH_cleaned_json, file="data/large_data/EDH_text_cleaned_2022-11-03.json")
 ```
 
-# Remove local copy of the json and the credential before submitting to GitHub
 ```{r}
-file.remove("./EDH_text_cleaned_2020-10-09.json")
-remove(mycred_secret)
+user <- readline("your sciencedata username: ")
+request("data/large_data/EDH_text_cleaned_2022-11-03.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
+        method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 
 ---
