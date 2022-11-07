@@ -576,14 +576,17 @@ decoration
 ```
 
 
-# Saving locally to large_date (in .gitignore) and to Sciencedata
+# Saving locally to large_date (in .gitignore)
 ```{r}
 
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox=TRUE)
 
 write(EDH_cleaned_json, file="data/large_data/EDH_attrs_cleaned_2022-11-03.json")
 
-#user <- readline("your sciencedata username: ")
+
+```
+# Upload to Sciencedata
+```{r}
 request("data/large_data/EDH_attrs_cleaned_2022-11-03.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 
