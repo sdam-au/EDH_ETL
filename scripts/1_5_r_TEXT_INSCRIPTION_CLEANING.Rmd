@@ -1,43 +1,43 @@
 ---
 title: "Automated cleaning of the text of EDH inscriptions for text mining purposes"
-author: "Petra Hermankova"
-date: "17/09/2020"
+author:
+- Petra Hermankova^[Aarhus University, petra.hermankova@cas.au.dk, https://orcid.org/0000-0002-6349-0540]
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
-    theme: cerulean
+    theme: united
     toc: yes
-    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    toc_depth: 2
+    df_print: paged
 ---
 
 
 ```{r setup, echo=TRUE, message=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error=TRUE)
-#install.packages("sdam")
-setwd(dirname(dirname(rstudioapi::getSourceEditorContext()$path)))
-
-
-library(sdam)
-library(jsonlite)
-library(tibble)
+require("knitr")
+#opts_knit$set(root.dir = "~/Github/EDCS_ETL/")
 library(tidyverse)
-library(getPass)
-#library(rjson)
+library(jsonlite)
+#library(leaflet)
 ```
+
 ## Loading data
-1. Load the dataset either locally or from sciencedata.dk (if you have not run the previous script)
+Load the dataset from Sciencedata.dk , you don't need any credentials, the JSON file lives in a public folder.
 
-```{r, loading data}
+Make a list and tibble from the downloaded dataset
+```{r}
+EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_attrs_cleaned_2022-11-03.json")
+```
 
-list_json <- jsonlite::fromJSON("../data/large_data/EDH_attrs_cleaned_2022-11-03.json")
-#list_json <- jsonlite::fromJSON(resp)
-EDH_clean <- as_tibble(list_json)
+Or load local dataset
+```{r}
+getwd()
+EDH <- jsonlite::fromJSON("../data/EDH_attrs_cleaned_2022-11-03.json")
+```
 
-# or from sciencedata (you need a mysecret.txt file)
-#mycred_secret<- readLines("~/mysecret.txt")
-#resp = request("EDH_attrs_cleaned_2022-11-03.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=mycred_secret)
-#list_json <- rjson::fromJSON(resp)
-#EDH_clean <- as_tibble(list_json)
-#remove(mycred_secret)
+```{r}
+EDH_clean <- EDH
 ```
 
 
@@ -69,7 +69,7 @@ The cleaned output of the conservative model will be as close to the original te
 
 ### 1.1. Expanded abbreviations
 
-**Aim:** All expanded abbreaviations that are in the parenthesis () will be eliminated from the clean text (substituted with "").
+**Aim:** All expanded abbreviations that are in the parenthesis () will be eliminated from the clean text (substituted with "").
 
 * Example before cleaning: ```Αὐρ(ήλιος) Οὐαλέριος```
 * Example after cleaning: ```Αὐρ Οὐαλέριος```
@@ -559,6 +559,7 @@ cleaning_conservative_edh <- function(epigraphic_dataset){
 
 #### Example of conservative cleaning:
 
+
 `Transcription` column of the first five inscriptions before cleaning:
 
 ```{r}
@@ -710,7 +711,7 @@ EDH_clean <- EDH_clean %>%
 # Saving locally (to large_data)
 ```{r}
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox = TRUE)
-write(EDH_cleaned_json, file="data/large_data/EDH_text_cleaned_2022-11-03.json")
+write(EDH_cleaned_json, file="../data/large_data/EDH_text_cleaned_2022-11-03.json")
 ```
 
 ```{r}
@@ -807,5 +808,18 @@ texts$clean_text_interpretive_word %>% str_subset(pattern = "\\.") %>% unique() 
 ```
 
 
+# Number of attributes
+```{r}
+length(names(EDH_clean))
+```
+# Names of attributes
+```{r}
+names(EDH_clean)
+```
+
+# Number of records
+```{r}
+nrow(EDH_clean)
+```
 
 
