@@ -23,12 +23,12 @@ A separate Python package ```sddk``` was created specifically for accessing scie
 ## How to cite us
 
 ### 2022 version 2
-DATASET 2022: `Heřmánková, Petra, & Kaše, Vojtěch. (2022). EDH_text_cleaned_2022_XX_XX (v2.0) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.XXXXXX`
-[http://doi.org/10.5281/zenodo.XXXXXX](http://doi.org/10.5281/zenodo.XXXXXX)
+DATASET 2022: `Heřmánková, Petra, & Kaše, Vojtěch. (2022). EDH_text_cleaned_2022_11_03 (v2.0) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.7303886`
+[http://doi.org/10.5281/zenodo.7303886](http://doi.org/10.5281/zenodo.7303886)
 
-SCRIPTS 2022: `Heřmánková, Petra, & Kaše, Vojtěch. (2022). sdam-au/EDH_ETL: Scripts (v2.0). Zenodo. https://doi.org/10.5281/zenodo.XXXXXX` [https://doi.org/10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)
+SCRIPTS 2022: `Heřmánková, Petra, & Kaše, Vojtěch. (2022). sdam-au/EDH_ETL: Scripts (v2.0). Zenodo. https://doi.org/10.5281/zenodo.7303867` [https://doi.org/10.5281/zenodo.7303867](https://doi.org/10.5281/zenodo.7303867)
 
-The 2022 datasets contains 81,883 cleaned and streamlined Latin inscriptions from the Epigraphic Database Heidelberg (EDH, https://edh-www.adw.uni-heidelberg.de/), aggregated on 2022/11/03, created for the purpose of a quantitative study of epigraphic trends by the *Social Dynamics in the Ancient Mediterranean Project* (SDAM, http://sdam.au.dk). The dataset contains 69 attributes with original and streamlined data. Compared to the 2021 dataset, there are 407 more inscriptions and 5 fewer attributes containing redundant legacy data, thus the entire dataset is approximately the same size but some of the attributes are streamlined (248 MB in 2022 compared to 234 MB in 2021). Some of the attribute were removed as they are no longer available due to the changes in the EDH, e.g. `edh_geography_uri`, `external_image_uris`, `fotos`, `geography`, `military`, `social_economic_legal_history`, `uri`; and some new attributes were added due to the streamlining of the ETL process, e.g. `pleiades_id`. For full overview, see the Metadata section.
+The 2022 datasets contains 81,883 cleaned and streamlined Latin inscriptions from the Epigraphic Database Heidelberg (EDH, https://edh-www.adw.uni-heidelberg.de/), aggregated on 2022/11/03, created for the purpose of a quantitative study of epigraphic trends by the *Social Dynamics in the Ancient Mediterranean Project* (SDAM, http://sdam.au.dk). The dataset contains 69 attributes with original and streamlined data. Compared to the 2021 dataset, there are 407 more inscriptions and 5 fewer attributes containing redundant legacy data, thus the entire dataset is approximately the same size but some of the attributes are streamlined (260 MB in 2022 compared to 234 MB in 2021). Some of the attribute were removed as they are no longer available due to the changes in the EDH itself, e.g. `edh_geography_uri`, `external_image_uris`, `fotos`, `geography`, `military`, `social_economic_legal_history`, `uri`; and some new attributes were added due to the streamlining of the ETL process, e.g. `pleiades_id`. For full overview, see the Metadata section.
 
 **Metadata**
 
