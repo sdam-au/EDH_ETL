@@ -1,12 +1,16 @@
 ---
 title: "Cleaning and streamlining of the original EDH attributes"
-author: "Petra Hermankova"
-date: "22/09/2020"
+author:
+- Petra Hermankova^[Aarhus University, petra.hermankova@cas.au.dk, https://orcid.org/0000-0002-6349-0540]
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
-    theme: cerulean
+    theme: united
     toc: yes
-    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    toc_depth: 2
+    df_print: paged
 ---
 
 ```{r setup, echo=TRUE, message=FALSE}
@@ -15,17 +19,19 @@ setwd(dirname(dirname(rstudioapi::getSourceEditorContext()$path)))
 
 #devtools::install_github("sdam-au/sdam") # sdam package is now on cran
 library(tidyverse)
-library(sdam)
+#library(sdam)
 library(rjson)
 #library(jsonlite)
-library(getPass)
+#library(getPass)
 library(formatR)
 library(dplyr)
 #library(ggpubr)
 
 ```
 
-### Loading data
+### Loading data - OLD
+
+#### Using SDAM package (2021 version)
 
 1. Input your sciencedata.dk username - type directly into the RStudio console
 ```{r, echo = FALSE }
@@ -48,6 +54,19 @@ EDH_tibble = as_tibble(list_json)
 
 
 head(EDH_tibble)
+```
+
+
+### Loading data - NEW
+
+Load the dataset from Sciencedata.dk
+```{r}
+EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_merged_2022-11-02.json")
+```
+
+Or load local dataset if you have it
+```{r}
+EDH <- jsonlite::fromJSON("../data/large_data/EDH_merged_2022-11-02.json")
 ```
 
 
@@ -104,6 +123,7 @@ EDH_clean <- EDH_tibble %>%
 #EDH_clean <- EDH_tibble %>%
 #  mutate(type_of_inscription_clean = str_replace(unlist(EDH_tibble$type_of_inscription), pattern="\\?", replacement = ""))
 ```
+
 ### 2.1 Plotting the cleaned results
 ```{r, fig.height=8, fig.width=7}
 
@@ -585,7 +605,11 @@ write(EDH_cleaned_json, file="data/large_data/EDH_attrs_cleaned_2022-11-03.json"
 
 
 ```
-# Upload to Sciencedata
+
+
+# Upload to Sciencedata suing SDAM package
+
+If it does not work, login and upload the dataset manually.
 ```{r}
 request("data/large_data/EDH_attrs_cleaned_2022-11-03.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))

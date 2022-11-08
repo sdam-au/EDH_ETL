@@ -1,13 +1,17 @@
 ---
 title: "Working with EDH data"
 subtitle: "Minimal Example: how to load the dataset"
-author: "Petra Hermankova"
-date: "13/09/2022"
+author:
+- Petra Hermankova^[Aarhus University, petra.hermankova@cas.au.dk, https://orcid.org/0000-0002-6349-0540]
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
-    theme: cerulean
+    theme: united
     toc: yes
-    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    toc_depth: 2
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -20,25 +24,41 @@ library(jsonlite)
 
 Load the dataset from Sciencedata.dk
 ```{r}
-EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/1f5f56d09903fe259c0906add8b3a55e/EDH_text_cleaned_2021-01-21.json")
+EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_text_cleaned_2022-11-03.json")
 ```
+
 Or load local dataset if you have it
 ```{r}
-EDH <- jsonlite::fromJSON("../data/EDH_text_cleaned_2021-01-21.json")
+EDH <- jsonlite::fromJSON("../data/large_data/EDH_text_cleaned_2022-11-03.json")
 ```
-You can also load the dataset directly from Zenodo
 
+You can also load the dataset directly from Zenodo
 ```{r}
 EDH <- jsonlite::fromJSON("https://zenodo.org/record/4888168/files/EDH_text_cleaned_2021-01-21.json?download=1")
 ```
 
 # Dataset exploration
+
+## Number of attributes
+```{r}
+length(names(EDH))
+```
+## Names of attributes
 ```{r}
 names(EDH)
 ```
 
+## Number of records
+```{r}
+nrow(EDH)
+```
+
+
+
+
 # Work with the data
 
 For examples of how to work with the dataset in R, see e.g. other EDH_ETL R scripts(https://github.com/sdam-au/EDH_ETL/tree/master/scripts) or EDH_exploration R scripts (https://github.com/sdam-au/EDH_exploration).
+
 
 

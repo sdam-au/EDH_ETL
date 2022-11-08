@@ -808,18 +808,5 @@ texts$clean_text_interpretive_word %>% str_subset(pattern = "\\.") %>% unique() 
 ```
 
 
-# Number of attributes
-```{r}
-length(names(EDH_clean))
-```
-# Names of attributes
-```{r}
-names(EDH_clean)
-```
-
-# Number of records
-```{r}
-nrow(EDH_clean)
-```
 
 
