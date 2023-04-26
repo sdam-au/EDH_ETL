@@ -27,13 +27,13 @@ Load the dataset from Sciencedata.dk , you don't need any credentials, the JSON 
 
 Make a list and tibble from the downloaded dataset
 ```{r}
-EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_attrs_cleaned_2022-11-03.json")
+EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_attrs_cleaned_2023-04-26.json")
 ```
 
 Or load local dataset
 ```{r}
 getwd()
-EDH <- jsonlite::fromJSON("../data/EDH_attrs_cleaned_2022-11-03.json")
+EDH <- jsonlite::fromJSON("../data/large_data/EDH_attrs_cleaned_2023-04-26.json")
 ```
 
 ```{r}
@@ -711,12 +711,12 @@ EDH_clean <- EDH_clean %>%
 # Saving locally (to large_data)
 ```{r}
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox = TRUE)
-write(EDH_cleaned_json, file="../data/large_data/EDH_text_cleaned_2022-11-03.json")
+write(EDH_cleaned_json, file="data/large_data/EDH_text_cleaned_2023-04-26.json")
 ```
 
 ```{r}
 user <- readline("your sciencedata username: ")
-request("data/large_data/EDH_text_cleaned_2022-11-03.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
+request("data/large_data/EDH_text_cleaned_2023-04-26.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 ```
 

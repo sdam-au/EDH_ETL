@@ -19,56 +19,31 @@ setwd(dirname(dirname(rstudioapi::getSourceEditorContext()$path)))
 
 #devtools::install_github("sdam-au/sdam") # sdam package is now on cran
 library(tidyverse)
-#library(sdam)
+library(sdam)
 library(rjson)
 #library(jsonlite)
-#library(getPass)
+library(getPass)
 library(formatR)
 library(dplyr)
-#library(ggpubr)
+library(ggpubr)
 
 ```
-
-### Loading data - OLD
-
-#### Using SDAM package (2021 version)
-
-1. Input your sciencedata.dk username - type directly into the RStudio console
-```{r, echo = FALSE }
-user <- readline("your sciencedata username: ")
-```
-
-2. Make the request (you will be asked for password in a new pop-up window)
-
-```{r, echo = FALSE }
-resp = request("EDH_merged_2022-11-02.json", path="/sharingin/648597@au.dk/SDAM_root/SDAM_data/EDH/public", method="GET", cred=c(user, getPass("your sciencedata password: ")))
-```
-
-
-3. Make a list from the request and display the first six records (head)
-
-```{r}
-list_json <- rjson::fromJSON(file="~/Projects/EDH_ETL_repo/data/large_data/EDH_merged.json") # , flatten=TRUE)
-#list_json <- jsonlite::fromJSON(resp) # , flatten=TRUE)
-EDH_tibble = as_tibble(list_json)
-
-
-head(EDH_tibble)
-```
-
 
 ### Loading data - NEW
 
 Load the dataset from Sciencedata.dk
 ```{r}
-EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_merged_2022-11-02.json")
+EDH <- jsonlite::fromJSON("https://sciencedata.dk/public/b6b6afdb969d378b70929e86e58ad975/EDH_merged_2023-04-26.json")
 ```
 
 Or load local dataset if you have it
 ```{r}
-EDH <- jsonlite::fromJSON("../data/large_data/EDH_merged_2022-11-02.json")
+EDH <- jsonlite::fromJSON("../data/large_data/EDH_merged.json")
 ```
+```{r}
+EDH_tibble = as_tibble(EDH)
 
+```
 
 # Showing all attribute names before we start the cleaning process
 ```{r}
@@ -81,11 +56,6 @@ names(EDH_tibble)
 The attributes containing text of an inscription will be cleaned in a separate script:
 `diplomatic_text, transcription, text_edition`
 
-## Clean the workspace to save RAM
-```{r}
-remove(list_json)
-remove(resp)
-```
 
 # Cleaning `type_of_inscription` attribute
 
@@ -99,15 +69,13 @@ insc_typology_xml <- insc_typology %>% count(keywords_term_text, sort=TRUE)
 
 ## 1.1. Plotting the results
 ```{r, fig.height=8, fig.width=15}
-ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n)) + geom_point()
-ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n)) + geom_point()
 
-#type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
-#type_xml<- ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n))
-#type_insc_compare <- ggarrange(type_api, type_xml,
-#                    labels = c("API data", "XML data"),
-#                    ncol = 2, nrow = 1)
-#type_insc_compare
+type_api<- ggplot(insc_typology_api, aes(x=n, y=type_of_inscription)) + geom_col(aes(fill=n))
+type_xml<- ggplot(insc_typology_xml, aes(x=n, y=keywords_term_text)) + geom_col(aes(fill=n))
+type_insc_compare <- ggarrange(type_api, type_xml,
+                    labels = c("API data", "XML data"),
+                    ncol = 2, nrow = 1)
+type_insc_compare
 
 ```
 
@@ -601,7 +569,7 @@ decoration
 
 EDH_cleaned_json <- jsonlite::toJSON(EDH_clean, auto_unbox=TRUE)
 
-write(EDH_cleaned_json, file="data/large_data/EDH_attrs_cleaned_2022-11-03.json")
+write(EDH_cleaned_json, file="data/large_data/EDH_attrs_cleaned_2023-04-26.json")
 
 
 ```
@@ -611,7 +579,8 @@ write(EDH_cleaned_json, file="data/large_data/EDH_attrs_cleaned_2022-11-03.json"
 
 If it does not work, login and upload the dataset manually.
 ```{r}
-request("data/large_data/EDH_attrs_cleaned_2022-11-03.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
+user <- readline("your sciencedata username: ")
+request("data/large_data/EDH_attrs_cleaned_2023-04-26.json", path="/sharingout/648597@au.dk/SDAM_root/SDAM_data/EDH/public",
         method="PUT", cred=c(user, getPass("your sciencedata password: ")))
 
 ```
