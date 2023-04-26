@@ -703,7 +703,15 @@ EDH_clean <- EDH_clean %>%
   mutate(clean_text_interpretive_sentence = cleaning_interpretive_sentence_edh(EDH_clean$transcription))
 ```
 
+```{r}
+# if incorrect (for some reason), reverse accordingly...
+#not_before <- EDH_clean$not_after
+#not_after <- EDH_clean$not_before
 
+#EDH_clean$not_after <- not_after
+#EDH_clean$not_before <- not_before
+
+```
 
 
 
